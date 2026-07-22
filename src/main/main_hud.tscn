@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://ccjvmkggl25xu"]
 
 [ext_resource type="PackedScene" uid="uid://b4h3630kxc0ft" path="res://clock/clock.tscn" id="1_2ybbj"]
+[ext_resource type="Script" uid="uid://cw531elkaceb6" path="res://main/time_display.gd" id="1_wdoo0"]
+[ext_resource type="Script" uid="uid://i5lx0ffcccmd" path="res://unix_seconds.gd" id="2_2jvhw"]
+
+[sub_resource type="Resource" id="Resource_2jvhw"]
+script = ExtResource("2_2jvhw")
+metadata/_custom_type_script = "uid://i5lx0ffcccmd"
 
 [node name="MainHUD" type="Control" unique_id=35521763]
 layout_mode = 3
@@ -28,12 +34,17 @@ size_flags_stretch_ratio = 4.0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TIMECOUNTER" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1405764779]
+[node name="TIMECOUNTER" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1407968196]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.4
 mouse_filter = 2
+
+[node name="TimeDisplay" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=915000530]
+layout_mode = 2
+script = ExtResource("1_wdoo0")
+unix_time = SubResource("Resource_2jvhw")
 
 [node name="MESSAGES" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=3036355]
 layout_mode = 2
