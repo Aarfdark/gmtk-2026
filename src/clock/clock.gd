@@ -7,30 +7,42 @@ extends Node2D
 var mouse_on_hand := false
 var clicking_on_hand := false
 var progress: float = 0.0
+var rot_speed: float = PI/45
+var hand_length: int = 182
 
 signal revolution_completed
 
 var debug = 0
-func _physics_process(_delta: float) -> void:
-	############# DEBUG #############
-	#if debug == (0.5)*60:
-		#print("progress: %f" % progress)
-		#debug = 0
-	#debug += 1
-	############# DEBUG #############
-	
+func _physics_process(_delta: float) -> void:	
 	if !clicking_on_hand:
 		return
-		
-	hand.look_at(get_global_mouse_position())
+	
+	#hand.look_at(get_global_mouse_position())
+	var hand_to_mouse_vec := get_global_mouse_position() - position
+	var hand_to_mouse_dir := atan2(hand_to_mouse_vec.y, hand_to_mouse_vec.x)
+	var angle_threshold = PI/72
+	if hand.rotation > hand_to_mouse_dir + angle_threshold:
+		hand.rotate(-rot_speed)
+	elif hand.rotation < hand_to_mouse_dir - angle_threshold:
+		hand.rotate(rot_speed)
+	else:
+		hand.look_at(get_global_mouse_position())
+	
 	progress += hand.rotation - last_rotation
 	last_rotation = hand.rotation
 	
 	if progress <= -TAU: # one counter-clockwise rotation
 		progress += TAU
 		revolution_completed.emit()
-	if progress >= TAU: # one clockwise rotation (doesn't do anything)
+	elif progress >= TAU: # one clockwise rotation (doesn't do anything)
 		progress -= TAU
+	
+	############# DEBUG #############
+	if debug == (1)*60:
+		debug = 0
+		print("hand_rotation: %f | hand_to_mouse_dir: %f" % [hand.rotation, hand_to_mouse_dir])
+	debug += 1
+	############# DEBUG #############
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -39,7 +51,6 @@ func _input(event: InputEvent) -> void:
 		else:
 			if clicking_on_hand:
 				clicking_on_hand = false
-	
 
 func _on_area_2d_mouse_entered() -> void:
 	mouse_on_hand = true
