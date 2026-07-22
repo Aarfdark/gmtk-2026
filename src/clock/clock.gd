@@ -12,12 +12,12 @@ signal revolution_completed
 
 var debug = 0
 func _physics_process(_delta: float) -> void:
-	#############################
+	############# DEBUG #############
 	#if debug == (0.5)*60:
 		#print("progress: %f" % progress)
 		#debug = 0
 	#debug += 1
-	#############################
+	############# DEBUG #############
 	
 	if !clicking_on_hand:
 		return
@@ -33,10 +33,13 @@ func _physics_process(_delta: float) -> void:
 		progress -= TAU
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and mouse_on_hand:
-		clicking_on_hand = true
-	elif event.is_action_released("left_click"):
-		clicking_on_hand = false
+	if event.is_action_pressed("left_click"):
+		if mouse_on_hand:
+			clicking_on_hand = !clicking_on_hand
+		else:
+			if clicking_on_hand:
+				clicking_on_hand = false
+	
 
 func _on_area_2d_mouse_entered() -> void:
 	mouse_on_hand = true
