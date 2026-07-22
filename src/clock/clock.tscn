@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b4h3630kxc0ft"]
+
+[ext_resource type="Script" uid="uid://bgb60t3537k24" path="res://clock/clock.gd" id="1_fk4wj"]
+[ext_resource type="Texture2D" uid="uid://ccq5mvu05av0p" path="res://clock/clock_face.png" id="1_vx6em"]
+[ext_resource type="Texture2D" uid="uid://bomi4ing376mx" path="res://clock/second_hand.png" id="2_ru58x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1squ"]
+size = Vector2(19.000011, 96.482765)
+
+[node name="Clock" type="Node2D" unique_id=2103397852]
+script = ExtResource("1_fk4wj")
+
+[node name="Face" type="Sprite2D" parent="." unique_id=1076454707]
+texture = ExtResource("1_vx6em")
+
+[node name="Hand" type="Sprite2D" parent="." unique_id=1295537813]
+texture = ExtResource("2_ru58x")
+
+[node name="Area2D" type="Area2D" parent="Hand" unique_id=2122588955]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Area2D" unique_id=1760554403]
+position = Vector2(32.888203, -33.888195)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_q1squ")
+
+[connection signal="area_entered" from="Hand/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Hand/Area2D" to="." method="_on_area_2d_area_exited"]
