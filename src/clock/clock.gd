@@ -8,7 +8,7 @@ var mouse_on_hand := false
 var clicking_on_hand := false
 var progress: float = 0.0
 var rot_speed: float = PI/45
-var hand_length: int = 182
+var angle_threshold = PI/60
 
 signal revolution_completed
 
@@ -17,16 +17,18 @@ func _physics_process(_delta: float) -> void:
 	if !clicking_on_hand:
 		return
 	
-	#hand.look_at(get_global_mouse_position())
-	var hand_to_mouse_vec := get_global_mouse_position() - position
-	var hand_to_mouse_dir := atan2(hand_to_mouse_vec.y, hand_to_mouse_vec.x)
-	var angle_threshold = PI/72
-	if hand.rotation > hand_to_mouse_dir + angle_threshold:
-		hand.rotate(-rot_speed)
-	elif hand.rotation < hand_to_mouse_dir - angle_threshold:
-		hand.rotate(rot_speed)
-	else:
-		hand.look_at(get_global_mouse_position())
+	hand.look_at(get_global_mouse_position())
+	#var hand_to_mouse_vec := get_global_mouse_position() - position
+	#var hand_to_mouse_dir := atan2(hand_to_mouse_vec.y, hand_to_mouse_vec.x)
+	#
+	#if hand.rotation + hand_to_mouse_dir < angle_threshold:
+		#hand.look_at(get_global_mouse_position())
+	#if hand.rotation > hand_to_mouse_dir + angle_threshold:
+		#hand.rotate(-rot_speed)
+	#elif hand.rotation < hand_to_mouse_dir - angle_threshold:
+		#hand.rotate(rot_speed)
+	#else:
+		#hand.look_at(get_global_mouse_position())
 	
 	progress += hand.rotation - last_rotation
 	last_rotation = hand.rotation
@@ -38,10 +40,10 @@ func _physics_process(_delta: float) -> void:
 		progress -= TAU
 	
 	############# DEBUG #############
-	if debug == (1)*60:
-		debug = 0
-		print("hand_rotation: %f | hand_to_mouse_dir: %f" % [hand.rotation, hand_to_mouse_dir])
-	debug += 1
+	#if debug == (1)*60:
+		#debug = 0
+		#print("hand_rotation: %f | hand_to_mouse_dir: %f" % [hand.rotation, hand_to_mouse_dir])
+	#debug += 1
 	############# DEBUG #############
 
 func _input(event: InputEvent) -> void:
