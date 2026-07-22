@@ -2,16 +2,36 @@ extends Node2D
 
 @onready var hand: Sprite2D = $Hand
 @onready var hand_pos := hand.global_position
+@onready var last_rotation := hand.rotation
 
 var mouse_on_hand := false
 var clicking_on_hand := false
+var progress: float = 0.0
 
-func _process(_delta: float) -> void:
-	if clicking_on_hand:
-		var mouse_pos := get_viewport().get_mouse_position()
-		hand.look_at(mouse_pos)
-		
+signal revolution_completed
+
+var debug = 0
+func _physics_process(_delta: float) -> void:
+	#############################
+	#if debug == (0.5)*60:
+		#print("progress: %f" % progress)
+		#debug = 0
+	#debug += 1
+	#############################
 	
+	if !clicking_on_hand:
+		return
+		
+	hand.look_at(get_global_mouse_position())
+	progress += hand.rotation - last_rotation
+	last_rotation = hand.rotation
+	
+	if progress <= -TAU: # one counter-clockwise rotation
+		progress += TAU
+		revolution_completed.emit()
+	if progress >= TAU: # one clockwise rotation (doesn't do anything)
+		progress -= TAU
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and mouse_on_hand:
 		clicking_on_hand = true
