@@ -5,9 +5,11 @@ extends Control
 
 @onready var sands_label: Label = %SandsLabel
 
+
 func _ready() -> void:
 	game_state.changed.connect(_on_game_state_changed)
 	_on_game_state_changed()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
