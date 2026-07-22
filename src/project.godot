@@ -22,6 +22,17 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://_global/": "gray",
+"res://theming/": "pink"
+}
+
+[gui]
+
+theme/custom="uid://dai5a0c8hxqu0"
+
 [input]
 
 left_click={
