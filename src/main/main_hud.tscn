@@ -1,14 +1,9 @@
 [gd_scene format=3 uid="uid://ccjvmkggl25xu"]
 
 [ext_resource type="PackedScene" uid="uid://b4h3630kxc0ft" path="res://clock/clock.tscn" id="1_2ybbj"]
-[ext_resource type="Script" uid="uid://cw531elkaceb6" path="res://main/time_display.gd" id="1_wdoo0"]
+[ext_resource type="Script" uid="uid://cw531elkaceb6" path="res://main/time_label.gd" id="1_wdoo0"]
 [ext_resource type="Script" uid="uid://dasvtrr3d66db" path="res://main/main_hud.gd" id="1_yxwbc"]
-[ext_resource type="Script" uid="uid://i5lx0ffcccmd" path="res://unix_seconds.gd" id="2_2jvhw"]
 [ext_resource type="Resource" uid="uid://dht8l04mab2ep" path="res://custom_resources/starting_game_state.tres" id="2_7shfy"]
-
-[sub_resource type="Resource" id="Resource_2jvhw"]
-script = ExtResource("2_2jvhw")
-metadata/_custom_type_script = "uid://i5lx0ffcccmd"
 
 [node name="MainHUD" type="Control" unique_id=35521763]
 layout_mode = 3
@@ -45,10 +40,19 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.4
 mouse_filter = 2
 
-[node name="TimeDisplay" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=915000530]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=1539254180]
+layout_mode = 2
+
+[node name="TimeLabelISO" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=915000530]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("1_wdoo0")
-unix_time = SubResource("Resource_2jvhw")
+convert_to_iso = true
+
+[node name="TimeLabelUnix" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=1916945416]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_wdoo0")
 
 [node name="MESSAGES" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=3036355]
 layout_mode = 2
@@ -92,3 +96,5 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+
+[connection signal="revolution_completed" from="VBoxContainer/HBoxContainer2/DIAL/Control/Clock" to="." method="_on_clock_revolution_completed"]
