@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameState" format=3 uid="uid://dht8l04mab2ep"]
+
+[ext_resource type="Script" uid="uid://dfqohajdnq1pm" path="res://custom_resources/game_state.gd" id="1_7rfia"]
+
+[resource]
+script = ExtResource("1_7rfia")
+metadata/_custom_type_script = "uid://dfqohajdnq1pm"

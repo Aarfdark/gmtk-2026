@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://ccjvmkggl25xu"]
 
 [ext_resource type="PackedScene" uid="uid://b4h3630kxc0ft" path="res://clock/clock.tscn" id="1_2ybbj"]
-[ext_resource type="Script" uid="uid://cw531elkaceb6" path="res://main/time_display.gd" id="1_wdoo0"]
-[ext_resource type="Script" uid="uid://i5lx0ffcccmd" path="res://unix_seconds.gd" id="2_2jvhw"]
-
-[sub_resource type="Resource" id="Resource_2jvhw"]
-script = ExtResource("2_2jvhw")
-metadata/_custom_type_script = "uid://i5lx0ffcccmd"
+[ext_resource type="Script" uid="uid://cw531elkaceb6" path="res://main/time_label.gd" id="1_wdoo0"]
+[ext_resource type="Script" uid="uid://dasvtrr3d66db" path="res://main/main_hud.gd" id="1_yxwbc"]
+[ext_resource type="Resource" uid="uid://dht8l04mab2ep" path="res://custom_resources/starting_game_state.tres" id="2_7shfy"]
 
 [node name="MainHUD" type="Control" unique_id=35521763]
 layout_mode = 3
@@ -16,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_yxwbc")
+game_state = ExtResource("2_7shfy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=111920872]
 layout_mode = 1
@@ -41,10 +40,19 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.4
 mouse_filter = 2
 
-[node name="TimeDisplay" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=915000530]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=1539254180]
+layout_mode = 2
+
+[node name="TimeLabelISO" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=915000530]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("1_wdoo0")
-unix_time = SubResource("Resource_2jvhw")
+convert_to_iso = true
+
+[node name="TimeLabelUnix" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=1916945416]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_wdoo0")
 
 [node name="MESSAGES" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=3036355]
 layout_mode = 2
@@ -57,10 +65,15 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="INVENTORY" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=364314149]
+[node name="INVENTORY" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=2062672994]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+
+[node name="SandsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/INVENTORY" unique_id=1460323517]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sands: %s"
 
 [node name="DIAL" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=2099747588]
 layout_mode = 2
@@ -74,10 +87,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -87,3 +96,5 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+
+[connection signal="revolution_completed" from="VBoxContainer/HBoxContainer2/DIAL/Control/Clock" to="." method="_on_clock_revolution_completed"]
