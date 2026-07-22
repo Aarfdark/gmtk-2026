@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ccjvmkggl25xu"]
+
+[ext_resource type="PackedScene" uid="uid://b4h3630kxc0ft" path="res://clock/clock.tscn" id="1_2ybbj"]
+
+[node name="MainHUD" type="Control" unique_id=35521763]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=111920872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1237838188]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1609313665]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TIMECOUNTER" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1405764779]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.4
+mouse_filter = 2
+
+[node name="MESSAGES" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=3036355]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1357091963]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="INVENTORY" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=364314149]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="DIAL" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=2099747588]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/DIAL" unique_id=994430111]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clock" parent="VBoxContainer/HBoxContainer2/DIAL/Control" unique_id=2103397852 instance=ExtResource("1_2ybbj")]
+
+[node name="SHOP" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=1179354664]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
