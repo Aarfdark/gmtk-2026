@@ -1,0 +1,10 @@
+# Ignore all build files...
+*
+
+# ...but track this gitignore and README,
+!.gitignore
+!README.md
+
+# and each subdirectory's README.
+!*/
+!*/README.md
