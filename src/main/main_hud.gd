@@ -15,6 +15,14 @@ extends Control
 @onready var time_label_iso: TimeLabel = %TimeLabelISO
 @onready var time_label_unix: TimeLabel = %TimeLabelUnix
 
+var _tick_progress: float = 0.0
+
+
+func _process(delta: float) -> void:
+	var time_diff: float = delta * game_state.ticks_per_second + _tick_progress
+	game_state.seconds_remaining += int(time_diff)
+	_tick_progress = fmod(time_diff, 1.0)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not OS.is_debug_build():

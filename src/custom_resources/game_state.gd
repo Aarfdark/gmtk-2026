@@ -30,6 +30,7 @@ const STARTING_SECONDS = 1785085200  # 2026-07-26 17:00:00
 			return
 		sands = value
 		emit_changed()
+var ticks_per_second: float = 1.0
 
 var _end_fired: bool = false
 
