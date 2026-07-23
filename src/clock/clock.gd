@@ -6,14 +6,14 @@ signal revolution_completed
 @export_enum("Toggle Click", "Click and Hold") var input_method: String
 @export var halo_change_rate: float = 5.0
 
+var hovering := false
+var grabbing := false
+var progress: float = 0.0
+
 @onready var halo: Sprite2D = $Halo
 @onready var hand: Node2D = $Hand
 @onready var last_rotation := hand.rotation
 @onready var sand_particles: CPUParticles2D = %SandParticles
-
-var hovering := false
-var grabbing := false
-var progress: float = 0.0
 
 
 func _physics_process(delta: float) -> void:
