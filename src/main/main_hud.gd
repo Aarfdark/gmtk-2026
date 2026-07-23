@@ -8,10 +8,9 @@ extends Control
 			await ready
 		time_label_iso.game_state = game_state
 		time_label_unix.game_state = game_state
-		game_state.changed.connect(_on_game_state_changed)
-		_on_game_state_changed()
+		sands_label.game_state = game_state
 
-@onready var sands_label: Label = %SandsLabel
+@onready var sands_label: SandsLabel = %SandsLabel
 @onready var time_label_iso: TimeLabel = %TimeLabelISO
 @onready var time_label_unix: TimeLabel = %TimeLabelUnix
 @onready var settings_menu: Control = %SettingsMenu
@@ -19,6 +18,7 @@ extends Control
 @onready var UpgradeButtonScene = preload("uid://dl2qapeg023np")
 
 var _tick_progress: float = 0.0
+
 
 func _process(delta: float) -> void:
 	var time_diff: float = delta * game_state.ticks_per_second + _tick_progress
@@ -42,10 +42,6 @@ func instantiate_button(upgrade: Upgrade) -> void:
 	new_upgrade_button.pressed.connect(_on_upgrade_button_pressed.bind(upgrade))
 
 
-func _on_game_state_changed() -> void:
-	sands_label.text = "Sands: %d" % game_state.sands
-
-
 func _on_upgrade_button_pressed(upgrade: Upgrade) -> void:
 	if game_state.sands < upgrade.cost:
 		return
@@ -57,8 +53,10 @@ func _on_upgrade_button_pressed(upgrade: Upgrade) -> void:
 	game_state.update_attributes()
 	print("bought upgrade: %s" % upgrade.name)
 
+
 func _on_clock_revolution_completed() -> void:
 	game_state.seconds_remaining -= game_state.seconds_per_revolution
-	
+
+
 func _on_settings_button_pressed() -> void:
 	settings_menu.visible = true
