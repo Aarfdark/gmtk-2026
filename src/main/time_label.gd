@@ -13,6 +13,6 @@ extends Label
 
 func _on_game_state_changed() -> void:
 	if convert_to_iso:
-		text = Time.get_datetime_string_from_unix_time(game_state.seconds_remaining, true)
+		text = game_state.get_datetime()
 	else:
 		text = "%010d" % game_state.seconds_remaining
