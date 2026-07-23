@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bkd20kg4p0ync"]
+
+[ext_resource type="Script" uid="uid://doyh07n6sjd16" path="res://_global/scene_transitioner.gd" id="1_ojqak"]
+
+[sub_resource type="Gradient" id="Gradient_ojqak"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u8dsv"]
+gradient = SubResource("Gradient_ojqak")
+width = 1
+height = 1
+
+[node name="SceneTransitioner" type="CanvasLayer" unique_id=699503155]
+layer = 2
+script = ExtResource("1_ojqak")
+
+[node name="RadialBlack" type="TextureProgressBar" parent="." unique_id=1607064626]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.1
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_u8dsv")
