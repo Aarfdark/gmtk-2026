@@ -2,7 +2,7 @@ extends Node2D
 
 signal revolution_completed
 
-@export_range(1, 25, 0.5) var follow_rate: float = 8
+@export_range(1, 25, 0.5) var follow_rate: float = 4.0
 
 @onready var hand: Node2D = $Hand
 @onready var last_rotation := hand.rotation
@@ -47,7 +47,7 @@ func _drag_towards_mouse(delta: float) -> void:
 		starting_angle -= TAU
 		progress += TAU
 	# slower if going the wrong way
-	var decay: float = 1.0 if starting_angle < target_angle else follow_rate
+	var decay: float = 0.5 if starting_angle < target_angle else follow_rate
 	hand.rotation = Utils.exp_decay(starting_angle, target_angle, delta, decay)
 
 
