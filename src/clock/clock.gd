@@ -5,6 +5,7 @@ signal revolution_completed
 @export_range(1, 25, 0.5) var follow_rate: float = 4.0
 @export_enum("Toggle Click", "Click and Hold") var input_method: String
 
+@onready var halo: Sprite2D = $Halo
 @onready var hand: Node2D = $Hand
 @onready var last_rotation := hand.rotation
 @onready var sand_particles: CPUParticles2D = %SandParticles
@@ -26,6 +27,8 @@ func _physics_process(delta: float) -> void:
 	if progress <= -TAU:  # one counter-clockwise rotation
 		progress += TAU
 		sand_particles.emitting = true
+		var tween := create_tween().set_trans(Tween.TRANS_QUART)
+		tween.tween_property(halo, "modulate", Color(Color.YELLOW, 0.0), 0.3).from(Color.YELLOW)
 		revolution_completed.emit()
 	elif progress >= TAU:  # one clockwise rotation (doesn't do anything)
 		progress -= TAU
@@ -59,8 +62,15 @@ func _drag_towards_mouse(delta: float) -> void:
 	elif abs(dist - TAU) < abs(dist):
 		starting_angle -= TAU
 		progress += TAU
-	# slower if going the wrong way
-	var decay: float = 0.5 if starting_angle < target_angle else follow_rate
+	var wrong_way: bool = starting_angle < target_angle
+	var decay: float
+	if wrong_way:
+		halo.modulate = Color(Color.RED, halo.modulate.a)
+		halo.modulate.a = move_toward(halo.modulate.a, 1.0, delta * 5)
+		decay = 0.5
+	else:
+		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * 5)
+		decay = follow_rate
 	hand.rotation = Utils.exp_decay(starting_angle, target_angle, delta, decay)
 
 

@@ -4,6 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://ccq5mvu05av0p" path="res://clock/clock_face.png" id="1_vx6em"]
 [ext_resource type="Texture2D" uid="uid://bomi4ing376mx" path="res://clock/second_hand.png" id="2_ru58x"]
 
+[sub_resource type="Gradient" id="Gradient_xrin6"]
+offsets = PackedFloat32Array(0, 0.75661373, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xxt7"]
+gradient = SubResource("Gradient_xrin6")
+width = 580
+height = 580
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_twvga"]
 radius = 225.0
 
@@ -22,6 +34,10 @@ fill_to = Vector2(1, 0.5)
 [node name="Clock" type="Node2D" unique_id=2103397852]
 script = ExtResource("1_fk4wj")
 
+[node name="Halo" type="Sprite2D" parent="." unique_id=794312830]
+modulate = Color(1, 1, 0.3137255, 0)
+texture = SubResource("GradientTexture2D_4xxt7")
+
 [node name="Face" type="Sprite2D" parent="." unique_id=1076454707]
 texture = ExtResource("1_vx6em")
 
@@ -38,14 +54,20 @@ shape = SubResource("CircleShape2D_twvga")
 unique_name_in_owner = true
 position = Vector2(0, -221)
 emitting = false
-amount = 20
+amount = 30
 texture = SubResource("GradientTexture2D_dbkw5")
-lifetime = 0.35000000000000003
+lifetime = 0.9
 one_shot = true
-spread = 180.0
-gravity = Vector2(0, 120)
-initial_velocity_max = 130.0
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 960)
+initial_velocity_min = 116.07
+initial_velocity_max = 300.0
 angle_min = -180.0
+scale_amount_min = 0.7
+scale_amount_max = 1.5
 
 [connection signal="mouse_entered" from="Hand/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Hand/Area2D" to="." method="_on_area_2d_mouse_exited"]
