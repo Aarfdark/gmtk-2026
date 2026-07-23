@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dam5jfqpjkmk1"]
 
-[ext_resource type="Script" uid="uid://4wmdwd7rhxh1" path="res://settings/Settings.gd" id="1_1np8e"]
+[ext_resource type="Script" uid="uid://sa2ra3g33oyq" path="res://settings/settings_menu.gd" id="1_gjdk6"]
+[ext_resource type="Script" uid="uid://v22qsk4s3c3h" path="res://settings/volume_slider.gd" id="2_olm1t"]
 
 [node name="SettingsMenu" type="Control" unique_id=1589187640]
 layout_mode = 3
@@ -9,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1np8e")
+script = ExtResource("1_gjdk6")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=470919684]
 layout_mode = 1
@@ -38,7 +39,6 @@ text = "Settings"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=736762218]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 64
 
@@ -48,15 +48,19 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 68
 text = "Music Volume"
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1575107312]
+[node name="MusicSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1575107312]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 0.5
+script = ExtResource("2_olm1t")
+bus_name = "Music"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=4370261]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 64
 
@@ -66,11 +70,16 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 68
 text = "SFX Volume"
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=2096084984]
+[node name="SFXSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=2096084984]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 0.5
+script = ExtResource("2_olm1t")
+bus_name = "SFX"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1248048366]
 layout_mode = 2
@@ -85,6 +94,7 @@ theme_override_font_sizes/font_size = 68
 text = "Hand Spinning Method"
 
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/HBoxContainer3" unique_id=493794604]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_horizontal = 3
