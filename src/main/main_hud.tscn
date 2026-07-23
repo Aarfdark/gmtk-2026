@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dasvtrr3d66db" path="res://main/main_hud.gd" id="1_yxwbc"]
 [ext_resource type="Resource" uid="uid://dht8l04mab2ep" path="res://custom_resources/starting_game_state.tres" id="2_7shfy"]
 [ext_resource type="FontFile" uid="uid://bdn4y8dm5na4l" path="res://theming/DigitTech7-Regular.ttf" id="4_7shfy"]
+[ext_resource type="Texture2D" uid="uid://dhf24suf6wnuy" path="res://settings/settings.png" id="5_3p5vu"]
 [ext_resource type="PackedScene" uid="uid://dl2qapeg023np" path="res://main/upgrade_button.tscn" id="6_twvga"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/second_hand.tres" id="7_txp7a"]
 
@@ -87,10 +88,19 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 mouse_filter = 2
 
-[node name="SandsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/INVENTORY" unique_id=1460323517]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/INVENTORY" unique_id=501745757]
+layout_mode = 2
+
+[node name="SandsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer" unique_id=1460323517]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 6
 text = "Sands: %s"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer" unique_id=2134215571]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("5_3p5vu")
 
 [node name="DIAL" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1875401843]
 layout_mode = 2
