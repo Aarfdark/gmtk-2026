@@ -37,3 +37,5 @@ label_settings = SubResource("LabelSettings_5i012")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Start"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
