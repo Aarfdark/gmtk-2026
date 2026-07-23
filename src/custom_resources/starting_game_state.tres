@@ -1,6 +1,8 @@
 [gd_resource type="Resource" script_class="GameState" format=3 uid="uid://dht8l04mab2ep"]
 
 [ext_resource type="Script" uid="uid://dfqohajdnq1pm" path="res://custom_resources/game_state.gd" id="1_7rfia"]
+[ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_sxboa"]
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_8ya51"]
 
 [resource]
 script = ExtResource("1_7rfia")

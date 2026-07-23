@@ -19,6 +19,9 @@ extends Control
 @onready var UpgradeButtonScene = preload("uid://dl2qapeg023np")
 
 var _tick_progress: float = 0.0
+var cur_selected_upgrade: Upgrade
+
+signal trigger_shop_tween(upgrade_button)
 
 func _process(delta: float) -> void:
 	var time_diff: float = delta * game_state.ticks_per_second + _tick_progress
@@ -39,23 +42,25 @@ func instantiate_button(upgrade: Upgrade) -> void:
 	var new_upgrade_button: UpgradeButton = UpgradeButtonScene.instantiate() as UpgradeButton
 	new_upgrade_button.upgrade = upgrade
 	upgrade_button_grid.add_child(new_upgrade_button)
-	new_upgrade_button.pressed.connect(_on_upgrade_button_pressed.bind(upgrade))
+	new_upgrade_button.pressed.connect(_on_upgrade_button_pressed.bind(new_upgrade_button))
 
 
 func _on_game_state_changed() -> void:
 	sands_label.text = "Sands: %d" % game_state.sands
 
 
-func _on_upgrade_button_pressed(upgrade: Upgrade) -> void:
-	if game_state.sands < upgrade.cost:
+func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
+	cur_selected_upgrade = upgrade_button.upgrade
+	trigger_shop_tween.emit(upgrade_button)
+	
+func _on_buy_button_pressed() -> void:
+	if game_state.sands < cur_selected_upgrade.cost:
 		return
-	game_state.sands -= upgrade.cost
-	game_state.purchased_upgrades.append(upgrade)
-	print(len(game_state.purchased_upgrades))
-	for upgrade_effect: UpgradeEffect in upgrade.effects:
+	game_state.sands -= cur_selected_upgrade.cost
+	game_state.purchased_upgrades.append(cur_selected_upgrade)
+	for upgrade_effect: UpgradeEffect in cur_selected_upgrade.effects:
 		game_state.active_effects.append(upgrade_effect)
 	game_state.update_attributes()
-	print("bought upgrade: %s" % upgrade.name)
 
 func _on_clock_revolution_completed() -> void:
 	game_state.seconds_remaining -= game_state.seconds_per_revolution
