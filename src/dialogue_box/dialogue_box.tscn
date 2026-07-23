@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://lu5j6lybih74"]
+
+[ext_resource type="FontFile" uid="uid://ds5uhh23x1cwj" path="res://theming/Jupiteroid-Regular.ttf" id="1_no5ax"]
+[ext_resource type="Script" uid="uid://dg4g5jkhh5yo4" path="res://dialogue_box/dialogue_box.gd" id="1_rgaxe"]
+
+[node name="DialogueBox" type="RichTextLabel" unique_id=937354533]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_no5ax")
+text = "Testing testing!!"
+script = ExtResource("1_rgaxe")

@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://dht8l04mab2ep" path="res://custom_resources/starting_game_state.tres" id="2_7shfy"]
 [ext_resource type="FontFile" uid="uid://bdn4y8dm5na4l" path="res://theming/DigitTech7-Regular.ttf" id="4_7shfy"]
 [ext_resource type="Texture2D" uid="uid://dhf24suf6wnuy" path="res://settings/settings.png" id="5_3p5vu"]
+[ext_resource type="Texture2D" uid="uid://dags5e7uwwpq1" path="res://main/doofOS.png" id="5_qolgx"]
+[ext_resource type="PackedScene" uid="uid://lu5j6lybih74" path="res://dialogue_box/dialogue_box.tscn" id="6_q3jkb"]
 [ext_resource type="PackedScene" uid="uid://dl2qapeg023np" path="res://main/upgrade_button.tscn" id="6_twvga"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/second_hand.tres" id="7_txp7a"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
@@ -77,6 +79,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES" unique_id=964217460]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES/HBoxContainer" unique_id=1910316952]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_qolgx")
+stretch_mode = 5
+
+[node name="DialogueBox" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES/HBoxContainer" unique_id=937354533 instance=ExtResource("6_q3jkb")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ""
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1357091963]
 layout_mode = 2
