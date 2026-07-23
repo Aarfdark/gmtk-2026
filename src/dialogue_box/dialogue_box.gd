@@ -1,7 +1,7 @@
 extends RichTextLabel
 
 var typing_timer: Timer = Timer.new()
-var typing_speed: float = 0.05
+var typing_speed: float = 0.03
 
 var dialogue := [
 	"This is the first test.",

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dhf24suf6wnuy" path="res://settings/settings.png" id="5_3p5vu"]
 [ext_resource type="Texture2D" uid="uid://dags5e7uwwpq1" path="res://main/doofOS.png" id="5_qolgx"]
 [ext_resource type="PackedScene" uid="uid://lu5j6lybih74" path="res://dialogue_box/dialogue_box.tscn" id="6_q3jkb"]
+[ext_resource type="FontFile" uid="uid://ds5uhh23x1cwj" path="res://theming/Jupiteroid-Regular.ttf" id="6_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dl2qapeg023np" path="res://main/upgrade_button.tscn" id="6_twvga"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/second_hand.tres" id="7_txp7a"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
@@ -84,11 +85,20 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES/HBoxContainer" unique_id=1910316952]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES/HBoxContainer" unique_id=2140478071]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES/HBoxContainer/VBoxContainer" unique_id=1910316952]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_qolgx")
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES/HBoxContainer/VBoxContainer" unique_id=1890494749]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_sqrt5")
+text = "DoofOS"
 
 [node name="DialogueBox" parent="VBoxContainer/HBoxContainer/HBoxContainer/MESSAGES/HBoxContainer" unique_id=937354533 instance=ExtResource("6_q3jkb")]
 layout_mode = 2
