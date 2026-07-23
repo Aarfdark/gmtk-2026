@@ -15,4 +15,4 @@ func _on_game_state_changed() -> void:
 	if convert_to_iso:
 		text = Time.get_datetime_string_from_unix_time(game_state.seconds_remaining, true)
 	else:
-		text = "%d" % game_state.seconds_remaining
+		text = "%010d" % game_state.seconds_remaining
