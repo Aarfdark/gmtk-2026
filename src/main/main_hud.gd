@@ -14,6 +14,7 @@ extends Control
 @onready var sands_label: Label = %SandsLabel
 @onready var time_label_iso: TimeLabel = %TimeLabelISO
 @onready var time_label_unix: TimeLabel = %TimeLabelUnix
+@onready var settings_menu: Control = %SettingsMenu
 
 var _tick_progress: float = 0.0
 
@@ -44,3 +45,7 @@ func _on_upgrade_button_pressed(upgrade: Upgrade) -> void:
 
 func _on_clock_revolution_completed() -> void:
 	game_state.seconds_remaining -= 1
+
+
+func _on_settings_button_pressed() -> void:
+	settings_menu.visible = true

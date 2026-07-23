@@ -3,6 +3,7 @@ extends Node2D
 signal revolution_completed
 
 @export_range(1, 25, 0.5) var follow_rate: float = 4.0
+@export_enum("Toggle Click", "Click and Hold") var input_method: String
 
 @onready var hand: Node2D = $Hand
 @onready var last_rotation := hand.rotation
@@ -31,10 +32,20 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("grab"):
-		if hovering:
-			grabbing = not grabbing
-		else:
+	#print("Input method from Settings.input_method: %d" % Settings.input_method)
+	if input_method == "Toggle Click":
+		if event.is_action_pressed("grab"):
+			if hovering:
+				grabbing = not grabbing
+			else:
+				grabbing = false
+	elif input_method == "Click and Hold":
+		if event.is_action_pressed("grab"):
+			if hovering:
+				grabbing = true
+			else:
+				grabbing = false
+		elif event.is_action_released("grab"):
 			grabbing = false
 
 

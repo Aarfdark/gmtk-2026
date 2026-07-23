@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhf24suf6wnuy"
-path="res://.godot/imported/settings.png-77a9e1c23d8858945e6680794922639a.ctex"
+uid="uid://b7n3856tgb8kb"
+path="res://.godot/imported/hamster_wheel.png-7c3a3f4b461a7df77744de20c51ea02c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/settings.png"
-dest_files=["res://.godot/imported/settings.png-77a9e1c23d8858945e6680794922639a.ctex"]
+source_file="res://main/hamster_wheel.png"
+dest_files=["res://.godot/imported/hamster_wheel.png-7c3a3f4b461a7df77744de20c51ea02c.ctex"]
 
 [params]
 
