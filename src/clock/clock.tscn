@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b4h3630kxc0ft"]
+[gd_scene format=4 uid="uid://b4h3630kxc0ft"]
 
 [ext_resource type="Script" uid="uid://bgb60t3537k24" path="res://clock/clock.gd" id="1_fk4wj"]
 [ext_resource type="Texture2D" uid="uid://ccq5mvu05av0p" path="res://clock/clock_face.png" id="1_vx6em"]
@@ -52,6 +52,10 @@ fill_to = Vector2(1, 0.5)
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.28648648)
 colors = PackedColorArray(1, 1, 1, 0, 0, 1, 0.32156864, 1)
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_fk4wj"]
+data = PackedByteArray("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")
+format = 3
 
 [node name="Clock" type="Node2D" unique_id=2103397852]
 script = ExtResource("1_fk4wj")
@@ -119,5 +123,10 @@ scale_amount_max = 1.5
 z_index = 1
 gradient = SubResource("Gradient_wcf73")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=777862712]
+stream = SubResource("AudioStreamWAV_fk4wj")
+bus = &"SFX"
+
+[connection signal="revolution_completed" from="." to="AudioStreamPlayer" method="play"]
 [connection signal="mouse_entered" from="Hand/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Hand/Area2D" to="." method="_on_area_2d_mouse_exited"]
