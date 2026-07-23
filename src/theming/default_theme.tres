@@ -1,4 +1,21 @@
 [gd_resource type="Theme" format=3 uid="uid://dai5a0c8hxqu0"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbkw5"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.33983847, 0.24067467, 0.13111418, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [resource]
 default_font_size = 48
+BoxContainer/constants/separation = 8
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_dbkw5")

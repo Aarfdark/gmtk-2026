@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dl2qapeg023np"]
+
+[ext_resource type="Script" uid="uid://bo0oueo5pakjo" path="res://main/upgrade_button.gd" id="1_evmrh"]
+
+[node name="UpgradeButton" type="Button" unique_id=1212196077]
+custom_minimum_size = Vector2(144, 144)
+script = ExtResource("1_evmrh")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=2134803031]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

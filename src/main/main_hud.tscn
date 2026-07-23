@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://dasvtrr3d66db" path="res://main/main_hud.gd" id="1_yxwbc"]
 [ext_resource type="Resource" uid="uid://dht8l04mab2ep" path="res://custom_resources/starting_game_state.tres" id="2_7shfy"]
 [ext_resource type="FontFile" uid="uid://bdn4y8dm5na4l" path="res://theming/DigitTech7-Regular.ttf" id="4_7shfy"]
+[ext_resource type="PackedScene" uid="uid://dl2qapeg023np" path="res://main/upgrade_button.tscn" id="6_twvga"]
+[ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/second_hand.tres" id="7_txp7a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
@@ -68,7 +70,7 @@ label_settings = SubResource("LabelSettings_rqo1v")
 horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
 
-[node name="MESSAGES" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=3036355]
+[node name="MESSAGES" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1103605872]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -82,6 +84,7 @@ size_flags_stretch_ratio = 5.0
 [node name="INVENTORY" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=2062672994]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
 mouse_filter = 2
 
 [node name="SandsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/INVENTORY" unique_id=1460323517]
@@ -89,26 +92,82 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Sands: %s"
 
-[node name="DIAL" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=2099747588]
+[node name="DIAL" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1875401843]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/DIAL" unique_id=994430111]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Center" type="Control" parent="VBoxContainer/HBoxContainer2/DIAL" unique_id=994430111]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Clock" parent="VBoxContainer/HBoxContainer2/DIAL/Control" unique_id=2103397852 instance=ExtResource("1_2ybbj")]
+[node name="Clock" parent="VBoxContainer/HBoxContainer2/DIAL/Center" unique_id=2103397852 instance=ExtResource("1_2ybbj")]
 
-[node name="SHOP" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=1179354664]
+[node name="SHOP" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1858568542]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[connection signal="revolution_completed" from="VBoxContainer/HBoxContainer2/DIAL/Control/Clock" to="." method="_on_clock_revolution_completed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/SHOP" unique_id=1004675671]
+layout_mode = 2
+
+[node name="ShopLabel" type="Label" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=2084349107]
+layout_mode = 2
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=561033815]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UpgradeButtonGrid" type="FlowContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer" unique_id=1815659806]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+alignment = 1
+last_wrap_alignment = 1
+
+[node name="UpgradeButton" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=1212196077 instance=ExtResource("6_twvga")]
+layout_mode = 2
+upgrade = ExtResource("7_txp7a")
+
+[node name="UpgradeButton2" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=962168223 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton3" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=290095481 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton4" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=53358250 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton5" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=1183263977 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton6" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=2099481994 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton7" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=480794502 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton8" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=2123959345 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton9" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=527737481 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="UpgradeButton10" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=709361704 instance=ExtResource("6_twvga")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=1790065295]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/PanelContainer" unique_id=827140275]
+layout_mode = 2
+size_flags_vertical = 3
+text = "asdf"
+
+[connection signal="revolution_completed" from="VBoxContainer/HBoxContainer2/DIAL/Center/Clock" to="." method="_on_clock_revolution_completed"]
