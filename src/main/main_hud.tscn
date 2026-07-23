@@ -136,6 +136,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="UpgradeButtonGrid" type="FlowContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer" unique_id=1815659806]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -143,37 +144,6 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 alignment = 1
 last_wrap_alignment = 1
-
-[node name="UpgradeButton" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=1212196077 instance=ExtResource("6_twvga")]
-layout_mode = 2
-upgrade = ExtResource("7_txp7a")
-
-[node name="UpgradeButton2" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=962168223 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton3" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=290095481 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton4" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=53358250 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton5" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=1183263977 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton6" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=2099481994 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton7" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=480794502 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton8" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=2123959345 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton9" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=527737481 instance=ExtResource("6_twvga")]
-layout_mode = 2
-
-[node name="UpgradeButton10" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/ScrollContainer/UpgradeButtonGrid" unique_id=709361704 instance=ExtResource("6_twvga")]
-layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=1790065295]
 layout_mode = 2
