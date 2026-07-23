@@ -8,7 +8,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
-font_size = 96
+font_size = 128
 font_color = Color(0.72557825, 0, 0.03410189, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
@@ -35,7 +35,7 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1237838188]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
+size_flags_stretch_ratio = 2.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1609313665]
 layout_mode = 2
@@ -45,7 +45,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.4
+size_flags_stretch_ratio = 1.2
 mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=1539254180]
@@ -55,6 +55,7 @@ alignment = 1
 [node name="TimeLabelISO" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=915000530]
 unique_name_in_owner = true
 layout_mode = 2
+text = "2026-07-27 17:00:00"
 horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
 convert_to_iso = true
@@ -62,7 +63,7 @@ convert_to_iso = true
 [node name="TimeLabelUnix" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=1916945416]
 unique_name_in_owner = true
 layout_mode = 2
-text = "80478273959823"
+text = "1234567890"
 label_settings = SubResource("LabelSettings_rqo1v")
 horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
