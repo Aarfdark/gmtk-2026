@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dhf24suf6wnuy" path="res://settings/settings.png" id="5_3p5vu"]
 [ext_resource type="PackedScene" uid="uid://dl2qapeg023np" path="res://main/upgrade_button.tscn" id="6_twvga"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/second_hand.tres" id="7_txp7a"]
+[ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
@@ -97,7 +98,8 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "Sands: %s"
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer" unique_id=2134215571]
+[node name="SettingsButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer" unique_id=2134215571]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 texture_normal = ExtResource("5_3p5vu")
@@ -113,6 +115,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Clock" parent="VBoxContainer/HBoxContainer2/DIAL/Center" unique_id=2103397852 instance=ExtResource("1_2ybbj")]
+unique_name_in_owner = true
+input_method = "Toggle Click"
 
 [node name="SHOP" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1858568542]
 layout_mode = 2
@@ -180,4 +184,10 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "asdf"
 
+[node name="SettingsMenu" parent="." unique_id=1589187640 instance=ExtResource("9_wbng2")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="revolution_completed" from="VBoxContainer/HBoxContainer2/DIAL/Center/Clock" to="." method="_on_clock_revolution_completed"]
