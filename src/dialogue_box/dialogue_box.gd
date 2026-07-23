@@ -32,4 +32,3 @@ func _input(event: InputEvent) -> void:
 		cur_line = dialogue[num_dialogue]
 		display_text()
 		num_dialogue = (num_dialogue+1) % len(dialogue)
-		
