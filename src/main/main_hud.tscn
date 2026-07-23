@@ -4,6 +4,14 @@
 [ext_resource type="Script" uid="uid://cw531elkaceb6" path="res://main/time_label.gd" id="1_wdoo0"]
 [ext_resource type="Script" uid="uid://dasvtrr3d66db" path="res://main/main_hud.gd" id="1_yxwbc"]
 [ext_resource type="Resource" uid="uid://dht8l04mab2ep" path="res://custom_resources/starting_game_state.tres" id="2_7shfy"]
+[ext_resource type="FontFile" uid="uid://bdn4y8dm5na4l" path="res://theming/DigitTech7-Regular.ttf" id="4_7shfy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
+font = ExtResource("4_7shfy")
+font_size = 96
+font_color = Color(0.72557825, 0, 0.03410189, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainHUD" type="Control" unique_id=35521763]
 layout_mode = 3
@@ -42,16 +50,21 @@ mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=1539254180]
 layout_mode = 2
+alignment = 1
 
 [node name="TimeLabelISO" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=915000530]
 unique_name_in_owner = true
 layout_mode = 2
+horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
 convert_to_iso = true
 
 [node name="TimeLabelUnix" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=1916945416]
 unique_name_in_owner = true
 layout_mode = 2
+text = "80478273959823"
+label_settings = SubResource("LabelSettings_rqo1v")
+horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
 
 [node name="MESSAGES" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer" unique_id=3036355]
