@@ -1,36 +1,22 @@
 extends Node2D
 
-@onready var hand: Sprite2D = $Hand
-@onready var hand_pos := hand.global_position
-@onready var last_rotation := hand.rotation
-
-var mouse_on_hand := false
-var clicking_on_hand := false
-var progress: float = 0.0
-var rot_speed: float = PI / 45
-var angle_threshold = PI / 60
-
 signal revolution_completed
 
-var debug = 0
+@export_range(1, 25, 0.5) var follow_rate: float = 8
+
+@onready var hand: Node2D = $Hand
+@onready var last_rotation := hand.rotation
+
+var hovering := false
+var grabbing := false
+var progress: float = 0.0
 
 
-func _physics_process(_delta: float) -> void:
-	if !clicking_on_hand:
+func _physics_process(delta: float) -> void:
+	if not grabbing:
 		return
 
-	hand.look_at(get_global_mouse_position())
-	#var hand_to_mouse_vec := get_global_mouse_position() - position
-	#var hand_to_mouse_dir := atan2(hand_to_mouse_vec.y, hand_to_mouse_vec.x)
-	#
-	#if hand.rotation + hand_to_mouse_dir < angle_threshold:
-	#hand.look_at(get_global_mouse_position())
-	#if hand.rotation > hand_to_mouse_dir + angle_threshold:
-	#hand.rotate(-rot_speed)
-	#elif hand.rotation < hand_to_mouse_dir - angle_threshold:
-	#hand.rotate(rot_speed)
-	#else:
-	#hand.look_at(get_global_mouse_position())
+	_drag_towards_mouse(delta)
 
 	progress += hand.rotation - last_rotation
 	last_rotation = hand.rotation
@@ -41,26 +27,33 @@ func _physics_process(_delta: float) -> void:
 	elif progress >= TAU:  # one clockwise rotation (doesn't do anything)
 		progress -= TAU
 
-	############# DEBUG #############
-	#if debug == (1)*60:
-	#debug = 0
-	#print("hand_rotation: %f | hand_to_mouse_dir: %f" % [hand.rotation, hand_to_mouse_dir])
-	#debug += 1
-	############# DEBUG #############
-
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
-		if mouse_on_hand:
-			clicking_on_hand = !clicking_on_hand
+	if event.is_action_pressed("grab"):
+		if hovering:
+			grabbing = not grabbing
 		else:
-			if clicking_on_hand:
-				clicking_on_hand = false
+			grabbing = false
+
+
+func _drag_towards_mouse(delta: float) -> void:
+	var target_angle: float = get_angle_to(get_global_mouse_position())
+	var starting_angle: float = hand.rotation
+	var dist: float = starting_angle - target_angle
+	if abs(dist + TAU) < abs(dist):
+		starting_angle += TAU
+		progress -= TAU
+	elif abs(dist - TAU) < abs(dist):
+		starting_angle -= TAU
+		progress += TAU
+	# slower if going the wrong way
+	var decay: float = 1.0 if starting_angle < target_angle else follow_rate
+	hand.rotation = Utils.exp_decay(starting_angle, target_angle, delta, decay)
 
 
 func _on_area_2d_mouse_entered() -> void:
-	mouse_on_hand = true
+	hovering = true
 
 
 func _on_area_2d_mouse_exited() -> void:
-	mouse_on_hand = false
+	hovering = false

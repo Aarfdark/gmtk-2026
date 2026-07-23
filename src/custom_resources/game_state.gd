@@ -9,16 +9,17 @@ const STARTING_SECONDS = 1785085200  # 2026-07-26 17:00:00
 	set(value):
 		if value == seconds_remaining:
 			return
-		var diff := seconds_remaining - value
-		if diff > 0:
-			sands += diff
 		if value < 0:
 			seconds_remaining = 0
 			if not _end_fired:
 				countdown_ended.emit()
 				_end_fired = true
-		else:
-			seconds_remaining = value
+			emit_changed()
+			return
+		var diff := seconds_remaining - value
+		if diff > 0:
+			sands += diff
+		seconds_remaining = value
 		emit_changed()
 @export var sands: int = 0:
 	set(value):
