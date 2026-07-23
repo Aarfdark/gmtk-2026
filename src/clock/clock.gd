@@ -6,6 +6,7 @@ signal revolution_completed
 
 @onready var hand: Node2D = $Hand
 @onready var last_rotation := hand.rotation
+@onready var sand_particles: CPUParticles2D = %SandParticles
 
 var hovering := false
 var grabbing := false
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 	if progress <= -TAU:  # one counter-clockwise rotation
 		progress += TAU
+		sand_particles.emitting = true
 		revolution_completed.emit()
 	elif progress >= TAU:  # one clockwise rotation (doesn't do anything)
 		progress -= TAU
