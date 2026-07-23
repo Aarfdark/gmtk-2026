@@ -18,6 +18,7 @@ var progress: float = 0.0
 
 func _physics_process(delta: float) -> void:
 	if not grabbing:
+		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
 		return
 
 	_drag_towards_mouse(delta)
