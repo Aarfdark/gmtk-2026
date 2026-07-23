@@ -4,6 +4,7 @@ signal revolution_completed
 
 @export_range(1, 25, 0.5) var follow_rate: float = 4.0
 @export_enum("Toggle Click", "Click and Hold") var input_method: String
+@export var halo_change_rate: float = 5.0
 
 @onready var halo: Sprite2D = $Halo
 @onready var hand: Node2D = $Hand
@@ -66,10 +67,10 @@ func _drag_towards_mouse(delta: float) -> void:
 	var decay: float
 	if wrong_way:
 		halo.modulate = Color(Color.RED, halo.modulate.a)
-		halo.modulate.a = move_toward(halo.modulate.a, 1.0, delta * 5)
+		halo.modulate.a = move_toward(halo.modulate.a, 1.0, delta * halo_change_rate)
 		decay = 0.5
 	else:
-		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * 5)
+		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
 		decay = follow_rate
 	hand.rotation = Utils.exp_decay(starting_angle, target_angle, delta, decay)
 
