@@ -19,6 +19,23 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_twvga"]
 radius = 225.0
 
+[sub_resource type="Gradient" id="Gradient_mwaaj"]
+offsets = PackedFloat32Array(0.26984128, 1)
+colors = PackedColorArray(0.94976217, 0.88379896, 1.540184e-06, 1, 0.9621095, 0.56486374, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aybon"]
+gradient = SubResource("Gradient_mwaaj")
+width = 48
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Curve" id="Curve_xrin6"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, -360), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Gradient" id="Gradient_fk4wj"]
 offsets = PackedFloat32Array(0, 0.8313253, 0.9879518)
 colors = PackedColorArray(0.792645, 0.75486046, 0.0123877, 1, 0.7291096, 0.6630105, 0.1460695, 1, 0.6, 0.54509807, 0.11764706, 0)
@@ -30,6 +47,11 @@ height = 12
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_wcf73"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.28648648)
+colors = PackedColorArray(1, 1, 1, 0, 0, 1, 0.32156864, 1)
 
 [node name="Clock" type="Node2D" unique_id=2103397852]
 script = ExtResource("1_fk4wj")
@@ -50,11 +72,35 @@ texture = ExtResource("2_ru58x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Area2D" unique_id=1760554403]
 shape = SubResource("CircleShape2D_twvga")
 
+[node name="SparkParticles" type="CPUParticles2D" parent="Hand" unique_id=1545825307]
+unique_name_in_owner = true
+position = Vector2(95, 4.1525823e-06)
+rotation = 1.5707964
+emitting = false
+amount = 2
+texture = SubResource("GradientTexture2D_aybon")
+lifetime = 0.4
+direction = Vector2(0, -1)
+spread = 120.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 456.0
+initial_velocity_max = 456.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angular_velocity_curve = SubResource("Curve_xrin6")
+linear_accel_min = -96.43
+linear_accel_max = -96.43
+scale_amount_min = 0.1
+
+[node name="HandTip" type="Marker2D" parent="Hand" unique_id=2032154414]
+unique_name_in_owner = true
+position = Vector2(71, 3.1035083e-06)
+
 [node name="SandParticles" type="CPUParticles2D" parent="." unique_id=1114535100]
 unique_name_in_owner = true
 position = Vector2(0, -221)
 emitting = false
-amount = 30
+amount = 20
 texture = SubResource("GradientTexture2D_dbkw5")
 lifetime = 0.9
 one_shot = true
@@ -68,6 +114,10 @@ initial_velocity_max = 300.0
 angle_min = -180.0
 scale_amount_min = 0.7
 scale_amount_max = 1.5
+
+[node name="CursorLeash" type="Line2D" parent="." unique_id=355357973]
+z_index = 1
+gradient = SubResource("Gradient_wcf73")
 
 [connection signal="mouse_entered" from="Hand/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Hand/Area2D" to="." method="_on_area_2d_mouse_exited"]

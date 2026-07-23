@@ -7,13 +7,27 @@ signal revolution_completed
 @export var halo_change_rate: float = 5.0
 
 var hovering := false
-var grabbing := false
+var grabbing := false:
+	set(value):
+		grabbing = value
+		if not grabbing:
+			spark_particles.emitting = false
 var progress: float = 0.0
 
 @onready var halo: Sprite2D = $Halo
 @onready var hand: Node2D = $Hand
 @onready var last_rotation := hand.rotation
 @onready var sand_particles: CPUParticles2D = %SandParticles
+@onready var spark_particles: CPUParticles2D = %SparkParticles
+@onready var cursor_leash: Line2D = $CursorLeash
+@onready var hand_tip: Node2D = %HandTip
+
+
+func _process(_delta: float) -> void:
+	cursor_leash.clear_points()
+	if grabbing:
+		cursor_leash.add_point(hand_tip.global_position - global_position)
+		cursor_leash.add_point(get_local_mouse_position())
 
 
 func _physics_process(delta: float) -> void:
@@ -64,7 +78,9 @@ func _drag_towards_mouse(delta: float) -> void:
 	elif abs(dist - TAU) < abs(dist):
 		starting_angle -= TAU
 		progress += TAU
+
 	var wrong_way: bool = starting_angle < target_angle
+	spark_particles.emitting = wrong_way
 	var decay: float
 	if wrong_way:
 		halo.modulate = Color(Color.RED, halo.modulate.a)
