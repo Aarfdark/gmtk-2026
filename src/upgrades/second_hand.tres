@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bgkanisipron4"]
+
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="1_yyxb3"]
+
+[sub_resource type="Gradient" id="Gradient_yyxb3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fc8ok"]
+gradient = SubResource("Gradient_yyxb3")
+
+[resource]
+script = ExtResource("1_yyxb3")
+cost = 100
+texture = SubResource("GradientTexture2D_fc8ok")
+name = "Second Hand"
+description = "Spin back 60x faster than before."
+metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

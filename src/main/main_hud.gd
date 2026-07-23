@@ -43,4 +43,4 @@ func _on_upgrade_button_pressed(upgrade: Upgrade) -> void:
 
 
 func _on_clock_revolution_completed() -> void:
-	game_state.seconds_remaining -= 60
+	game_state.seconds_remaining -= 1
