@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://b7n3856tgb8kb" path="res://main/hamster_wheel.png" id="8_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
 [ext_resource type="PackedScene" uid="uid://b13lgsuwo8cvw" path="res://main/shop_panel.tscn" id="13_ka1xg"]
-[ext_resource type="AudioStream" uid="uid://b0tckeb71jfma" path="res://audio/bassline.ogg" id="16_pusfw"]
 [ext_resource type="StyleBox" uid="uid://06aanstrj00d" path="res://theming/wood_texture.tres" id="14_pusfw"]
+[ext_resource type="AudioStream" uid="uid://b0tckeb71jfma" path="res://audio/bassline.ogg" id="16_pusfw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
@@ -189,6 +189,7 @@ input_method = "Toggle Click"
 [node name="ShopPanel" parent="HUDSections/BottomSection" unique_id=1215246801 instance=ExtResource("13_ka1xg")]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/panel = ExtResource("14_pusfw")
 
 [node name="SettingsMenu" parent="." unique_id=1589187640 instance=ExtResource("9_wbng2")]
 unique_name_in_owner = true

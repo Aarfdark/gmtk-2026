@@ -84,4 +84,6 @@ DEBUG_go_to_title={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.799895, 0.5336889, 0.2922092, 1)
