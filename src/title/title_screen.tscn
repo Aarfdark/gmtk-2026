@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0dn16nq6qsd7"]
 
 [ext_resource type="Script" uid="uid://83movv0ge5r" path="res://title/title_screen.gd" id="1_snjg7"]
+[ext_resource type="PackedScene" uid="uid://bmr6tiaciojdo" path="res://credits/credits_scene.tscn" id="2_wvfy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5i012"]
 font_size = 72
@@ -38,4 +39,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Start"
 
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1637592786]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+
+[node name="CreditsScene" parent="." unique_id=451720347 instance=ExtResource("2_wvfy4")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="CreditsScene" method="set_visible" binds= [true]]
