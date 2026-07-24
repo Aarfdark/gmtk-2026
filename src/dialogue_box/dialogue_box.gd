@@ -25,7 +25,7 @@ func _on_typing_timer_timeout() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("DEBUG_increment_sands"):
-		#cur_line = dialogue[num_dialogue]
-		#display_text()
-		#num_dialogue = (num_dialogue+1) % len(dialogue)
+		cur_line = dialogue[num_dialogue]
+		display_text()
+		num_dialogue = (num_dialogue+1) % len(dialogue)
 		pass

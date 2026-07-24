@@ -12,3 +12,4 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_no5ax")
 visible_characters_behavior = 1
 script = ExtResource("1_rgaxe")
+dialogue = Array[String](["testing yippee!"])
