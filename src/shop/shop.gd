@@ -24,6 +24,14 @@ var _selected_button: UpgradeButton
 @onready var cancel_button: Button = %CancelButton
 
 
+func _ready() -> void:
+	if OS.is_debug_build():
+		for path: String in DirAccess.get_files_at("res://upgrades"):
+			var upgrade: Upgrade = load("res://upgrades/" + path) as Upgrade
+			if upgrade:
+				instantiate_button(upgrade)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
 		return
