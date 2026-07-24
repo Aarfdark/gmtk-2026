@@ -3,7 +3,7 @@ extends Resource
 
 signal countdown_ended
 
-const STARTING_SECONDS = 1785085200  # 2026-07-26 17:00:00
+const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 
 @export var seconds_remaining: int = STARTING_SECONDS:
 	set(value):

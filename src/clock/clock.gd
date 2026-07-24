@@ -41,13 +41,13 @@ func _physics_process(delta: float) -> void:
 	progress += hand.rotation - last_rotation
 	last_rotation = hand.rotation
 
-	if progress <= -TAU:  # one counter-clockwise rotation
+	if progress <= -TAU: # one counter-clockwise rotation
 		progress += TAU
 		sand_particles.emitting = true
 		var tween := create_tween().set_trans(Tween.TRANS_QUART)
 		tween.tween_property(halo, "modulate", Color(Color.YELLOW, 0.0), 0.3).from(Color.YELLOW)
 		revolution_completed.emit()
-	elif progress >= TAU:  # one clockwise rotation (doesn't do anything)
+	elif progress >= TAU: # one clockwise rotation (doesn't do anything)
 		progress -= TAU
 
 

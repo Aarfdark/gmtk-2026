@@ -33,10 +33,10 @@ func install_or_update_formatter() -> void:
 
 
 func _on_request_completed(
-		_http_result: int,
-		response_code: int,
-		_http_headers: PackedStringArray,
-		body: PackedByteArray,
+	_http_result: int,
+	response_code: int,
+	_http_headers: PackedStringArray,
+	body: PackedByteArray,
 ) -> void:
 	if response_code != 200:
 		var error_message := "HTTP request failed. Response code: " + str(response_code)
@@ -125,7 +125,10 @@ func _get_platform_info() -> Dictionary:
 	var processor_name := OS.get_processor_name().to_lower()
 	var architecture := "x86_64"
 
-	if processor_name.contains("aarch64") or processor_name.contains("arm64") or processor_name.contains("apple"):
+	if (
+		processor_name.contains("aarch64") or processor_name.contains("arm64")
+		or processor_name.contains("apple")
+	):
 		architecture = "aarch64"
 	elif processor_name.contains("x86_64") or processor_name.contains("amd64"):
 		architecture = "x86_64"
@@ -154,7 +157,11 @@ func _find_matching_asset(assets: Array, tag: String) -> String:
 	if platform_info.is_empty():
 		return ""
 
-	var expected_pattern := "gdscript-formatter-%s-%s-%s" % [tag, platform_info["os"], platform_info["architecture"]]
+	var expected_pattern := "gdscript-formatter-%s-%s-%s" % [
+		tag,
+		platform_info["os"],
+		platform_info["architecture"],
+	]
 	if platform_info["os"] == "windows":
 		expected_pattern += ".exe"
 	expected_pattern += ".zip"
