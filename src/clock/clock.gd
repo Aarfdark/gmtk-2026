@@ -4,7 +4,7 @@ signal revolution_completed
 
 @export_range(1, 25) var follow_rate: float = 4.0
 @export_range(0, 4) var wrong_follow_rate: float = 0.2
-@export_enum("Toggle Click", "Click and Hold") var input_method: String
+@export_enum("Toggle Click", "Click and Hold", "Keyboard") var input_method: String
 @export var halo_change_rate: float = 5.0
 
 var hovering := false
@@ -22,11 +22,12 @@ var progress: float = 0.0
 @onready var spark_particles: CPUParticles2D = %SparkParticles
 @onready var cursor_leash: Line2D = $CursorLeash
 @onready var hand_tip: Node2D = %HandTip
+@onready var target_angle: float
 
 
 func _process(_delta: float) -> void:
 	cursor_leash.clear_points()
-	if grabbing:
+	if grabbing and input_method != "Keyboard":
 		cursor_leash.add_point(hand_tip.global_position - global_position)
 		cursor_leash.add_point(get_local_mouse_position())
 
@@ -36,7 +37,10 @@ func _physics_process(delta: float) -> void:
 		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
 		return
 
-	_drag_towards_mouse(delta)
+	if input_method != "Keyboard":
+		_drag_towards_mouse(delta)
+	else:
+		_keyboard_movement(delta)
 
 	progress += hand.rotation - last_rotation
 	last_rotation = hand.rotation
@@ -52,7 +56,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	#print("Input method from Settings.input_method: %d" % Settings.input_method)
 	if input_method == "Toggle Click":
 		if event.is_action_pressed("grab"):
 			if hovering:
@@ -67,10 +70,54 @@ func _input(event: InputEvent) -> void:
 				grabbing = false
 		elif event.is_action_released("grab"):
 			grabbing = false
+	elif input_method == "Keyboard":
+		if (
+			Input.is_action_pressed("up") or Input.is_action_pressed("down")
+			or Input.is_action_pressed("left") or Input.is_action_pressed("right")
+		):
+			grabbing = true
+		elif (
+			Input.is_action_just_released("up") or Input.is_action_just_released("down")
+			or Input.is_action_just_released("left") or Input.is_action_just_released("right")
+		):
+			grabbing = false
+
+
+func _keyboard_movement(delta: float) -> void:
+	if Input.is_action_just_pressed("up"):
+		target_angle = -PI / 2
+	if Input.is_action_just_pressed("down"):
+		target_angle = PI / 2
+	if Input.is_action_just_pressed("left"):
+		target_angle = PI
+	if Input.is_action_just_pressed("right"):
+		target_angle = 0
+
+	var starting_angle := hand.rotation
+	var dist := starting_angle - target_angle
+
+	if abs(dist + TAU) < abs(dist):
+		starting_angle += TAU
+		progress -= TAU
+	elif abs(dist - TAU) < abs(dist):
+		starting_angle -= TAU
+		progress += TAU
+
+	var wrong_way: bool = starting_angle < target_angle
+	spark_particles.emitting = wrong_way
+	var decay: float
+	if wrong_way:
+		halo.modulate = Color(Color.RED, halo.modulate.a)
+		halo.modulate.a = move_toward(halo.modulate.a, 1.0, delta * halo_change_rate)
+		decay = wrong_follow_rate
+	else:
+		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
+		decay = follow_rate
+	hand.rotation = Utils.exp_decay(starting_angle, target_angle, delta, decay)
 
 
 func _drag_towards_mouse(delta: float) -> void:
-	var target_angle: float = get_angle_to(get_global_mouse_position())
+	target_angle = get_angle_to(get_global_mouse_position())
 	var starting_angle: float = hand.rotation
 	var dist: float = starting_angle - target_angle
 	if abs(dist + TAU) < abs(dist):
