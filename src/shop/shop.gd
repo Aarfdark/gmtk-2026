@@ -28,6 +28,8 @@ func _ready() -> void:
 	if not ProjectSettings.get_setting("custom/unlock_all_upgrades"):
 		return
 	for path: String in DirAccess.get_files_at("res://upgrades"):
+		if not path.ends_with(".tres"):
+			continue
 		var upgrade: Upgrade = load("res://upgrades/" + path) as Upgrade
 		if upgrade:
 			instantiate_button(upgrade)
