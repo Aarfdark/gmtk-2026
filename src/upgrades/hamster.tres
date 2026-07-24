@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://b5jo66hd4pine"]
+
+[ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_xri4a"]
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_uoo51"]
+
+[sub_resource type="Resource" id="Resource_ljurs"]
+script = ExtResource("1_xri4a")
+type = 2
+upgrade_value = 1.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
+[resource]
+script = ExtResource("2_uoo51")
+cost = 50
+name = "A Hamster"
+description = "A furry friend to call your own! Runs on a wheel to spin the wheel for you."
+effects = Array[ExtResource("1_xri4a")]([SubResource("Resource_ljurs")])
+metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

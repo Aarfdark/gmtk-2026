@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://c1jysxhbeer6"]
+
+[ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_8btit"]
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_fxnho"]
+
+[sub_resource type="Resource" id="Resource_grbgr"]
+script = ExtResource("1_8btit")
+type = 1
+upgrade_value = 60.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
+[resource]
+script = ExtResource("2_fxnho")
+name = "Antique Hour Hand"
+description = "The hour hand from a grandfather clock. Really takes you back."
+effects = Array[ExtResource("1_8btit")]([SubResource("Resource_grbgr")])
+metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

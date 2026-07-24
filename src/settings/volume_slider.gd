@@ -8,6 +8,7 @@ extends Slider
 
 func _ready() -> void:
 	value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
+	value_changed.connect(_on_value_changed)
 	value_changed.emit(value)
 
 

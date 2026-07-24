@@ -2,7 +2,8 @@ extends Node2D
 
 signal revolution_completed
 
-@export_range(1, 25, 0.5) var follow_rate: float = 4.0
+@export_range(1, 25) var follow_rate: float = 4.0
+@export_range(0, 4) var wrong_follow_rate: float = 0.2
 @export_enum("Toggle Click", "Click and Hold") var input_method: String
 @export var halo_change_rate: float = 5.0
 
@@ -40,13 +41,13 @@ func _physics_process(delta: float) -> void:
 	progress += hand.rotation - last_rotation
 	last_rotation = hand.rotation
 
-	if progress <= -TAU:  # one counter-clockwise rotation
+	if progress <= -TAU: # one counter-clockwise rotation
 		progress += TAU
 		sand_particles.emitting = true
 		var tween := create_tween().set_trans(Tween.TRANS_QUART)
 		tween.tween_property(halo, "modulate", Color(Color.YELLOW, 0.0), 0.3).from(Color.YELLOW)
 		revolution_completed.emit()
-	elif progress >= TAU:  # one clockwise rotation (doesn't do anything)
+	elif progress >= TAU: # one clockwise rotation (doesn't do anything)
 		progress -= TAU
 
 
@@ -85,7 +86,7 @@ func _drag_towards_mouse(delta: float) -> void:
 	if wrong_way:
 		halo.modulate = Color(Color.RED, halo.modulate.a)
 		halo.modulate.a = move_toward(halo.modulate.a, 1.0, delta * halo_change_rate)
-		decay = 0.5
+		decay = wrong_follow_rate
 	else:
 		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
 		decay = follow_rate

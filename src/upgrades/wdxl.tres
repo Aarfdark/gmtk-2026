@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bxoybm2thyd8l"]
+
+[ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_fq2nw"]
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_ekng3"]
+
+[sub_resource type="Resource" id="Resource_fq2nw"]
+script = ExtResource("1_fq2nw")
+upgrade_value = 2.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
+[resource]
+script = ExtResource("2_ekng3")
+cost = 20000
+name = "WD-XL"
+description = "The stuff the Romans used to grease up their carriages."
+effects = Array[ExtResource("1_fq2nw")]([SubResource("Resource_fq2nw")])
+metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"
