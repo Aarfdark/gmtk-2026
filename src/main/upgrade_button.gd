@@ -15,4 +15,5 @@ extends Button
 
 func _on_mouse_entered() -> void:
 	if upgrade:
-		print(upgrade.name)
+		#print(upgrade.name)
+		pass
