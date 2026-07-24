@@ -106,7 +106,7 @@ popup/item_0/text = "Toggle Click"
 popup/item_0/id = 0
 popup/item_1/text = "Click and Hold"
 popup/item_1/id = 1
-popup/item_2/text = "Keyboard"
+popup/item_2/text = "Keyboard/Controller"
 popup/item_2/id = 2
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=2085831353]
