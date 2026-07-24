@@ -128,7 +128,7 @@ func _on_buy_button_pressed() -> void:
 		return
 	var bought_upgrade: Upgrade = _selected_button.upgrade
 	if game_state.sands < bought_upgrade.cost:
-		# TODO: disable buy button while not affordable
+		# TODO: error effect OR keep button disabled
 		return
 	game_state.sands -= bought_upgrade.cost
 	game_state.add_upgrade(bought_upgrade)
