@@ -4,7 +4,7 @@ signal revolution_completed
 
 @export_range(1, 25) var follow_rate: float = 4.0
 @export_range(0, 4) var wrong_follow_rate: float = 0.2
-@export_enum("Toggle Click", "Click and Hold", "Keyboard") var input_method: String
+@export_enum("Toggle Click", "Click and Hold", "Keyboard/Controller") var input_method: String
 @export var halo_change_rate: float = 5.0
 
 var hovering := false
@@ -27,9 +27,14 @@ var progress: float = 0.0
 
 func _process(_delta: float) -> void:
 	cursor_leash.clear_points()
-	if grabbing and input_method != "Keyboard":
+	if grabbing:
 		cursor_leash.add_point(hand_tip.global_position - global_position)
-		cursor_leash.add_point(get_local_mouse_position())
+		if input_method != "Keyboard/Controller":
+			cursor_leash.add_point(get_local_mouse_position())
+		else:
+			var length := 100
+			var temp := Vector2(length * cos(target_angle), length * sin(target_angle))
+			cursor_leash.add_point(temp)
 
 
 func _physics_process(delta: float) -> void:
@@ -37,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
 		return
 
-	if input_method != "Keyboard":
+	if input_method != "Keyboard/Controller":
 		_drag_towards_mouse(delta)
 	else:
 		_keyboard_movement(delta)
@@ -70,7 +75,7 @@ func _input(event: InputEvent) -> void:
 				grabbing = false
 		elif event.is_action_released("grab"):
 			grabbing = false
-	elif input_method == "Keyboard":
+	elif input_method == "Keyboard/Controller":
 		if (
 			Input.is_action_pressed("up") or Input.is_action_pressed("down")
 			or Input.is_action_pressed("left") or Input.is_action_pressed("right")
@@ -84,15 +89,16 @@ func _input(event: InputEvent) -> void:
 
 
 func _keyboard_movement(delta: float) -> void:
-	if Input.is_action_just_pressed("up"):
-		target_angle = -PI / 2
-	if Input.is_action_just_pressed("down"):
-		target_angle = PI / 2
-	if Input.is_action_just_pressed("left"):
-		target_angle = PI
-	if Input.is_action_just_pressed("right"):
-		target_angle = 0
+	target_angle = Input.get_vector("left", "right", "up", "down").angle()
 
+	#if Input.is_action_just_pressed("up"):
+	#target_angle = -PI / 2
+	#if Input.is_action_just_pressed("down"):
+	#target_angle = PI / 2
+	#if Input.is_action_just_pressed("left"):
+	#target_angle = PI
+	#if Input.is_action_just_pressed("right"):
+	#target_angle = 0
 	var starting_angle := hand.rotation
 	var dist := starting_angle - target_angle
 
