@@ -7,11 +7,11 @@ extends PanelContainer
 var tween: Tween
 var cur_selected_button: UpgradeButton
 var is_viewing_upgrade := false
-var tween_duration: float = 0.5
-var tween_scale := Vector2(1.5, 1.5)
-var return_scale := Vector2(1, 1)
+var tween_duration := 0.5
+var tween_scale := 1.5
+var return_scale := 1.0
 var tween_pos := Vector2(100, 100)
-var return_pos := Vector2(0, 0)
+var return_pos : Vector2
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
@@ -32,6 +32,11 @@ func instantiate_button(upgrade: Upgrade) -> void:
 func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
 	is_viewing_upgrade = true
 	cur_selected_button = upgrade_button
+	var grid_size := upgrade_button_grid.size
+	var width := upgrade_button.size.x * tween_scale
+	var height := upgrade_button.size.y * tween_scale
+	tween_pos = Vector2(grid_size.x-width, grid_size.y-height) / 2
+	return_pos = upgrade_button.position
 	
 	if tween: tween.kill()
 	
@@ -40,8 +45,8 @@ func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
 	tween.set_ease(Tween.EASE_IN_OUT)
 	
 	# selected Upgradebutton
-	tween.tween_property(upgrade_button, "offset_transform_position", tween_pos, tween_duration)
-	tween.parallel().tween_property(upgrade_button, "scale", tween_scale, tween_duration)
+	tween.tween_property(upgrade_button, "position", tween_pos, tween_duration)
+	tween.parallel().tween_property(upgrade_button, "scale", Vector2(tween_scale, tween_scale), tween_duration)
 	# everything else
 	for button in upgrade_button_grid.get_children():
 		button.disabled = true
@@ -61,8 +66,8 @@ func _on_back_button_pressed() -> void:
 	tween.set_ease(Tween.EASE_IN_OUT)
 	
 	# selected Upgradebutton
-	tween.tween_property(cur_selected_button, "offset_transform_position", return_pos, tween_duration)
-	tween.parallel().tween_property(cur_selected_button, "scale", return_scale, tween_duration)
+	tween.tween_property(cur_selected_button, "position", return_pos, tween_duration)
+	tween.parallel().tween_property(cur_selected_button, "scale", Vector2(return_scale, return_scale), tween_duration)
 	# everything else
 	var all_buttons := upgrade_button_grid.get_children()
 	for button in all_buttons:

@@ -18,8 +18,6 @@ extends Control
 
 var _tick_progress: float = 0.0
 
-signal trigger_shop_tween(upgrade_button)
-
 func _process(delta: float) -> void:
 	var time_diff: float = delta * game_state.ticks_per_second + _tick_progress
 	game_state.seconds_remaining += int(time_diff)
