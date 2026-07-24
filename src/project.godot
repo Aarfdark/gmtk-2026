@@ -37,6 +37,7 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://_global/": "gray",
+"res://audio/": "yellow",
 "res://theming/": "pink"
 }
 
