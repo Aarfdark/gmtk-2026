@@ -1,9 +1,11 @@
 extends PanelContainer
 
 @onready var upgrade_button_grid: FlowContainer = %UpgradeButtonGrid
+@onready var upgrade_button_scroll_container: ScrollContainer = %UpgradeScrollContainer
 @onready var UpgradeButtonScene = preload("uid://dl2qapeg023np")
 @onready var main_hud: MainHUD = $"../../.."
 @onready var game_state = main_hud.game_state
+
 var tween: Tween
 var cur_selected_button: UpgradeButton
 var is_viewing_upgrade := false
@@ -12,15 +14,18 @@ var tween_scale := 1.5
 var return_scale := 1.0
 var tween_pos := Vector2(100, 100)
 var return_pos : Vector2
-
+var scroll_pos := -1.0
 func _unhandled_input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
 		return
 	if event.is_action_pressed("DEBUG_increment_sands"):
-		instantiate_button(load("res://upgrades/second_hand.tres"))
+		for i in 20:
+			instantiate_button(load("res://upgrades/second_hand.tres"))
 	#if event.is_action_pressed("DEBUG_decrement_sands"):
 		#game_state.sands -= 100
-
+func _process(delta: float) -> void:
+	if (scroll_pos != -1):
+		upgrade_button_scroll_container.set_deferred("scroll_vertical", scroll_pos)
 func instantiate_button(upgrade: Upgrade) -> void:
 	var new_upgrade_button: UpgradeButton = UpgradeButtonScene.instantiate() as UpgradeButton
 	new_upgrade_button.upgrade = upgrade
@@ -32,12 +37,15 @@ func instantiate_button(upgrade: Upgrade) -> void:
 func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
 	is_viewing_upgrade = true
 	cur_selected_button = upgrade_button
-	var grid_size := upgrade_button_grid.size
 	var width := upgrade_button.size.x * tween_scale
 	var height := upgrade_button.size.y * tween_scale
-	tween_pos = Vector2(grid_size.x-width, grid_size.y-height) / 2
-	return_pos = upgrade_button.position
+	var centering_offset := (upgrade_button_scroll_container.size - Vector2(width, height)) / 2.0
+	tween_pos = centering_offset + Vector2.DOWN * upgrade_button_scroll_container.scroll_vertical
 	
+	return_pos = upgrade_button.position
+
+	scroll_pos = upgrade_button_scroll_container.scroll_vertical
+	upgrade_button_scroll_container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	if tween: tween.kill()
 	
 	tween = create_tween()
@@ -52,7 +60,6 @@ func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
 		button.disabled = true
 		if button != upgrade_button:
 			tween.parallel().tween_property(button, "modulate:a", 0.0, tween_duration)
-
 # undo previous tweens
 func _on_back_button_pressed() -> void:
 	if !is_viewing_upgrade:
@@ -77,6 +84,9 @@ func _on_back_button_pressed() -> void:
 	for button in all_buttons:
 		button.disabled = false
 	cur_selected_button = null
+
+	upgrade_button_scroll_container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	scroll_pos = -1
 
 func _on_buy_button_pressed() ->  void:
 	if cur_selected_button == null or game_state.sands < cur_selected_button.upgrade.cost:
