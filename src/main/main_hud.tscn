@@ -15,6 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://b7n3856tgb8kb" path="res://main/hamster_wheel.png" id="8_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
 [ext_resource type="Script" uid="uid://bilr6qwjpf8qx" path="res://shop/shop.gd" id="10_q3jkb"]
+[ext_resource type="PackedScene" uid="uid://b13lgsuwo8cvw" path="res://main/shop_panel.tscn" id="13_ka1xg"]
+[ext_resource type="AudioStream" uid="uid://b0tckeb71jfma" path="res://audio/bassline.ogg" id="16_pusfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5g4g"]
+bg_color = Color(0.14665204, 0.08936647, 0.045372374, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
@@ -67,6 +77,12 @@ script = ExtResource("1_wdoo0")
 convert_to_iso = true
 
 [node name="TimeLabelUnix" type="Label" parent="VBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=1916945416]
+[node name="PanelContainer" type="PanelContainer" parent="HUDSections/TopSection/TimePanel/TimeLabels" unique_id=130058046]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5g4g")
+
+[node name="TimeLabelUnix" type="Label" parent="HUDSections/TopSection/TimePanel/TimeLabels/PanelContainer" unique_id=1916945416]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1234567890"
