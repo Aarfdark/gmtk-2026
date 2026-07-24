@@ -17,6 +17,9 @@ var _selected_button: UpgradeButton
 @onready var scroll_container: ScrollContainer = %ScrollContainer
 @onready var buy_prompt: Control = %BuyPrompt
 @onready var displayed_slot: Control = %DisplayedSlot
+@onready var cost_label: Label = %CostLabel
+@onready var upgrade_label: Label = %UpgradeLabel
+@onready var upgrade_description: RichTextLabel = %UpgradeDescription
 @onready var buy_button: Button = %BuyButton
 @onready var cancel_button: Button = %CancelButton
 
@@ -79,6 +82,10 @@ func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
 	tween_pos.y += scroll_container.scroll_vertical
 	_return_pos = upgrade_button.position
 
+	var selected_upgrade := upgrade_button.upgrade
+	cost_label.text = "%d" % selected_upgrade.cost
+	upgrade_label.text = selected_upgrade.name
+	upgrade_description.text = selected_upgrade.description
 	buy_prompt.show()
 	toggle_prompt_inputs(false)
 
