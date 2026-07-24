@@ -33,10 +33,15 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
 "res://_global/": "gray",
+"res://audio/": "yellow",
 "res://theming/": "pink"
 }
 
