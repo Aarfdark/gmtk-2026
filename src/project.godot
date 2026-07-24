@@ -20,6 +20,11 @@ config/icon="uid://cuveou00uetv"
 
 SceneTransitioner="*uid://bkd20kg4p0ync"
 
+[custom]
+
+unlock_all_upgrades=true
+enable_debug_keybinds=true
+
 [display]
 
 window/size/viewport_width=1920

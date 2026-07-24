@@ -25,15 +25,16 @@ var _selected_button: UpgradeButton
 
 
 func _ready() -> void:
-	if OS.is_debug_build():
-		for path: String in DirAccess.get_files_at("res://upgrades"):
-			var upgrade: Upgrade = load("res://upgrades/" + path) as Upgrade
-			if upgrade:
-				instantiate_button(upgrade)
+	if not ProjectSettings.get_setting("custom/unlock_all_upgrades"):
+		return
+	for path: String in DirAccess.get_files_at("res://upgrades"):
+		var upgrade: Upgrade = load("res://upgrades/" + path) as Upgrade
+		if upgrade:
+			instantiate_button(upgrade)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not OS.is_debug_build():
+	if not ProjectSettings.get_setting("custom/enable_debug_keybinds"):
 		return
 	if event.is_action_pressed("DEBUG_increment_sands"):
 		instantiate_button(load("res://upgrades/second_hand.tres"))
