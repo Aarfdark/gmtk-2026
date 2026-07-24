@@ -43,10 +43,11 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if input_method != "Keyboard/Controller":
-		_drag_towards_mouse(delta)
+		target_angle = get_angle_to(get_global_mouse_position())
 	else:
-		_keyboard_movement(delta)
+		target_angle = Input.get_vector("left", "right", "up", "down").angle()
 
+	_drag_hand(delta)
 	progress += hand.rotation - last_rotation
 	last_rotation = hand.rotation
 
@@ -76,54 +77,10 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_released("grab"):
 			grabbing = false
 	elif input_method == "Keyboard/Controller":
-		if (
-			Input.is_action_pressed("up") or Input.is_action_pressed("down")
-			or Input.is_action_pressed("left") or Input.is_action_pressed("right")
-		):
-			grabbing = true
-		elif (
-			Input.is_action_just_released("up") or Input.is_action_just_released("down")
-			or Input.is_action_just_released("left") or Input.is_action_just_released("right")
-		):
-			grabbing = false
+		grabbing = Input.get_vector("left", "right", "up", "down") != Vector2.ZERO
 
 
-func _keyboard_movement(delta: float) -> void:
-	target_angle = Input.get_vector("left", "right", "up", "down").angle()
-
-	#if Input.is_action_just_pressed("up"):
-	#target_angle = -PI / 2
-	#if Input.is_action_just_pressed("down"):
-	#target_angle = PI / 2
-	#if Input.is_action_just_pressed("left"):
-	#target_angle = PI
-	#if Input.is_action_just_pressed("right"):
-	#target_angle = 0
-	var starting_angle := hand.rotation
-	var dist := starting_angle - target_angle
-
-	if abs(dist + TAU) < abs(dist):
-		starting_angle += TAU
-		progress -= TAU
-	elif abs(dist - TAU) < abs(dist):
-		starting_angle -= TAU
-		progress += TAU
-
-	var wrong_way: bool = starting_angle < target_angle
-	spark_particles.emitting = wrong_way
-	var decay: float
-	if wrong_way:
-		halo.modulate = Color(Color.RED, halo.modulate.a)
-		halo.modulate.a = move_toward(halo.modulate.a, 1.0, delta * halo_change_rate)
-		decay = wrong_follow_rate
-	else:
-		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
-		decay = follow_rate
-	hand.rotation = Utils.exp_decay(starting_angle, target_angle, delta, decay)
-
-
-func _drag_towards_mouse(delta: float) -> void:
-	target_angle = get_angle_to(get_global_mouse_position())
+func _drag_hand(delta: float) -> void:
 	var starting_angle: float = hand.rotation
 	var dist: float = starting_angle - target_angle
 	if abs(dist + TAU) < abs(dist):
