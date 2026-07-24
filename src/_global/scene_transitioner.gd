@@ -20,13 +20,6 @@ func go_to_scene(path: String) -> void:
 	_root_window.remove_child.call_deferred(self)
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("DEBUG_increment_sands"):
-		wipe_to_black()
-	if event.is_action_pressed("DEBUG_decrement_sands"):
-		wipe_from_black()
-
-
 func wipe_to_black(duration: float = 0.7) -> void:
 	if tween and tween.is_running():
 		push_error("Tried to tween while already running")
