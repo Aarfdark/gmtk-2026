@@ -19,8 +19,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
 		return
 	if event.is_action_pressed("DEBUG_increment_sands"):
-		for i in 20:
-			instantiate_button(load("res://upgrades/second_hand.tres"))
+		instantiate_button(load("res://upgrades/second_hand.tres"))
 	#if event.is_action_pressed("DEBUG_decrement_sands"):
 		#game_state.sands -= 100
 func _process(delta: float) -> void:
