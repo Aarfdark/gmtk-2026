@@ -59,6 +59,7 @@ format = 3
 
 [node name="Clock" type="Node2D" unique_id=2103397852]
 script = ExtResource("1_fk4wj")
+follow_rate = 2.0
 
 [node name="Halo" type="Sprite2D" parent="." unique_id=794312830]
 modulate = Color(1, 1, 0.3137255, 0)

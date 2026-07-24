@@ -2,7 +2,8 @@ extends Node2D
 
 signal revolution_completed
 
-@export_range(1, 25, 0.5) var follow_rate: float = 4.0
+@export_range(1, 25) var follow_rate: float = 4.0
+@export_range(0, 4) var wrong_follow_rate: float = 0.2
 @export_enum("Toggle Click", "Click and Hold") var input_method: String
 @export var halo_change_rate: float = 5.0
 
@@ -85,7 +86,7 @@ func _drag_towards_mouse(delta: float) -> void:
 	if wrong_way:
 		halo.modulate = Color(Color.RED, halo.modulate.a)
 		halo.modulate.a = move_toward(halo.modulate.a, 1.0, delta * halo_change_rate)
-		decay = 0.5
+		decay = wrong_follow_rate
 	else:
 		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
 		decay = follow_rate
