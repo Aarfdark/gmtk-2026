@@ -72,6 +72,7 @@ rotation = -1.5707964
 texture = ExtResource("2_ru58x")
 
 [node name="Area2D" type="Area2D" parent="Hand" unique_id=2122588955]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Area2D" unique_id=1760554403]
 shape = SubResource("CircleShape2D_twvga")

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b7n3856tgb8kb" path="res://main/hamster_wheel.png" id="8_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
 [ext_resource type="Script" uid="uid://bilr6qwjpf8qx" path="res://shop/shop.gd" id="10_q3jkb"]
+[ext_resource type="StyleBox" uid="uid://06aanstrj00d" path="res://theming/wood_texture.tres" id="14_pusfw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
@@ -211,6 +212,7 @@ last_wrap_alignment = 1
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=1790065295]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("14_pusfw")
 
 [node name="DialogueBox" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/PanelContainer" unique_id=1729614356 instance=ExtResource("7_pusfw")]
 layout_mode = 2
