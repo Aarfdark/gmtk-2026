@@ -3,17 +3,22 @@ extends PanelContainer
 
 const UpgradeButtonScene = preload("uid://dl2qapeg023np")
 
+@export var tween_duration := 0.5
+@export var tween_scale := 1.5
+@export var return_scale := 1.0
+
 var game_state: GameState
-var tween: Tween
-var cur_selected_button: UpgradeButton
-var is_viewing_upgrade := false
-var tween_duration := 0.5
-var tween_scale := 1.5
-var return_scale := 1.0
-var return_pos: Vector2
+
+var _return_pos: Vector2
+var _tween: Tween
+var _selected_button: UpgradeButton
 
 @onready var upgrade_button_grid: FlowContainer = %UpgradeButtonGrid
 @onready var scroll_container: ScrollContainer = %ScrollContainer
+@onready var buy_prompt: Control = %BuyPrompt
+@onready var displayed_slot: Control = %DisplayedSlot
+@onready var buy_button: Button = %BuyButton
+@onready var cancel_button: Button = %CancelButton
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -30,72 +35,85 @@ func instantiate_button(upgrade: Upgrade) -> void:
 	upgrade_button_grid.add_child(new_upgrade_button)
 
 
-func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
-	is_viewing_upgrade = true
-	cur_selected_button = upgrade_button
-	var grid_size := upgrade_button_grid.size
-	var width := upgrade_button.size.x * tween_scale
-	var height := upgrade_button.size.y * tween_scale
-	var tween_pos := Vector2(grid_size.x - width, grid_size.y - height) / 2
-	return_pos = upgrade_button.position
-
-	scroll_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	if tween:
-		tween.kill()
-
-	tween = create_tween()
-	tween.set_trans(Tween.TRANS_QUART)
-	tween.set_ease(Tween.EASE_IN_OUT)
-
-	# selected Upgradebutton
-	tween.tween_property(upgrade_button, "position", tween_pos, tween_duration)
-	tween.parallel().tween_property(
-		upgrade_button, "scale", tween_scale * Vector2.ONE, tween_duration
-	)
-	# everything else
+func toggle_grid_inputs(on: bool) -> void:
 	for button in upgrade_button_grid.get_children():
-		button.disabled = true
-		if button != upgrade_button:
-			tween.parallel().tween_property(button, "modulate:a", 0.0, tween_duration)
+		button.disabled = not on
+	scroll_container.mouse_filter = Control.MOUSE_FILTER_PASS if on else Control.MOUSE_FILTER_IGNORE
+
+
+func toggle_prompt_inputs(on: bool) -> void:
+	buy_button.disabled = not on
+	cancel_button.disabled = not on
+
+
+func restore_grid(return_upgrade: bool = false) -> void:
+	toggle_prompt_inputs(false)
+	if _tween:
+		_tween.kill()
+
+	_tween = create_tween().set_trans(Tween.TRANS_QUART).set_parallel()
+
+	if return_upgrade:
+		_tween.tween_property(_selected_button, "position", _return_pos, tween_duration)
+		_tween.tween_property(_selected_button, "scale", return_scale * Vector2.ONE, tween_duration)
+	for button in upgrade_button_grid.get_children():
+		var opacity := 1.0
+		if button == _selected_button and not return_upgrade:
+			opacity = 0.0
+		_tween.tween_property(button, "modulate:a", opacity, tween_duration)
+	_tween.tween_property(scroll_container.get_v_scroll_bar(), "modulate:a", 1.0, tween_duration)
+	_tween.tween_property(buy_prompt, "modulate:a", 0.0, tween_duration).from(1.0)
+	await _tween.finished
+	if not return_upgrade:
+		_selected_button.queue_free()
+	else:
+		_selected_button = null
+	toggle_grid_inputs(true)
+	buy_prompt.hide()
+
+
+func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
+	_selected_button = upgrade_button
+	var scaled_size := tween_scale * upgrade_button.size
+	var tween_pos := (displayed_slot.size - scaled_size) / 2
+	tween_pos.y += scroll_container.scroll_vertical
+	_return_pos = upgrade_button.position
+
+	buy_prompt.show()
+	toggle_prompt_inputs(false)
+
+	if _tween:
+		_tween.kill()
+
+	_tween = create_tween().set_trans(Tween.TRANS_QUART).set_parallel()
+
+	toggle_grid_inputs(false)
+	for button in upgrade_button_grid.get_children():
+		if button == upgrade_button:
+			_tween.tween_property(button, "position", tween_pos, tween_duration)
+			_tween.tween_property(button, "scale", tween_scale * Vector2.ONE, tween_duration)
+		else:
+			_tween.tween_property(button, "modulate:a", 0.0, tween_duration)
+	_tween.tween_property(scroll_container.get_v_scroll_bar(), "modulate:a", 0.0, tween_duration)
+	_tween.tween_property(buy_prompt, "modulate:a", 1.0, tween_duration).from(0.0)
+	await _tween.finished
+	toggle_prompt_inputs(true)
 
 
 # undo previous tweens
-func _on_back_button_pressed() -> void:
-	if !is_viewing_upgrade:
-		return
-	is_viewing_upgrade = false
-
-	if tween:
-		tween.kill()
-
-	tween = create_tween()
-	tween.set_trans(Tween.TRANS_QUART)
-	tween.set_ease(Tween.EASE_IN_OUT)
-
-	# selected Upgradebutton
-	tween.tween_property(cur_selected_button, "position", return_pos, tween_duration)
-	tween.parallel().tween_property(
-		cur_selected_button, "scale", return_scale * Vector2.ONE, tween_duration
-	)
-	# everything else
-	var all_buttons := upgrade_button_grid.get_children()
-	for button in all_buttons:
-		if button != cur_selected_button:
-			tween.parallel().tween_property(button, "modulate:a", 1.0, tween_duration)
-	await tween.finished
-	for button in all_buttons:
-		button.disabled = false
-	scroll_container.mouse_filter = Control.MOUSE_FILTER_PASS
-	cur_selected_button = null
+func _on_cancel_button_pressed() -> void:
+	restore_grid(true)
 
 
 func _on_buy_button_pressed() -> void:
-	if cur_selected_button == null:
+	if _selected_button == null:
 		return
-	var bought_upgrade: Upgrade = cur_selected_button.upgrade
+	var bought_upgrade: Upgrade = _selected_button.upgrade
 	if game_state.sands < bought_upgrade.cost:
 		# TODO: disable buy button while not affordable
 		return
 	game_state.sands -= bought_upgrade.cost
 	game_state.add_upgrade(bought_upgrade)
+	# TODO: fancy confirm animation
+	_selected_button.reparent(displayed_slot)
+	restore_grid(false)

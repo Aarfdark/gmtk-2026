@@ -26,19 +26,6 @@ func _process(delta: float) -> void:
 	_tick_progress = fmod(time_diff, 1.0)
 
 
-#func _unhandled_input(event: InputEvent) -> void:
-#if not OS.is_debug_build():
-#return
-#if event.is_action_pressed("DEBUG_increment_sands"):
-#instantiate_button(load("res://upgrades/second_hand.tres"))
-#if event.is_action_pressed("DEBUG_decrement_sands"):
-#game_state.sands -= 100
-
-
-func _on_game_state_changed() -> void:
-	sands_label.text = "Sands: %d" % game_state.sands
-
-
 func _on_clock_revolution_completed() -> void:
 	game_state.seconds_remaining -= game_state.seconds_per_revolution
 
