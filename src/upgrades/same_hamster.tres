@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://dxrmpggo4s57a"]
+
+[ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_5ng5s"]
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_b5xvn"]
+
+[sub_resource type="Resource" id="Resource_ljurs"]
+script = ExtResource("1_5ng5s")
+type = 2
+upgrade_value = 1.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
+[resource]
+script = ExtResource("2_b5xvn")
+cost = 100
+name = "The Same Hamster"
+description = "A past version of your favorite hamster! This will have no consequences on spacetime whatsoever!"
+effects = Array[ExtResource("1_5ng5s")]([SubResource("Resource_ljurs")])
+metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"
