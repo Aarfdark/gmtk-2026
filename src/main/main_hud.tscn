@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://lu5j6lybih74" path="res://dialogue_box/dialogue_box.tscn" id="7_pusfw"]
 [ext_resource type="Texture2D" uid="uid://b7n3856tgb8kb" path="res://main/hamster_wheel.png" id="8_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
-[ext_resource type="Script" uid="uid://bilr6qwjpf8qx" path="res://shop/shop.gd" id="10_q3jkb"]
+[ext_resource type="PackedScene" uid="uid://b13lgsuwo8cvw" path="res://main/shop_panel.tscn" id="13_ka1xg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
@@ -178,55 +178,9 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 input_method = "Toggle Click"
 
-[node name="ShopPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1858568542]
+[node name="ShopPanel" parent="VBoxContainer/HBoxContainer2" unique_id=1215246801 instance=ExtResource("13_ka1xg")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("10_q3jkb")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/ShopPanel" unique_id=1004675671]
-layout_mode = 2
-
-[node name="ShopLabel" type="Label" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer" unique_id=2084349107]
-layout_mode = 2
-text = "SHOP"
-horizontal_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer" unique_id=561033815]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="UpgradeButtonGrid" type="FlowContainer" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer/ScrollContainer" unique_id=1815659806]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 16
-alignment = 1
-last_wrap_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer" unique_id=1790065295]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="DialogueBox" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer/PanelContainer" unique_id=1729614356 instance=ExtResource("7_pusfw")]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer" unique_id=1394031282]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer/HBoxContainer" unique_id=763768468]
-layout_mode = 2
-text = "Back"
-
-[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer/HBoxContainer" unique_id=1256108197]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
-text = "Buy"
 
 [node name="SettingsMenu" parent="." unique_id=1589187640 instance=ExtResource("9_wbng2")]
 unique_name_in_owner = true
@@ -248,6 +202,4 @@ size_flags_horizontal = 0
 texture_normal = ExtResource("5_3p5vu")
 
 [connection signal="revolution_completed" from="VBoxContainer/HBoxContainer2/DIAL/Center/Clock" to="." method="_on_clock_revolution_completed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer/HBoxContainer/BackButton" to="VBoxContainer/HBoxContainer2/ShopPanel" method="_on_back_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ShopPanel/VBoxContainer/HBoxContainer/BuyButton" to="VBoxContainer/HBoxContainer2/ShopPanel" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

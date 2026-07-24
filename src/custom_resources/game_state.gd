@@ -40,13 +40,26 @@ var _end_fired: bool = false
 
 @export var seconds_per_revolution: int = 1
 
+
 func update_attributes() -> void:
 	var new_spr: int = 1
 	for effect: UpgradeEffect in active_effects:
 		match effect.type:
 			UpgradeEffect.Type.DIAL_MAG:
-				new_spr *= effect.upgrade_value
+				new_spr *= int(effect.upgrade_value)
 	seconds_per_revolution = new_spr
+
+
+func add_upgrade(upgrade: Upgrade) -> void:
+	# WARN: might need special case for more hamster
+	if upgrade in purchased_upgrades:
+		push_error("Took the same upgrade twice")
+		return
+	purchased_upgrades.append(upgrade)
+	for upgrade_effect: UpgradeEffect in upgrade.effects:
+		active_effects.append(upgrade_effect)
+	update_attributes()
+
 
 func get_datetime() -> String:
 	return Time.get_datetime_string_from_unix_time(seconds_remaining, true)
