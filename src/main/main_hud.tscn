@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://lu5j6lybih74" path="res://dialogue_box/dialogue_box.tscn" id="7_pusfw"]
 [ext_resource type="Texture2D" uid="uid://b7n3856tgb8kb" path="res://main/hamster_wheel.png" id="8_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
-[ext_resource type="Script" uid="uid://bilr6qwjpf8qx" path="res://shop/shop.gd" id="10_q3jkb"]
+[ext_resource type="PackedScene" uid="uid://b13lgsuwo8cvw" path="res://main/shop_panel.tscn" id="13_ka1xg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
@@ -34,7 +34,7 @@ mouse_filter = 2
 script = ExtResource("1_yxwbc")
 game_state = ExtResource("2_7shfy")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=111920872]
+[node name="HUDSections" type="VBoxContainer" parent="." unique_id=111920872]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,23 +42,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1237838188]
+[node name="TopSection" type="HBoxContainer" parent="HUDSections" unique_id=1237838188]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="TIMECOUNTER" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1407968196]
+[node name="TimePanel" type="PanelContainer" parent="HUDSections/TopSection" unique_id=1407968196]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/TIMECOUNTER" unique_id=1539254180]
+[node name="TimeLabels" type="VBoxContainer" parent="HUDSections/TopSection/TimePanel" unique_id=1539254180]
 layout_mode = 2
 alignment = 1
 
-[node name="TimeLabelISO" type="Label" parent="VBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=915000530]
+[node name="TimeLabelISO" type="Label" parent="HUDSections/TopSection/TimePanel/TimeLabels" unique_id=915000530]
 unique_name_in_owner = true
 layout_mode = 2
 text = "2026-07-27 17:00:00"
@@ -66,7 +66,7 @@ horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
 convert_to_iso = true
 
-[node name="TimeLabelUnix" type="Label" parent="VBoxContainer/HBoxContainer/TIMECOUNTER/VBoxContainer" unique_id=1916945416]
+[node name="TimeLabelUnix" type="Label" parent="HUDSections/TopSection/TimePanel/TimeLabels" unique_id=1916945416]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1234567890"
@@ -74,55 +74,55 @@ label_settings = SubResource("LabelSettings_rqo1v")
 horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
 
-[node name="MESSAGES" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1103605872]
+[node name="MessagePanel" type="PanelContainer" parent="HUDSections/TopSection" unique_id=1103605872]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MESSAGES" unique_id=964217460]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDSections/TopSection/MessagePanel" unique_id=964217460]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MESSAGES/HBoxContainer" unique_id=2140478071]
+[node name="DoofOSGraphic" type="VBoxContainer" parent="HUDSections/TopSection/MessagePanel/HBoxContainer" unique_id=2140478071]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VBoxContainer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/MESSAGES/HBoxContainer/VBoxContainer" unique_id=1910316952]
+[node name="DoofOSIcon" type="TextureRect" parent="HUDSections/TopSection/MessagePanel/HBoxContainer/DoofOSGraphic" unique_id=1910316952]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_ka1xg")
 stretch_mode = 5
 
-[node name="VBoxContainer3" type="Label" parent="VBoxContainer/HBoxContainer/MESSAGES/HBoxContainer/VBoxContainer" unique_id=1890494749]
+[node name="DoofOSLabel" type="Label" parent="HUDSections/TopSection/MessagePanel/HBoxContainer/DoofOSGraphic" unique_id=1890494749]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sqrt5")
 text = "DoofOS"
 
-[node name="DialogueBox" parent="VBoxContainer/HBoxContainer/MESSAGES/HBoxContainer" unique_id=937354533 instance=ExtResource("7_pusfw")]
+[node name="DialogueBox" parent="HUDSections/TopSection/MessagePanel/HBoxContainer" unique_id=937354533 instance=ExtResource("7_pusfw")]
 layout_mode = 2
 dialogue = Array[String](["First line!"])
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1357091963]
+[node name="BottomSection" type="HBoxContainer" parent="HUDSections" unique_id=1357091963]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="INVENTORY" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=2062672994]
+[node name="InventoryPanel" type="PanelContainer" parent="HUDSections/BottomSection" unique_id=2062672994]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/INVENTORY" unique_id=501745757]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDSections/BottomSection/InventoryPanel" unique_id=501745757]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer" unique_id=1569269826]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer" unique_id=1569269826]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="SandsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer/HBoxContainer" unique_id=1460323517]
+[node name="SandsLabel" type="Label" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer" unique_id=1460323517]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -132,21 +132,21 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("5_wbng2")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer/HBoxContainer" unique_id=586484055]
+[node name="PanelContainer" type="PanelContainer" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer" unique_id=586484055]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("6_q3jkb")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer/HBoxContainer/PanelContainer" unique_id=606328470]
+[node name="TextureRect" type="TextureRect" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer/PanelContainer" unique_id=606328470]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("5_qolgx")
 expand_mode = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer" unique_id=616528091]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer" unique_id=616528091]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="HamsterLabel" type="Label" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer/HBoxContainer2" unique_id=1407761857]
+[node name="HamsterLabel" type="Label" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer2" unique_id=1407761857]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -154,80 +154,33 @@ text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer/HBoxContainer2" unique_id=188962089]
+[node name="PanelContainer" type="PanelContainer" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer2" unique_id=188962089]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("6_q3jkb")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/INVENTORY/VBoxContainer/HBoxContainer2/PanelContainer" unique_id=468675754]
+[node name="TextureRect" type="TextureRect" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer2/PanelContainer" unique_id=468675754]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("8_sqrt5")
 expand_mode = 1
 
-[node name="DIAL" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1875401843]
+[node name="DialPanel" type="PanelContainer" parent="HUDSections/BottomSection" unique_id=1875401843]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Center" type="Control" parent="VBoxContainer/HBoxContainer2/DIAL" unique_id=994430111]
+[node name="Center" type="Control" parent="HUDSections/BottomSection/DialPanel" unique_id=994430111]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Clock" parent="VBoxContainer/HBoxContainer2/DIAL/Center" unique_id=2103397852 instance=ExtResource("1_2ybbj")]
+[node name="Clock" parent="HUDSections/BottomSection/DialPanel/Center" unique_id=2103397852 instance=ExtResource("1_2ybbj")]
 unique_name_in_owner = true
 input_method = "Toggle Click"
 
-[node name="SHOP" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1858568542]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("10_q3jkb")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/SHOP" unique_id=1004675671]
-layout_mode = 2
-
-[node name="ShopLabel" type="Label" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=2084349107]
-layout_mode = 2
-text = "SHOP"
-horizontal_alignment = 1
-
-[node name="UpgradeScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=561033815]
+[node name="ShopPanel" parent="HUDSections/BottomSection" unique_id=1215246801 instance=ExtResource("13_ka1xg")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="UpgradeButtonGrid" type="FlowContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/UpgradeScrollContainer" unique_id=1815659806]
-unique_name_in_owner = true
-clip_contents = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 16
-alignment = 1
-last_wrap_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=1790065295]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="DialogueBox" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/PanelContainer" unique_id=1729614356 instance=ExtResource("7_pusfw")]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer" unique_id=1394031282]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/HBoxContainer" unique_id=763768468]
-layout_mode = 2
-text = "Back"
-
-[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/HBoxContainer" unique_id=1256108197]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
-text = "Buy"
 
 [node name="SettingsMenu" parent="." unique_id=1589187640 instance=ExtResource("9_wbng2")]
 unique_name_in_owner = true
@@ -248,7 +201,5 @@ grow_vertical = 0
 size_flags_horizontal = 0
 texture_normal = ExtResource("5_3p5vu")
 
-[connection signal="revolution_completed" from="VBoxContainer/HBoxContainer2/DIAL/Center/Clock" to="." method="_on_clock_revolution_completed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/HBoxContainer/BackButton" to="VBoxContainer/HBoxContainer2/SHOP" method="_on_back_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/SHOP/VBoxContainer/HBoxContainer/BuyButton" to="VBoxContainer/HBoxContainer2/SHOP" method="_on_buy_button_pressed"]
+[connection signal="revolution_completed" from="HUDSections/BottomSection/DialPanel/Center/Clock" to="." method="_on_clock_revolution_completed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

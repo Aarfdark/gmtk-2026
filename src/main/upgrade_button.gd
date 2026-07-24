@@ -9,11 +9,6 @@ extends Button
 		upgrade = value
 		if not is_node_ready():
 			await ready
+		icon_rect.texture = upgrade.texture
 
 @onready var icon_rect: TextureRect = %Icon
-
-
-func _on_mouse_entered() -> void:
-	if upgrade:
-		#print(upgrade.name)
-		pass
