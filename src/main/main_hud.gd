@@ -20,6 +20,13 @@ extends Control
 var _tick_progress: float = 0.0
 
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not ProjectSettings.get_setting("custom/enable_debug_keybinds"):
+		return
+	if event.is_action_pressed("DEBUG_go_to_title"):
+		get_tree().change_scene_to_file("uid://d0dn16nq6qsd7")
+
+
 func _process(delta: float) -> void:
 	var time_diff: float = delta * game_state.ticks_per_second + _tick_progress
 	game_state.seconds_remaining += int(time_diff)
