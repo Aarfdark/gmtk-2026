@@ -31,23 +31,42 @@ const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 			return
 		sands = value
 		emit_changed()
-var ticks_per_second: float = 1
-
-var _end_fired: bool = false
 
 @export var purchased_upgrades: Array[Upgrade] = []
 @export var active_effects: Array[UpgradeEffect] = []
 
-@export var seconds_per_revolution: int = 1
+@export var dial_mag_base: int = 1
+@export var hamster_speed_base: float = 0.5
+
+var hamster_count: float = 0.0
+var hamster_speed: float = hamster_speed_base
+var dial_mag: int = dial_mag_base
+var ticks_per_second: float = 0.0
+var dial_rate_mod: float = 0.0
+
+var _end_fired: bool = false
 
 
 func update_attributes() -> void:
-	var new_spr: int = 1
+	active_effects.sort_custom(
+		func(a: UpgradeEffect, b: UpgradeEffect) -> bool:
+			return a.apply_order < b.apply_order,
+	)
+	dial_mag = dial_mag_base
+	hamster_count = 0
+	hamster_speed = hamster_speed_base
+	dial_rate_mod = 0
 	for effect: UpgradeEffect in active_effects:
 		match effect.type:
 			UpgradeEffect.Type.DIAL_MAG:
-				new_spr *= int(effect.upgrade_value)
-	seconds_per_revolution = new_spr
+				dial_mag *= int(effect.upgrade_value)
+			UpgradeEffect.Type.DIAL_RATE:
+				dial_rate_mod += effect.upgrade_value
+			UpgradeEffect.Type.HAMSTER_QUANTITY:
+				hamster_count += effect.upgrade_value
+			UpgradeEffect.Type.HAMSTER_RATE:
+				hamster_speed *= effect.upgrade_value
+	ticks_per_second = -1 * hamster_count * hamster_speed
 
 
 func add_upgrade(upgrade: Upgrade) -> void:
@@ -58,6 +77,7 @@ func add_upgrade(upgrade: Upgrade) -> void:
 	purchased_upgrades.append(upgrade)
 	for upgrade_effect: UpgradeEffect in upgrade.effects:
 		active_effects.append(upgrade_effect)
+	changed.emit()
 	update_attributes()
 
 

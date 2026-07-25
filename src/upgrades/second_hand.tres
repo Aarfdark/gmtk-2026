@@ -9,6 +9,11 @@ type = 1
 upgrade_value = 60.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
+[sub_resource type="Resource" id="Resource_qnw35"]
+script = ExtResource("1_fc8ok")
+upgrade_value = -7.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
 [sub_resource type="Gradient" id="Gradient_yyxb3"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fc8ok"]
@@ -20,5 +25,5 @@ cost = 10
 texture = SubResource("GradientTexture2D_fc8ok")
 name = " Secondhand Second Hand"
 description = "Replace that pitiful Third Hand with this old trinket! Goes back 60 seconds per rotation, but is [b]MUCH[/b] heavier."
-effects = Array[ExtResource("1_fc8ok")]([SubResource("Resource_evmrh")])
+effects = Array[ExtResource("1_fc8ok")]([SubResource("Resource_evmrh"), SubResource("Resource_qnw35")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

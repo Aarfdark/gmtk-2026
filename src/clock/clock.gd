@@ -1,3 +1,4 @@
+class_name Clock
 extends Node2D
 
 signal revolution_completed
@@ -6,6 +7,7 @@ signal revolution_completed
 @export_range(0, 4) var wrong_follow_rate: float = 0.2
 @export_enum("Toggle Click", "Click and Hold", "Keyboard/Controller") var input_method: String
 @export var halo_change_rate: float = 5.0
+@export var game_state: GameState
 
 var hovering := false
 var grabbing := false:
@@ -27,14 +29,14 @@ var progress: float = 0.0
 
 func _process(_delta: float) -> void:
 	cursor_leash.clear_points()
-	if grabbing:
-		cursor_leash.add_point(hand_tip.global_position - global_position)
-		if input_method != "Keyboard/Controller":
-			cursor_leash.add_point(get_local_mouse_position())
-		else:
-			var length := 100
-			var temp := Vector2(length * cos(target_angle), length * sin(target_angle))
-			cursor_leash.add_point(temp)
+	if not grabbing:
+		return
+	cursor_leash.add_point(hand_tip.global_position - global_position)
+	if input_method != "Keyboard/Controller":
+		cursor_leash.add_point(get_local_mouse_position())
+	else:
+		var temp := 100 * Vector2.RIGHT.rotated(target_angle)
+		cursor_leash.add_point(temp)
 
 
 func _physics_process(delta: float) -> void:
@@ -99,7 +101,7 @@ func _drag_hand(delta: float) -> void:
 		decay = wrong_follow_rate
 	else:
 		halo.modulate.a = move_toward(halo.modulate.a, 0.0, delta * halo_change_rate)
-		decay = follow_rate
+		decay = max(1.0, follow_rate + game_state.dial_rate_mod)
 	hand.rotation = Utils.exp_decay(starting_angle, target_angle, delta, decay)
 
 
