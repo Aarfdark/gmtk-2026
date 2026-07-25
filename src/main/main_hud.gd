@@ -10,11 +10,15 @@ extends Control
 		time_label_unix.game_state = game_state
 		shop_panel.game_state = game_state
 		sands_label.game_state = game_state
+		hamster_label.game_state = game_state
+		clock.game_state = game_state
 
 @onready var sands_label: SandsLabel = %SandsLabel
+@onready var hamster_label: HamsterLabel = %HamsterLabel
 @onready var time_label_iso: TimeLabel = %TimeLabelISO
 @onready var time_label_unix: TimeLabel = %TimeLabelUnix
 @onready var shop_panel: ShopPanel = %ShopPanel
+@onready var clock: Clock = %Clock
 @onready var settings_menu: Control = %SettingsMenu
 
 var _tick_progress: float = 0.0
@@ -34,8 +38,12 @@ func _process(delta: float) -> void:
 
 
 func _on_clock_revolution_completed() -> void:
-	game_state.seconds_remaining -= game_state.seconds_per_revolution
+	game_state.seconds_remaining -= game_state.dial_mag
 
 
 func _on_settings_button_pressed() -> void:
 	settings_menu.visible = true
+
+
+func _on_actual_seconds_timeout() -> void:
+	game_state.seconds_remaining += 1
