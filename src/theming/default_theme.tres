@@ -1,21 +1,11 @@
 [gd_resource type="Theme" format=3 uid="uid://dai5a0c8hxqu0"]
 
 [ext_resource type="FontFile" uid="uid://ds5uhh23x1cwj" path="res://theming/Jupiteroid-Regular.ttf" id="1_et8uc"]
+[ext_resource type="StyleBox" uid="uid://06aanstrj00d" path="res://theming/wood_texture.tres" id="1_qsb4m"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_dbkw5"]
 color = Color(1, 1, 1, 1)
 thickness = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbkw5"]
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
-bg_color = Color(0.49411765, 0.34509805, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
 
 [resource]
 default_font = ExtResource("1_et8uc")
@@ -26,4 +16,4 @@ MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_dbkw5")
+PanelContainer/styles/panel = ExtResource("1_qsb4m")

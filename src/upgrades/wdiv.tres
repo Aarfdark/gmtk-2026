@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://d3e5ev4wofy24"]
+
+[ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_7nnf7"]
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_0ifw1"]
+[ext_resource type="Texture2D" uid="uid://c4o1eg83pgthb" path="res://upgrades/WD-IV.png" id="3_7nnf7"]
+
+[sub_resource type="Resource" id="Resource_fq2nw"]
+script = ExtResource("1_7nnf7")
+upgrade_value = 2.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
+[resource]
+script = ExtResource("2_0ifw1")
+cost = 20000
+texture = ExtResource("3_7nnf7")
+name = "WD-CD"
+description = "Crude lubricant. Beats water, usually."
+effects = Array[ExtResource("1_7nnf7")]([SubResource("Resource_fq2nw")])
+metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"
