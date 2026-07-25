@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_6loyf"]
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_gpxjh"]
 [ext_resource type="Texture2D" uid="uid://dags5e7uwwpq1" path="res://main/doofOS.png" id="3_gpxjh"]
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="4_fim50"]
 
 [sub_resource type="Resource" id="Resource_4dkfq"]
 script = ExtResource("1_6loyf")
