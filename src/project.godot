@@ -22,7 +22,7 @@ SceneTransitioner="*uid://bkd20kg4p0ync"
 
 [custom]
 
-unlock_all_upgrades=true
+unlock_all_upgrades=false
 enable_debug_keybinds=true
 
 [display]

@@ -6,5 +6,5 @@
 
 [resource]
 script = ExtResource("1_7rfia")
-sands = 1000
+locked_upgrades = Array[]
 metadata/_custom_type_script = "uid://dfqohajdnq1pm"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dl2qapeg023np"]
 
 [ext_resource type="Script" uid="uid://bo0oueo5pakjo" path="res://main/upgrade_button.gd" id="1_evmrh"]
-[ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/second_hand.tres" id="2_so4iq"]
+[ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/upgrade_resources/second_hand.tres" id="2_so4iq"]
 
 [sub_resource type="Gradient" id="Gradient_yyxb3"]
 
