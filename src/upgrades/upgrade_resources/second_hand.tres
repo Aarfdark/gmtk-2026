@@ -22,7 +22,7 @@ gradient = SubResource("Gradient_yyxb3")
 
 [resource]
 script = ExtResource("2_uig34")
-cost = 10
+cost = 120
 texture = SubResource("GradientTexture2D_fc8ok")
 name = " Secondhand Second Hand"
 description = "Replace that pitiful Third Hand with this old trinket! Goes back 60 seconds per rotation, but is [b]MUCH[/b] heavier."

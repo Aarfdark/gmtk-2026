@@ -8,12 +8,11 @@
 [ext_resource type="Resource" uid="uid://coxfhuvnrpdcb" path="res://upgrades/upgrade_resources/minute_hand.tres" id="5_nic8e"]
 [ext_resource type="Resource" uid="uid://dxrmpggo4s57a" path="res://upgrades/upgrade_resources/same_hamster.tres" id="6_1j8mj"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/upgrade_resources/second_hand.tres" id="7_xanpn"]
-[ext_resource type="Resource" uid="uid://desfbi2j25w2o" path="res://upgrades/upgrade_resources/wd40.tres" id="8_r8iy6"]
 [ext_resource type="Resource" uid="uid://bxoybm2thyd8l" path="res://upgrades/upgrade_resources/wdcd.tres" id="9_rcs5v"]
 [ext_resource type="Resource" uid="uid://d3e5ev4wofy24" path="res://upgrades/upgrade_resources/wdiv.tres" id="10_dv8dq"]
 [ext_resource type="Resource" uid="uid://desfbi2j25w2o" path="res://upgrades/upgrade_resources/wdxl.tres" id="11_xro8q"]
 
 [resource]
 script = ExtResource("1_7rfia")
-locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("8_r8iy6"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq"), ExtResource("11_xro8q")])
+locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("10_dv8dq"), ExtResource("11_xro8q"), ExtResource("9_rcs5v")])
 metadata/_custom_type_script = "uid://dfqohajdnq1pm"

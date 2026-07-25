@@ -12,9 +12,9 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("2_0ifw1")
-cost = 20000
+cost = 10
 texture = ExtResource("3_7nnf7")
-name = "WD-CD"
+name = "WD-IV"
 description = "Crude lubricant. Beats water, usually."
 effects = Array[ExtResource("1_7nnf7")]([SubResource("Resource_fq2nw")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"
