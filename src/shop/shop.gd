@@ -23,6 +23,7 @@ var _selected_button: UpgradeButton
 @onready var buy_button: Button = %BuyButton
 @onready var cancel_button: Button = %CancelButton
 
+var upgradeQueue: Array[Upgrade] = []
 
 func _ready() -> void:
 	if not ProjectSettings.get_setting("custom/unlock_all_upgrades"):
@@ -33,6 +34,14 @@ func _ready() -> void:
 		var upgrade: Upgrade = load("res://upgrades/" + path) as Upgrade
 		if upgrade:
 			instantiate_button(upgrade)
+			
+	
+func init_game_state(gs: GameState):
+	game_state = gs
+	game_state.upgrade_unlocked.connect(instantiate_button)
+	game_state.check_unlocks()
+func queue_upgrade(upgrade: Upgrade) -> void:
+	upgradeQueue.append(upgrade)
 
 
 func _unhandled_input(event: InputEvent) -> void:
