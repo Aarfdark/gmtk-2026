@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgb60t3537k24" path="res://clock/clock.gd" id="1_fk4wj"]
 [ext_resource type="Texture2D" uid="uid://ccq5mvu05av0p" path="res://clock/clock_face.png" id="1_vx6em"]
-[ext_resource type="Texture2D" uid="uid://bomi4ing376mx" path="res://clock/second_hand.png" id="2_ru58x"]
+[ext_resource type="Texture2D" uid="uid://bomi4ing376mx" path="res://clock/third_hand.png" id="2_ru58x"]
 
 [sub_resource type="Gradient" id="Gradient_xrin6"]
 offsets = PackedFloat32Array(0, 0.75661373, 1)
