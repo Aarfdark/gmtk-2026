@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cw531elkaceb6" path="res://main/time_label.gd" id="1_wdoo0"]
 [ext_resource type="Script" uid="uid://dasvtrr3d66db" path="res://main/main_hud.gd" id="1_yxwbc"]
 [ext_resource type="Resource" uid="uid://dht8l04mab2ep" path="res://custom_resources/starting_game_state.tres" id="2_7shfy"]
+[ext_resource type="StyleBox" uid="uid://bidvhwetm6syx" path="res://theming/display_texture.tres" id="3_kn8ns"]
 [ext_resource type="FontFile" uid="uid://bdn4y8dm5na4l" path="res://theming/DigitTech7-Regular.ttf" id="4_7shfy"]
 [ext_resource type="Texture2D" uid="uid://dhf24suf6wnuy" path="res://settings/settings.png" id="5_3p5vu"]
 [ext_resource type="Texture2D" uid="uid://dags5e7uwwpq1" path="res://main/doofOS.png" id="5_ka1xg"]
@@ -15,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b7n3856tgb8kb" path="res://main/hamster_wheel.png" id="8_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
 [ext_resource type="Script" uid="uid://mlfeer62bwe7" path="res://main/hamster_label.gd" id="11_pu65k"]
-[ext_resource type="PackedScene" uid="uid://b13lgsuwo8cvw" path="res://main/shop_panel.tscn" id="13_ka1xg"]
+[ext_resource type="PackedScene" uid="uid://b13lgsuwo8cvw" path="res://shop/shop_panel.tscn" id="13_ka1xg"]
 [ext_resource type="StyleBox" uid="uid://06aanstrj00d" path="res://theming/wood_texture.tres" id="14_pusfw"]
 [ext_resource type="AudioStream" uid="uid://b0tckeb71jfma" path="res://audio/bassline.ogg" id="16_pusfw"]
 
@@ -61,6 +62,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.2
 mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_kn8ns")
 
 [node name="TimeLabels" type="VBoxContainer" parent="HUDSections/TopSection/TimePanel" unique_id=1539254180]
 layout_mode = 2
@@ -87,6 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_kn8ns")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUDSections/TopSection/MessagePanel" unique_id=964217460]
 layout_mode = 2
