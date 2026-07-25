@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://lu5j6lybih74" path="res://dialogue_box/dialogue_box.tscn" id="7_pusfw"]
 [ext_resource type="Texture2D" uid="uid://b7n3856tgb8kb" path="res://main/hamster_wheel.png" id="8_sqrt5"]
 [ext_resource type="PackedScene" uid="uid://dam5jfqpjkmk1" path="res://settings/settings_menu.tscn" id="9_wbng2"]
+[ext_resource type="Script" uid="uid://mlfeer62bwe7" path="res://main/hamster_label.gd" id="11_pu65k"]
 [ext_resource type="PackedScene" uid="uid://b13lgsuwo8cvw" path="res://main/shop_panel.tscn" id="13_ka1xg"]
 [ext_resource type="StyleBox" uid="uid://06aanstrj00d" path="res://theming/wood_texture.tres" id="14_pusfw"]
 [ext_resource type="AudioStream" uid="uid://b0tckeb71jfma" path="res://audio/bassline.ogg" id="16_pusfw"]
@@ -154,12 +155,15 @@ layout_mode = 2
 theme_override_constants/separation = 32
 
 [node name="HamsterLabel" type="Label" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer2" unique_id=1407761857]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "0"
+text = "0
+(0.00 s/s)"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("11_pu65k")
 
 [node name="PanelContainer" type="PanelContainer" parent="HUDSections/BottomSection/InventoryPanel/VBoxContainer/HBoxContainer2" unique_id=188962089]
 layout_mode = 2
@@ -183,7 +187,6 @@ size_flags_vertical = 4
 
 [node name="Clock" parent="HUDSections/BottomSection/DialPanel/Center" unique_id=2103397852 instance=ExtResource("1_2ybbj")]
 unique_name_in_owner = true
-follow_rate = 4.0
 input_method = "Toggle Click"
 
 [node name="ShopPanel" parent="HUDSections/BottomSection" unique_id=1215246801 instance=ExtResource("13_ka1xg")]
@@ -215,5 +218,9 @@ stream = SubResource("AudioStreamSynchronized_dbkw5")
 autoplay = true
 bus = &"Music"
 
+[node name="ActualSeconds" type="Timer" parent="." unique_id=296975852]
+autostart = true
+
 [connection signal="revolution_completed" from="HUDSections/BottomSection/DialPanel/Center/Clock" to="." method="_on_clock_revolution_completed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="timeout" from="ActualSeconds" to="." method="_on_actual_seconds_timeout"]
