@@ -2,7 +2,7 @@ extends Node2D
 
 signal revolution_completed
 
-@export_range(1, 25) var follow_rate: float = 4.0
+@export_range(1, 25) var follow_rate: float = 2.0
 @export_range(0, 4) var wrong_follow_rate: float = 0.2
 @export_enum("Toggle Click", "Click and Hold", "Keyboard/Controller") var input_method: String
 @export var halo_change_rate: float = 5.0
