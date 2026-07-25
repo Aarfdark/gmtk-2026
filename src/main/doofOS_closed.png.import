@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4lrqp55kmqtq"
-path="res://.godot/imported/second_hand.png-5840af3f82c15637bd1bc4b5f01f4ba7.ctex"
+uid="uid://d1parp3botym1"
+path="res://.godot/imported/doofOS_closed.png-d6799659f6ed8358d436b697cdadddd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://clock/second_hand.png"
-dest_files=["res://.godot/imported/second_hand.png-5840af3f82c15637bd1bc4b5f01f4ba7.ctex"]
+source_file="res://main/doofOS_closed.png"
+dest_files=["res://.godot/imported/doofOS_closed.png-d6799659f6ed8358d436b697cdadddd7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4lrqp55kmqtq"
-path="res://.godot/imported/second_hand.png-5840af3f82c15637bd1bc4b5f01f4ba7.ctex"
+uid="uid://jua8jpsbj8cn"
+path="res://.godot/imported/WD-CD.png-b76364466cbd8335aa7ed14df349fd8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://clock/second_hand.png"
-dest_files=["res://.godot/imported/second_hand.png-5840af3f82c15637bd1bc4b5f01f4ba7.ctex"]
+source_file="res://upgrades/WD-CD.png"
+dest_files=["res://.godot/imported/WD-CD.png-b76364466cbd8335aa7ed14df349fd8e.ctex"]
 
 [params]
 

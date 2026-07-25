@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4lrqp55kmqtq"
-path="res://.godot/imported/second_hand.png-5840af3f82c15637bd1bc4b5f01f4ba7.ctex"
+uid="uid://cb6b4l5nc4b8b"
+path="res://.godot/imported/WD-XL.png-3303a40ef8af8435dc8d03eca51e1b3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://clock/second_hand.png"
-dest_files=["res://.godot/imported/second_hand.png-5840af3f82c15637bd1bc4b5f01f4ba7.ctex"]
+source_file="res://upgrades/WD-XL.png"
+dest_files=["res://.godot/imported/WD-XL.png-3303a40ef8af8435dc8d03eca51e1b3e.ctex"]
 
 [params]
 

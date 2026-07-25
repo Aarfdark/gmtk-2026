@@ -22,7 +22,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
 font_size = 128
-font_color = Color(0.72557825, 0, 0.03410189, 1)
+font_color = Color(0, 0, 0, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
