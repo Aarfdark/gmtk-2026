@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgb60t3537k24" path="res://clock/clock.gd" id="1_fk4wj"]
 [ext_resource type="Texture2D" uid="uid://cbop6pfaymx2p" path="res://main/clock_face.png" id="2_fk4wj"]
-[ext_resource type="Texture2D" uid="uid://bomi4ing376mx" path="res://clock/third_hand.png" id="2_ru58x"]
+[ext_resource type="Texture2D" uid="uid://d273047csfbg3" path="res://clock/day_hand.png" id="3_fk4wj"]
 
 [sub_resource type="Gradient" id="Gradient_xrin6"]
 offsets = PackedFloat32Array(0, 0.75661373, 1)
@@ -69,7 +69,7 @@ texture = ExtResource("2_fk4wj")
 
 [node name="Hand" type="Sprite2D" parent="." unique_id=1295537813]
 rotation = -1.5707964
-texture = ExtResource("2_ru58x")
+texture = ExtResource("3_fk4wj")
 
 [node name="Area2D" type="Area2D" parent="Hand" unique_id=2122588955]
 
