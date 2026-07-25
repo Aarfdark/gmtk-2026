@@ -8,7 +8,7 @@ extends Control
 			await ready
 		time_label_iso.game_state = game_state
 		time_label_unix.game_state = game_state
-		shop_panel.game_state = game_state
+		shop_panel.init_game_state(game_state)
 		sands_label.game_state = game_state
 		hamster_label.game_state = game_state
 		clock.game_state = game_state

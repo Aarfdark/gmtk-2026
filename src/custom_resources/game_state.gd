@@ -2,6 +2,7 @@ class_name GameState
 extends Resource
 
 signal countdown_ended
+signal upgrade_unlocked(upgrade: Upgrade)
 
 const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 
@@ -30,8 +31,10 @@ const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 			sands = 0
 			return
 		sands = value
+		check_unlocks()
 		emit_changed()
 
+@export var locked_upgrades: Array[Upgrade] = []
 @export var purchased_upgrades: Array[Upgrade] = []
 @export var active_effects: Array[UpgradeEffect] = []
 
@@ -83,3 +86,25 @@ func add_upgrade(upgrade: Upgrade) -> void:
 
 func get_datetime() -> String:
 	return Time.get_datetime_string_from_unix_time(seconds_remaining, true)
+
+func check_unlocks() -> void:
+	var to_unlock: Array[Upgrade] = []
+	
+	for upgrade in locked_upgrades:
+		if upgrade.unlock_conditions == null:
+			to_unlock.append(upgrade)
+			continue
+		var passing: bool = true
+		for cond in upgrade.unlock_conditions:
+			if not cond.is_condition_cleared(self):
+				passing = false
+				break
+		if passing:
+			to_unlock.append(upgrade)
+	for u in to_unlock:
+		locked_upgrades.erase(u)
+		upgrade_unlocked.emit(u)
+
+			
+			
+			
