@@ -12,6 +12,6 @@ metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [resource]
 script = ExtResource("2_ayc6m")
-lines = "As we all know, one rotation of the month hand will get you back a year! That’s why there are 12 numbers on a clock."
+lines = "As we all know, one rotation of the month hand will get you back a year! That’s why there are 12 numbers on a clock. 1970, here we come!"
 conditions = Array[ExtResource("1_51l2l")]([SubResource("Resource_j64w7")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"
