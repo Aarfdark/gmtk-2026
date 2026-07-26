@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_djtnb"]
 [ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="4_da1s6"]
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="5_t7jla"]
-[ext_resource type="Texture2D" uid="uid://jua8jpsbj8cn" path="res://upgrades/WD-CD.png" id="6_polxm"]
+[ext_resource type="Texture2D" uid="uid://dch1dgu7xrw67" path="res://upgrades/WD-MMMM.png" id="6_2jwf3"]
 
 [sub_resource type="Resource" id="Resource_fqp7y"]
 script = ExtResource("3_djtnb")
@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 [resource]
 script = ExtResource("5_t7jla")
 cost = 4000
-texture = ExtResource("6_polxm")
+texture = ExtResource("6_2jwf3")
 name = "WD-MMMM"
 description = "Yet [b]another[/b] can of the stuff couldn't hurt, right?"
 effects = Array[ExtResource("4_da1s6")]([SubResource("Resource_fq2nw")])
