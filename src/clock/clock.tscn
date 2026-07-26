@@ -127,7 +127,8 @@ gradient = SubResource("Gradient_wcf73")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=777862712]
 stream = SubResource("AudioStreamWAV_fk4wj")
-bus = &"SFX"
+bus = &"ReverbSFX"
+playback_type = 1
 
 [connection signal="revolution_completed" from="." to="AudioStreamPlayer" method="play"]
 [connection signal="mouse_entered" from="Hand/Area2D" to="." method="_on_area_2d_mouse_entered"]
