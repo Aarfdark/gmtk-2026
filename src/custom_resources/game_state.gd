@@ -36,7 +36,7 @@ const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 
 @export var locked_upgrades: Array[Upgrade] = []
 @export var purchased_upgrades: Array[Upgrade] = []
-@export var active_effects: Array[UpgradeEffect] = []
+var active_effects: Array[UpgradeEffect] = []
 
 @export var dial_mag_base: int = 1
 @export var hamster_speed_base: float = 0.5
@@ -76,13 +76,13 @@ func update_attributes() -> void:
 
 func add_upgrade(upgrade: Upgrade) -> void:
 	# WARN: might need special case for more hamster
-	if upgrade in purchased_upgrades and not upgrade.repeatable:
-		push_error("Took the same upgrade twice")
-		return
-	purchased_upgrades.append(upgrade)
-	if upgrade.repeatable:
+	if upgrade in purchased_upgrades:
+		if not upgrade.repeatable:
+			push_error("Took the same upgrade twice")
+			return
 		upgrade_unlocked.emit(upgrade)
-		upgrade.cost += 100
+		upgrade.cost = int(upgrade.cost * 1.5)
+	purchased_upgrades.append(upgrade)
 	for upgrade_effect: UpgradeEffect in upgrade.effects:
 		active_effects.append(upgrade_effect)
 
