@@ -145,4 +145,6 @@ func _on_buy_button_pressed() -> void:
 func _on_game_state_changed() -> void:
 	if _selected_button == null:
 		return
+	if _tween and _tween.is_running():
+		return
 	buy_button.disabled = game_state.sands < _selected_button.upgrade.cost
