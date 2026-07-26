@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_xexx2"]
 [ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="2_eninf"]
-[ext_resource type="Script" uid="uid://5jeeoc7v63kn" path="res://upgrades/unlock_types/SandsCondition.gd" id="2_pkjlf"]
+[ext_resource type="Script" uid="uid://dbydx4s4tbvpe" path="res://upgrades/unlock_types/DateCondition.gd" id="2_pkjlf"]
 
-[sub_resource type="Resource" id="Resource_orqjq"]
+[sub_resource type="Resource" id="Resource_1oswg"]
 script = ExtResource("2_pkjlf")
-sand_threshold = 1500000000
-metadata/_custom_type_script = "uid://5jeeoc7v63kn"
+datetime_threshold = "1971-01-01 00:00:00"
+metadata/_custom_type_script = "uid://dbydx4s4tbvpe"
 
 [resource]
 script = ExtResource("2_eninf")
-lines = "OHHHHHHHHHHHHHHHHHHHHHHHHHH okay. It seems like this machine runs on... an unsigned 64-bit system..... Lemme just run those calculations......
+lines = "OHHHHHHHHHHHHHHHHHHHH okay. It seems like this machine runs on... an unsigned 64-bit system..... Lemme just run those calculations......
 Hm. 2 raised to the 64th seconds is approximately... 585 billion years. The Sun died approximately 580 billion years ago. Well, it seems that your spinning hasn’t stopped. We must venture onwards to return to your time!"
-conditions = Array[ExtResource("1_xexx2")]([SubResource("Resource_orqjq")])
+conditions = Array[ExtResource("1_xexx2")]([SubResource("Resource_1oswg")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"
