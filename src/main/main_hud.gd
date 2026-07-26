@@ -33,6 +33,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("DEBUG_go_to_title"):
 		get_tree().change_scene_to_file("uid://d0dn16nq6qsd7")
+	if event.is_action_pressed("DEBUG_increment_sands"):
+		game_state.sands *= 2
 
 
 func _process(delta: float) -> void:
