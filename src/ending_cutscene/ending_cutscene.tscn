@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://bxmq1ef2h01uh"]
+
+[ext_resource type="Resource" uid="uid://b7p1saxfvedlt" path="res://dialogue_box/dialog_resources/Ending.tres" id="1_d4io1"]
+[ext_resource type="Texture2D" uid="uid://yx81cark2mil" path="res://ending_cutscene/end_cutscene.png" id="1_m64a4"]
+[ext_resource type="Texture2D" uid="uid://slu28yvfap7s" path="res://ending_cutscene/time_machine.png" id="2_atfb6"]
+[ext_resource type="StyleBox" uid="uid://bidvhwetm6syx" path="res://theming/display_texture.tres" id="2_e6myt"]
+[ext_resource type="Texture2D" uid="uid://dags5e7uwwpq1" path="res://main/doofOS.png" id="3_d4io1"]
+[ext_resource type="FontFile" uid="uid://ds5uhh23x1cwj" path="res://theming/Jupiteroid-Regular.ttf" id="4_n2ie8"]
+[ext_resource type="PackedScene" uid="uid://lu5j6lybih74" path="res://dialogue_box/dialogue_box.tscn" id="6_h228i"]
+
+[sub_resource type="GDScript" id="GDScript_w3rs6"]
+resource_name = "ending_cutscene"
+script/source = "extends Node2D
+
+
+@export var ending_dialog: Dialog
+@export var title_scene: String = \"res://title/title_screen.tscn\"
+func _ready() -> void:
+	%DialogueBox.queue_dialog(ending_dialog)
+
+
+func _on_return_to_title_pressed() -> void:
+	SceneTransitioner.go_to_scene(title_scene)
+
+
+func _on_dialogue_box_dialog_complete() -> void:
+	$CanvasLayer/ReturnToTitle.visible = true
+"
+
+[sub_resource type="GDScript" id="GDScript_eof2g"]
+resource_name = "time_machine"
+script/source = "extends Sprite2D
+
+@export var rotation_speed: float = PI /10
+
+func _process(delta: float) -> void:
+	rotate(rotation_speed * delta)
+	
+"
+
+[node name="EndingCutscene" type="Node2D" unique_id=1239359121]
+script = SubResource("GDScript_w3rs6")
+ending_dialog = ExtResource("1_d4io1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1451025170]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1253621978]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_m64a4")
+
+[node name="MessagePanel" type="PanelContainer" parent="CanvasLayer" unique_id=1637764885]
+offset_right = 592.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_e6myt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessagePanel" unique_id=2008519037]
+layout_mode = 2
+
+[node name="DoofOSGraphic" type="HBoxContainer" parent="CanvasLayer/MessagePanel/VBoxContainer" unique_id=1664783586]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DoofOSIcon" type="TextureRect" parent="CanvasLayer/MessagePanel/VBoxContainer/DoofOSGraphic" unique_id=1533568216]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_d4io1")
+stretch_mode = 5
+
+[node name="DoofOSLabel" type="Label" parent="CanvasLayer/MessagePanel/VBoxContainer/DoofOSGraphic" unique_id=1029626892]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_n2ie8")
+text = "DoofOS vIV.ii"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessagePanel/VBoxContainer" unique_id=1399427114]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DialogueBox" parent="CanvasLayer/MessagePanel/VBoxContainer/VBoxContainer" unique_id=937354533 node_paths=PackedStringArray("advance_button") instance=ExtResource("6_h228i")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "
+"
+scroll_following_visible_characters = true
+advance_button = NodePath("../../AdvanceButton")
+
+[node name="AdvanceButton" type="Button" parent="CanvasLayer/MessagePanel/VBoxContainer" unique_id=2014263583]
+layout_mode = 2
+text = "[Space] Next Message"
+
+[node name="ReturnToTitle" type="Button" parent="CanvasLayer" unique_id=558437636]
+visible = false
+offset_left = 1131.0
+offset_top = 869.0
+offset_right = 1419.0
+offset_bottom = 932.0
+text = "Return to title"
+
+[node name="TimeMachine" type="Sprite2D" parent="." unique_id=1484019108]
+position = Vector2(1281, 519)
+scale = Vector2(1.65, 1.65)
+texture = ExtResource("2_atfb6")
+script = SubResource("GDScript_eof2g")
+
+[connection signal="dialog_complete" from="CanvasLayer/MessagePanel/VBoxContainer/VBoxContainer/DialogueBox" to="." method="_on_dialogue_box_dialog_complete"]
+[connection signal="pressed" from="CanvasLayer/ReturnToTitle" to="." method="_on_return_to_title_pressed"]

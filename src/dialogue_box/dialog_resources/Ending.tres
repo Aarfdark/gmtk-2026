@@ -12,6 +12,8 @@ metadata/_custom_type_script = "uid://dbydx4s4tbvpe"
 [resource]
 script = ExtResource("2_eninf")
 lines = "OHHHHHHHHHHHHHHHHHHHH okay. It seems like this machine runs on... an unsigned 64-bit system..... Lemme just run those calculations......
-Hm. 2 raised to the 64th seconds is approximately... 585 billion years. The Sun died approximately 580 billion years ago. Well, it seems that your spinning hasn’t stopped. We must venture onwards to return to your time!"
+Hm. 2 raised to the 64th seconds is approximately... 585 billion years. The Sun died approximately 580 billion years ago. Well, it seems that your spinning hasn’t stopped. We must venture onwards to return to your time!
+This game was created for the 2026 GMTK Game Jam. Thanks for playing.
+I love you."
 conditions = Array[ExtResource("1_xexx2")]([SubResource("Resource_1oswg")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"
