@@ -49,6 +49,7 @@ metadata/_custom_type_script = "uid://mb1ynyyowxg7"
 
 [resource]
 script = ExtResource("1_7rfia")
+sands = 1000
 locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("11_xro8q"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq")])
 unqueued_dialog = Array[ExtResource("12_nic8e")]([SubResource("Resource_bn37k"), SubResource("Resource_crv2k"), SubResource("Resource_kn8ns")])
 metadata/_custom_type_script = "uid://dfqohajdnq1pm"
