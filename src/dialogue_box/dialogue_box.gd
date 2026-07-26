@@ -11,7 +11,7 @@ var typing_timer: Timer = Timer.new()
 var num_dialogue: int = 0
 var cur_line: String
 
-var dialogue_queue: Array[Dialog] = [] # Likely should be updated so dialog is a custome resource
+var dialogue_queue: Array[Dialog] = []
 
 
 func _ready() -> void:
