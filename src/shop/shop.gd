@@ -46,13 +46,6 @@ func queue_upgrade(upgrade: Upgrade) -> void:
 	upgradeQueue.append(upgrade)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not ProjectSettings.get_setting("custom/enable_debug_keybinds"):
-		return
-	if event.is_action_pressed("DEBUG_increment_sands"):
-		instantiate_button(load("res://upgrades/second_hand.tres"))
-
-
 func instantiate_button(upgrade: Upgrade) -> void:
 	var new_upgrade_button: UpgradeButton = UpgradeButtonScene.instantiate() as UpgradeButton
 	new_upgrade_button.upgrade = upgrade
