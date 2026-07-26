@@ -73,8 +73,6 @@ func play_next_dialog() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not ProjectSettings.get_setting("custom/enable_debug_keybinds"):
-		return
 	if event.is_action_pressed("skip_dialog"):
 		if typing_timer.is_stopped():
 			play_next_line()
