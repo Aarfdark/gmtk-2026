@@ -13,6 +13,7 @@ extends Control
 		hamster_label.game_state = game_state
 		clock.game_state = game_state
 		dialog_box.init_game_state(game_state)
+		game_state.check_conditions()
 
 @onready var sands_label: SandsLabel = %SandsLabel
 @onready var hamster_label: HamsterLabel = %HamsterLabel
