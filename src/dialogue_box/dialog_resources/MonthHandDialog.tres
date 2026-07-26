@@ -2,8 +2,16 @@
 
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_51l2l"]
 [ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="2_ayc6m"]
+[ext_resource type="Resource" uid="uid://bpr6j55w670c3" path="res://upgrades/upgrade_resources/month_hand.tres" id="2_buox0"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_ux0kb"]
+
+[sub_resource type="Resource" id="Resource_j64w7"]
+script = ExtResource("3_ux0kb")
+priorUpgrade = ExtResource("2_buox0")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [resource]
 script = ExtResource("2_ayc6m")
-lines = "As we all know, one rotation of the month hand will get you back a year! That’s why there are 12 numbers on a clock."
+lines = "As we all know, one rotation of the month hand will get you back a year! That’s why there are 12 numbers on a clock. 1970, here we come!"
+conditions = Array[ExtResource("1_51l2l")]([SubResource("Resource_j64w7")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"

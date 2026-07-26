@@ -6,9 +6,13 @@ const UpgradeButtonScene = preload("uid://dl2qapeg023np")
 @export var tween_duration := 0.5
 @export var tween_scale := 1.5
 @export var return_scale := 1.0
+@export var hand_sprites: Array[Texture2D]
 
 var game_state: GameState
 
+var hand_count = 0
+
+var upgradeQueue: Array[Upgrade] = []
 var _return_pos: Vector2
 var _tween: Tween
 var _selected_button: UpgradeButton
@@ -24,31 +28,11 @@ var _selected_button: UpgradeButton
 @onready var cancel_button: Button = %CancelButton
 @onready var clock_hand: Sprite2D = %Clock/Hand
 
-@onready var second_hand := preload("res://clock/second_hand.png")
-@onready var minute_hand := preload("res://clock/minute_hand.png")
-@onready var hour_hand := preload("res://clock/hour_hand.png")
-@onready var day_hand := preload("res://clock/day_hand.png")
-@onready var month_hand := preload("res://clock/month_hand.png")
-@onready var hands_list := [second_hand, minute_hand, hour_hand, day_hand, month_hand]
-@onready var hand_count = 0
-
-var upgradeQueue: Array[Upgrade] = []
-
-
-func _ready() -> void:
-	if not ProjectSettings.get_setting("custom/unlock_all_upgrades"):
-		return
-	for path: String in DirAccess.get_files_at("res://upgrades"):
-		if not path.ends_with(".tres"):
-			continue
-		var upgrade: Upgrade = load("res://upgrades/" + path) as Upgrade
-		if upgrade:
-			instantiate_button(upgrade)
-
 
 func init_game_state(gs: GameState):
 	game_state = gs
 	game_state.upgrade_unlocked.connect(instantiate_button)
+	game_state.changed.connect(_on_game_state_changed)
 
 
 func queue_upgrade(upgrade: Upgrade) -> void:
@@ -59,6 +43,7 @@ func instantiate_button(upgrade: Upgrade) -> void:
 	var new_upgrade_button: UpgradeButton = UpgradeButtonScene.instantiate() as UpgradeButton
 	new_upgrade_button.upgrade = upgrade
 	new_upgrade_button.pressed.connect(_on_upgrade_button_pressed.bind(new_upgrade_button))
+	new_upgrade_button.game_state = game_state
 	upgrade_button_grid.add_child(new_upgrade_button)
 
 
@@ -129,6 +114,7 @@ func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
 	_tween.tween_property(buy_prompt, "modulate:a", 1.0, tween_duration).from(0.0)
 	await _tween.finished
 	toggle_prompt_inputs(true)
+	_on_game_state_changed()
 
 
 # undo previous tweens
@@ -148,9 +134,17 @@ func _on_buy_button_pressed() -> void:
 
 	# change hand png
 	if bought_upgrade.name.contains("Hand"):
-		clock_hand.texture = hands_list[hand_count]
 		hand_count += 1
+		clock_hand.texture = hand_sprites[hand_count]
 
 	# TODO: fancy confirm animation
 	_selected_button.reparent(displayed_slot)
 	restore_grid(false)
+
+
+func _on_game_state_changed() -> void:
+	if _selected_button == null:
+		return
+	if _tween and _tween.is_running():
+		return
+	buy_button.disabled = game_state.sands < _selected_button.upgrade.cost

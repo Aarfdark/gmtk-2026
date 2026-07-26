@@ -18,12 +18,17 @@ type = 1
 upgrade_value = 60.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
+[sub_resource type="Resource" id="Resource_2jwf3"]
+script = ExtResource("1_xrtg2")
+upgrade_value = -4.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
 [resource]
 script = ExtResource("2_wfw8b")
-cost = 10
+cost = 2500
 texture = ExtResource("4_h0qr4")
 name = "Minute Minute Hand"
 description = "It's a bit small, but it gets the job done. Somehow heavier than the second hand though."
-effects = Array[ExtResource("1_xrtg2")]([SubResource("Resource_evmrh")])
+effects = Array[ExtResource("1_xrtg2")]([SubResource("Resource_evmrh"), SubResource("Resource_2jwf3")])
 conditions = Array[ExtResource("3_n8dct")]([SubResource("Resource_gjf11")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

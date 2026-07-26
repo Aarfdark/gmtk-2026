@@ -12,7 +12,6 @@ metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [resource]
 script = ExtResource("2_tw06h")
-lines = "Ah, the ol’ WD line... did you know that it stands for “Well oileDmachine?”
-"
+lines = "Ah, the ol’ WD line... did you know that it stands for “Well oileDmachine?”"
 conditions = Array[ExtResource("1_yw8kv")]([SubResource("Resource_tdobx")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"

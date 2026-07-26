@@ -12,3 +12,8 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_no5ax")
 visible_characters_behavior = 1
 script = ExtResource("1_rgaxe")
+
+[node name="TypingTimer" type="Timer" parent="." unique_id=768781031]
+wait_time = 0.030000000000000002
+
+[connection signal="timeout" from="TypingTimer" to="." method="_on_typing_timer_timeout"]

@@ -11,6 +11,6 @@ metadata/_custom_type_script = "uid://5jeeoc7v63kn"
 
 [resource]
 script = ExtResource("2_x1eg1")
-lines = "You’ve got so much sand! Good thing the suckers in this year don’t know what gold looks like."
+lines = "You’ve got so much sand! Good thing the suckers in this year can't distinguish it from pure gold."
 conditions = Array[ExtResource("1_tpuro")]([SubResource("Resource_s4cq8")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"

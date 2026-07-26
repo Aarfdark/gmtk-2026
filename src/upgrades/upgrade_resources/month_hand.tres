@@ -15,14 +15,20 @@ metadata/_custom_type_script = "uid://cuet122xpcmt6"
 [sub_resource type="Resource" id="Resource_grbgr"]
 script = ExtResource("2_o0ejy")
 type = 1
-upgrade_value = 12.0
+upgrade_value = 12.167
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
+[sub_resource type="Resource" id="Resource_da1s6"]
+script = ExtResource("2_o0ejy")
+upgrade_value = -4.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("3_lnv70")
+cost = 299792458
 texture = ExtResource("4_mcvyf")
 name = "Month Hand"
 description = "This is getting ridiculous."
-effects = Array[ExtResource("2_o0ejy")]([SubResource("Resource_grbgr")])
+effects = Array[ExtResource("2_o0ejy")]([SubResource("Resource_grbgr"), SubResource("Resource_da1s6")])
 conditions = Array[ExtResource("1_mcvyf")]([SubResource("Resource_lw12k")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

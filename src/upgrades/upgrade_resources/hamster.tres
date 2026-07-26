@@ -13,8 +13,8 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("2_uoo51")
-cost = 50
+cost = 30
 name = "A Hamster"
-description = "A furry friend to call your own! Runs on a wheel to spin the wheel for you."
+description = "A furry friend to call your own! Runs on a wheel to turn the gears for you."
 effects = Array[ExtResource("1_xri4a")]([SubResource("Resource_ljurs")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

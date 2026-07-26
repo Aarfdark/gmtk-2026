@@ -12,7 +12,6 @@ metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [resource]
 script = ExtResource("2_dx0i3")
-lines = "Hey look at that, you’ve got a buddy to help you spin that wheel!
-"
+lines = "Hey look at that, you’ve got a buddy to help you spin that wheel!"
 conditions = Array[ExtResource("1_5t2qi")]([SubResource("Resource_kwh6m")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"

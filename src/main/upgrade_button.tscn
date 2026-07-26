@@ -2,11 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bo0oueo5pakjo" path="res://main/upgrade_button.gd" id="1_evmrh"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/upgrade_resources/second_hand.tres" id="2_so4iq"]
+[ext_resource type="Texture2D" uid="uid://ck3gndn63mhc2" path="res://upgrades/second_hand_shop.png" id="3_v4sxv"]
 
-[sub_resource type="Gradient" id="Gradient_yyxb3"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fc8ok"]
-gradient = SubResource("Gradient_yyxb3")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbkw5"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 2
 
 [node name="UpgradeButton" type="Button" unique_id=1212196077]
 custom_minimum_size = Vector2(144, 144)
@@ -29,6 +35,17 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_fc8ok")
+texture = ExtResource("3_v4sxv")
+
+[node name="Border" type="Panel" parent="." unique_id=642169645]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbkw5")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
