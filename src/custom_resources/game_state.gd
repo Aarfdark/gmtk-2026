@@ -39,7 +39,7 @@ const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 var active_effects: Array[UpgradeEffect] = []
 
 @export var dial_mag_base: int = 1
-@export var hamster_speed_base: float = 0.5
+@export var hamster_speed_base: float = 2.1
 
 var hamster_count: float = 0.0
 var hamster_speed: float = hamster_speed_base
