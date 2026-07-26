@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Dialog" format=3 uid="uid://dqtbwxgevslon"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_yu6j5"]
+[ext_resource type="Script" uid="uid://dbydx4s4tbvpe" path="res://upgrades/unlock_types/DateCondition.gd" id="2_e3bby"]
+[ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="3_d8xxe"]
+
+[sub_resource type="Resource" id="Resource_hxw0d"]
+script = ExtResource("2_e3bby")
+datetime_threshold = "1975-01-01 00:00:00"
+metadata/_custom_type_script = "uid://dbydx4s4tbvpe"
+
+[resource]
+script = ExtResource("3_d8xxe")
+lines = "You are soooooooo close girl you can do it!"
+conditions = Array[ExtResource("1_yu6j5")]([SubResource("Resource_hxw0d")])
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"
