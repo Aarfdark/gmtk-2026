@@ -1,6 +1,9 @@
 class_name DialogBox
 extends RichTextLabel
 
+
+signal dialog_complete
+
 var current_dialogue: PackedStringArray
 
 @export var advance_button: Button
@@ -57,6 +60,8 @@ func finish_typing() -> void:
 	advance_button.disabled = (
 		dialogue_queue.is_empty() and num_dialogue == current_dialogue.size()
 	)
+	if advance_button.disabled:
+		dialog_complete.emit()
 
 
 func play_next_line() -> void:

@@ -13,7 +13,9 @@ extends Control
 		hamster_label.game_state = game_state
 		clock.game_state = game_state
 		dialog_box.init_game_state(game_state)
+		init_game_state(game_state)
 		game_state.check_conditions()
+
 
 @onready var sands_label: SandsLabel = %SandsLabel
 @onready var hamster_label: HamsterLabel = %HamsterLabel
@@ -25,14 +27,22 @@ extends Control
 @onready var dialog_box: DialogBox = %DialogueBox
 var _tick_progress: float = 0.0
 
-
+func init_game_state(gs: GameState) -> void: 
+	gs.countdown_ended.connect(_on_countdown_ended)
+		
+func _on_countdown_ended() -> void:
+	create_tween().tween_property($MusicPlayer, "volume_db", -80.0, 0.7)
+	# $MusicPlayer.volume_db
+	SceneTransitioner.go_to_scene("res://ending_cutscene/ending_cutscene.tscn")
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		settings_menu.visible = not settings_menu.visible
 	if not ProjectSettings.get_setting("custom/enable_debug_keybinds"):
 		return
 	if event.is_action_pressed("DEBUG_go_to_title"):
-		get_tree().change_scene_to_file("uid://d0dn16nq6qsd7")
+		
+		#get_tree().change_scene_to_file("uid://d0dn16nq6qsd7")
+		game_state.seconds_remaining = 4
 	if event.is_action_pressed("DEBUG_increment_sands"):
 		game_state.sands *= 2
 

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bhtdk3vkujjuu"]
+
+[ext_resource type="StyleBox" uid="uid://bidvhwetm6syx" path="res://theming/display_texture.tres" id="1_513xi"]
+[ext_resource type="Texture2D" uid="uid://dags5e7uwwpq1" path="res://main/doofOS.png" id="2_j7c4i"]
+[ext_resource type="FontFile" uid="uid://ds5uhh23x1cwj" path="res://theming/Jupiteroid-Regular.ttf" id="3_givhq"]
+[ext_resource type="Texture2D" uid="uid://dhf24suf6wnuy" path="res://settings/settings.png" id="4_o8g2v"]
+[ext_resource type="PackedScene" uid="uid://lu5j6lybih74" path="res://dialogue_box/dialogue_box.tscn" id="5_np85d"]
+
+[node name="MessagePanel" type="PanelContainer" unique_id=999518490]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_513xi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=476393149]
+layout_mode = 2
+
+[node name="DoofOSGraphic" type="HBoxContainer" parent="VBoxContainer" unique_id=1286672504]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DoofOSIcon" type="TextureRect" parent="VBoxContainer/DoofOSGraphic" unique_id=1688976436]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_j7c4i")
+stretch_mode = 5
+
+[node name="DoofOSLabel" type="Label" parent="VBoxContainer/DoofOSGraphic" unique_id=1156164355]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_givhq")
+text = "DoofOS vIV.ii"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/DoofOSGraphic" unique_id=984384465]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("4_o8g2v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=737083466]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DialogueBox" parent="VBoxContainer/VBoxContainer" unique_id=937354533 node_paths=PackedStringArray("advance_button") instance=ExtResource("5_np85d")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "
+"
+scroll_following_visible_characters = true
+advance_button = NodePath("../../AdvanceButton")
+
+[node name="AdvanceButton" type="Button" parent="VBoxContainer" unique_id=1164326853]
+layout_mode = 2
+text = "[Space] Next Message"
