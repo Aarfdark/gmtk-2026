@@ -29,17 +29,6 @@ var _selected_button: UpgradeButton
 @onready var clock_hand: Sprite2D = %Clock/Hand
 
 
-func _ready() -> void:
-	if not ProjectSettings.get_setting("custom/unlock_all_upgrades"):
-		return
-	for path: String in DirAccess.get_files_at("res://upgrades"):
-		if not path.ends_with(".tres"):
-			continue
-		var upgrade: Upgrade = load("res://upgrades/" + path) as Upgrade
-		if upgrade:
-			instantiate_button(upgrade)
-
-
 func init_game_state(gs: GameState):
 	game_state = gs
 	game_state.upgrade_unlocked.connect(instantiate_button)
