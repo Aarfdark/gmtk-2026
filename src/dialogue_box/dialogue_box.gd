@@ -19,7 +19,7 @@ func _ready() -> void:
 	add_child(typing_timer)
 
 	# dialog_pause.one_shot=true
-	
+
 	# dialog_pause.timeout.connect(play_next_line)
 	# add_child(dialog_pause)
 
@@ -32,8 +32,12 @@ func queue_dialog(to_queue: Dialog) -> void:
 	dialogue_queue.append(to_queue)
 	if is_dialog_completed():
 		play_next_dialog()
+
+
 func is_dialog_completed() -> bool:
-	return  typing_timer.is_stopped() and num_dialogue == current_dialogue.size()
+	return typing_timer.is_stopped() and num_dialogue == current_dialogue.size()
+
+
 func display_text(line: String) -> void:
 	text = line
 	visible_characters = 0
@@ -45,7 +49,6 @@ func _on_typing_timer_timeout() -> void:
 		visible_characters += 1
 	else:
 		typing_timer.stop()
-
 
 
 func play_next_line() -> void:
@@ -69,15 +72,13 @@ func play_next_dialog() -> void:
 	play_next_line()
 
 
-
-
 func _input(event: InputEvent) -> void:
 	if not ProjectSettings.get_setting("custom/enable_debug_keybinds"):
 		return
 	if event.is_action_pressed("skip_dialog"):
 		if typing_timer.is_stopped():
 			play_next_line()
-		else: 
+		else:
 			typing_timer.stop()
 			visible_ratio = 1.0
 
