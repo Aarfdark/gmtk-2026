@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bmr6tiaciojdo"]
 
+[ext_resource type="FontFile" uid="uid://1amktycdl0p4" path="res://theming/Jupiteroid-Bold.ttf" id="1_gky5v"]
+[ext_resource type="StyleBox" uid="uid://bidvhwetm6syx" path="res://theming/display_texture.tres" id="1_yg0k8"]
+
 [node name="CreditsScene" type="Control" unique_id=451720347]
 layout_mode = 3
 anchors_preset = 15
@@ -15,32 +18,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_yg0k8")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1395836462]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=67823953]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "hiiiiiiiiii
-made by VernalUmbrella, Aarfdark, Gorgar2, Astrobowie, and MistOfJudgment
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 
-Clock ticking sound from https://freesound.org/people/giddster/sounds/434841/?
-I can make this better later"
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=437466195]
+layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel" unique_id=986223430]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer" unique_id=1395836462]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/bold_font = ExtResource("1_gky5v")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "[color=#009bff]Team[/color]
+Aarfdark - Programming (clock, shop), art, writing
+VernalUmbrella - Programming (upgrades, sfx, vfx, scene organization, UI/UX, ​most of it tbh)
+MistOfJudgement - Programming (debugging, upgrades, dialogue)
+AstroBowie - Music
+Zombinator - Programming (upgrades, QA)
+
+[color=#26e649]Tools[/color]
+Godot - Game Engine
+Pixelorama - Pixel Art
+
+[color=#e64a26]Assets[/color]
+Digit Tech Font, Jupiteroid Font by GGBotNet
+Clock ticking sound from https://freesound.org/people/giddster/sounds/434841/?"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=986223430]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 text = "Close"
 
-[connection signal="button_down" from="Panel/Button" to="." method="set_visible" binds= [false]]
+[connection signal="button_down" from="Panel/MarginContainer/VBoxContainer/Button" to="." method="set_visible" binds= [false]]
