@@ -2,11 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo0oueo5pakjo" path="res://main/upgrade_button.gd" id="1_evmrh"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/upgrade_resources/second_hand.tres" id="2_so4iq"]
-
-[sub_resource type="Gradient" id="Gradient_yyxb3"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fc8ok"]
-gradient = SubResource("Gradient_yyxb3")
+[ext_resource type="Texture2D" uid="uid://ck3gndn63mhc2" path="res://upgrades/second_hand_shop.png" id="3_v4sxv"]
 
 [node name="UpgradeButton" type="Button" unique_id=1212196077]
 custom_minimum_size = Vector2(144, 144)
@@ -29,6 +25,6 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_fc8ok")
+texture = ExtResource("3_v4sxv")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
