@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://d273047csfbg3" path="res://clock/day_hand.png" id="6_tpk8x"]
 [ext_resource type="Texture2D" uid="uid://cn3mog6u5tu00" path="res://clock/month_hand.png" id="7_uvbc3"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_2vqk6"]
+font_size = 64
+font_color = Color(1, 1, 0.41568628, 1)
+
 [node name="ShopPanel" type="PanelContainer" unique_id=1215246801]
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -72,24 +76,29 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ShopContent/BuyPrompt/HBoxContainer/VBoxContainer" unique_id=2005561895]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ShopContent/BuyPrompt/HBoxContainer/VBoxContainer" unique_id=1073159547]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_xwxkt")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ShopContent/BuyPrompt/HBoxContainer/VBoxContainer/PanelContainer" unique_id=2005561895]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContent/BuyPrompt/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1744293661]
-custom_minimum_size = Vector2(72, 72)
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContent/BuyPrompt/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1744293661]
 layout_mode = 2
 texture = ExtResource("3_de1po")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 3
+stretch_mode = 6
 
-[node name="CostLabel" type="Label" parent="VBoxContainer/ShopContent/BuyPrompt/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1869777576]
+[node name="CostLabel" type="Label" parent="VBoxContainer/ShopContent/BuyPrompt/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1869777576]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "9980127"
+label_settings = SubResource("LabelSettings_2vqk6")
 horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 4

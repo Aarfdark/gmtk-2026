@@ -136,6 +136,9 @@ func _on_buy_button_pressed() -> void:
 	if bought_upgrade.name.contains("Hand"):
 		hand_count += 1
 		clock_hand.texture = hand_sprites[hand_count]
+		# WARN: magic numbers everywhere
+		AudioServer.get_bus_effect(3, 0).set_pitch_scale(1 - (hand_count * 0.1))
+		AudioServer.get_bus_effect(3, 1).set_wet(hand_count * 0.2)
 
 	# TODO: fancy confirm animation
 	_selected_button.reparent(displayed_slot)
