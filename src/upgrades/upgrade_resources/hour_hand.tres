@@ -2,8 +2,15 @@
 
 [ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_8btit"]
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_fxnho"]
-[ext_resource type="Texture2D" uid="uid://dags5e7uwwpq1" path="res://main/doofOS.png" id="3_fxnho"]
+[ext_resource type="Resource" uid="uid://coxfhuvnrpdcb" path="res://upgrades/upgrade_resources/minute_hand.tres" id="2_jchhi"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_gdd6b"]
+[ext_resource type="Texture2D" uid="uid://brxpoebm6vfob" path="res://upgrades/hour_hand_shop.png" id="4_1reoo"]
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="4_bprp5"]
+
+[sub_resource type="Resource" id="Resource_g2w5t"]
+script = ExtResource("3_gdd6b")
+priorUpgrade = ExtResource("2_jchhi")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [sub_resource type="Resource" id="Resource_grbgr"]
 script = ExtResource("1_8btit")
@@ -13,7 +20,9 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("2_fxnho")
+texture = ExtResource("4_1reoo")
 name = "Antique Hour Hand"
 description = "The hour hand from a grandfather clock. Really takes you back."
 effects = Array[ExtResource("1_8btit")]([SubResource("Resource_grbgr")])
+conditions = Array[ExtResource("4_bprp5")]([SubResource("Resource_g2w5t")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

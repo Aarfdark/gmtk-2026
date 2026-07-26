@@ -1,8 +1,16 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bgkanisipron4"]
 
 [ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_2rqr3"]
+[ext_resource type="Resource" uid="uid://d3e5ev4wofy24" path="res://upgrades/upgrade_resources/wdiv.tres" id="2_bpv2k"]
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_uig34"]
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="3_0febm"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_h374a"]
+[ext_resource type="Texture2D" uid="uid://ck3gndn63mhc2" path="res://upgrades/second_hand_shop.png" id="4_uig34"]
+
+[sub_resource type="Resource" id="Resource_rcs5v"]
+script = ExtResource("3_h374a")
+priorUpgrade = ExtResource("2_bpv2k")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [sub_resource type="Resource" id="Resource_evmrh"]
 script = ExtResource("1_2rqr3")
@@ -15,16 +23,12 @@ script = ExtResource("1_2rqr3")
 upgrade_value = -7.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
-[sub_resource type="Gradient" id="Gradient_yyxb3"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fc8ok"]
-gradient = SubResource("Gradient_yyxb3")
-
 [resource]
 script = ExtResource("2_uig34")
 cost = 10
-texture = SubResource("GradientTexture2D_fc8ok")
+texture = ExtResource("4_uig34")
 name = " Secondhand Second Hand"
 description = "Replace that pitiful Third Hand with this old trinket! Goes back 60 seconds per rotation, but is [b]MUCH[/b] heavier."
 effects = Array[ExtResource("1_2rqr3")]([SubResource("Resource_evmrh"), SubResource("Resource_qnw35")])
+conditions = Array[ExtResource("3_0febm")]([SubResource("Resource_rcs5v")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

@@ -2,8 +2,15 @@
 
 [ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_fq2nw"]
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_ekng3"]
+[ext_resource type="Resource" uid="uid://d3e5ev4wofy24" path="res://upgrades/upgrade_resources/wdiv.tres" id="2_ulnur"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_5mxq8"]
 [ext_resource type="Texture2D" uid="uid://cb6b4l5nc4b8b" path="res://upgrades/WD-XL.png" id="3_ekng3"]
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="4_j4yu3"]
+
+[sub_resource type="Resource" id="Resource_kn8ns"]
+script = ExtResource("3_5mxq8")
+priorUpgrade = ExtResource("2_ulnur")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [sub_resource type="Resource" id="Resource_4dkfq"]
 script = ExtResource("1_fq2nw")
@@ -12,9 +19,10 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("2_ekng3")
-cost = 10
+cost = 40
 texture = ExtResource("3_ekng3")
 name = "WD-40"
 description = "Ol' reliable! Make that hand a bit easier to turn!"
 effects = Array[ExtResource("1_fq2nw")]([SubResource("Resource_4dkfq")])
+conditions = Array[ExtResource("4_j4yu3")]([SubResource("Resource_kn8ns")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

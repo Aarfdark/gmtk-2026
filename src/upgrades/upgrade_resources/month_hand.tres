@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bpr6j55w670c3"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_mcvyf"]
+[ext_resource type="Resource" uid="uid://bpwvofrvjx6ul" path="res://upgrades/upgrade_resources/day_hand.tres" id="2_lnv70"]
+[ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="2_o0ejy"]
+[ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="3_lnv70"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_t8uyp"]
+[ext_resource type="Texture2D" uid="uid://2moc6rnlyycs" path="res://upgrades/month_hand_shop.png" id="4_mcvyf"]
+
+[sub_resource type="Resource" id="Resource_lw12k"]
+script = ExtResource("3_t8uyp")
+priorUpgrade = ExtResource("2_lnv70")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
+
+[sub_resource type="Resource" id="Resource_grbgr"]
+script = ExtResource("2_o0ejy")
+type = 1
+upgrade_value = 60.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
+[resource]
+script = ExtResource("3_lnv70")
+texture = ExtResource("4_mcvyf")
+name = "Month Hand"
+description = "This is getting ridiculous."
+effects = Array[ExtResource("2_o0ejy")]([SubResource("Resource_grbgr")])
+conditions = Array[ExtResource("1_mcvyf")]([SubResource("Resource_lw12k")])
+metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"
