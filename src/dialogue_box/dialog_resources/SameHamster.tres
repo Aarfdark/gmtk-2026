@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Dialog" format=3 uid="uid://dko60k17uawuj"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_atfcj"]
+[ext_resource type="Resource" uid="uid://dxrmpggo4s57a" path="res://upgrades/upgrade_resources/same_hamster.tres" id="2_atfcj"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_av43t"]
+[ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="4_vwuqf"]
+
+[sub_resource type="Resource" id="Resource_kwh6m"]
+script = ExtResource("3_av43t")
+priorUpgrade = ExtResource("2_atfcj")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
+
+[resource]
+script = ExtResource("4_vwuqf")
+lines = "Hey look at that, you’ve got a... the same buddy to help you spin that wheel!"
+conditions = Array[ExtResource("1_atfcj")]([SubResource("Resource_kwh6m")])
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"

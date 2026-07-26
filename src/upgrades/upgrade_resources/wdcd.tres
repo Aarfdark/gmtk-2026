@@ -2,8 +2,15 @@
 
 [ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_o14mo"]
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_60ypw"]
+[ext_resource type="Resource" uid="uid://desfbi2j25w2o" path="res://upgrades/upgrade_resources/wdxl.tres" id="2_kcipd"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_3c7ms"]
 [ext_resource type="Texture2D" uid="uid://jua8jpsbj8cn" path="res://upgrades/WD-CD.png" id="3_7vome"]
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="4_wb5x8"]
+
+[sub_resource type="Resource" id="Resource_fqp7y"]
+script = ExtResource("3_3c7ms")
+priorUpgrade = ExtResource("2_kcipd")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [sub_resource type="Resource" id="Resource_fq2nw"]
 script = ExtResource("1_o14mo")
@@ -17,4 +24,5 @@ texture = ExtResource("3_7vome")
 name = "WD-CD"
 description = "The stuff the Romans used to grease up their carriages."
 effects = Array[ExtResource("1_o14mo")]([SubResource("Resource_fq2nw")])
+conditions = Array[ExtResource("4_wb5x8")]([SubResource("Resource_fqp7y")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

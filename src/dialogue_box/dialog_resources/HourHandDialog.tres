@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Dialog" format=3 uid="uid://c7g6o5jdufd0b"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_ajn7v"]
+[ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="2_jfttg"]
+[ext_resource type="Resource" uid="uid://c1jysxhbeer6" path="res://upgrades/upgrade_resources/hour_hand.tres" id="2_y4vkb"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_35ma8"]
+
+[sub_resource type="Resource" id="Resource_71854"]
+script = ExtResource("3_35ma8")
+priorUpgrade = ExtResource("2_y4vkb")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
+
+[resource]
+script = ExtResource("2_jfttg")
+lines = "Hey. It’s hOUR hand now. Well, my hand really. But it’s ok, I’m lending it to you."
+conditions = Array[ExtResource("1_ajn7v")]([SubResource("Resource_71854")])
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"

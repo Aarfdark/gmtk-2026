@@ -12,6 +12,8 @@ extends Control
 		sands_label.game_state = game_state
 		hamster_label.game_state = game_state
 		clock.game_state = game_state
+		dialog_box.init_game_state(game_state)
+		game_state.check_conditions()
 
 @onready var sands_label: SandsLabel = %SandsLabel
 @onready var hamster_label: HamsterLabel = %HamsterLabel
@@ -20,7 +22,7 @@ extends Control
 @onready var shop_panel: ShopPanel = %ShopPanel
 @onready var clock: Clock = %Clock
 @onready var settings_menu: Control = %SettingsMenu
-
+@onready var dialog_box: DialogBox = %DialogueBox
 var _tick_progress: float = 0.0
 
 

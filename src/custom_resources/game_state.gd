@@ -3,7 +3,7 @@ extends Resource
 
 signal countdown_ended
 signal upgrade_unlocked(upgrade: Upgrade)
-
+signal dialog_reached(dialog: Dialog)
 const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 
 @export var seconds_remaining: int = STARTING_SECONDS:
@@ -31,7 +31,7 @@ const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 			sands = 0
 			return
 		sands = value
-		check_unlocks()
+		check_conditions()
 		emit_changed()
 
 @export var locked_upgrades: Array[Upgrade] = []
@@ -49,6 +49,7 @@ var dial_rate_mod: float = 0.0
 
 var _end_fired: bool = false
 
+@export var unqueued_dialog: Array[Dialog] = []
 
 func update_attributes() -> void:
 	active_effects.sort_custom(
@@ -74,12 +75,17 @@ func update_attributes() -> void:
 
 func add_upgrade(upgrade: Upgrade) -> void:
 	# WARN: might need special case for more hamster
-	if upgrade in purchased_upgrades:
+	if upgrade in purchased_upgrades and not upgrade.repeatable:
 		push_error("Took the same upgrade twice")
 		return
 	purchased_upgrades.append(upgrade)
+	if upgrade.repeatable:
+		upgrade_unlocked.emit(upgrade)
+		upgrade.cost += 100 
 	for upgrade_effect: UpgradeEffect in upgrade.effects:
 		active_effects.append(upgrade_effect)
+
+	check_conditions()
 	changed.emit()
 	update_attributes()
 
@@ -87,23 +93,22 @@ func add_upgrade(upgrade: Upgrade) -> void:
 func get_datetime() -> String:
 	return Time.get_datetime_string_from_unix_time(seconds_remaining, true)
 
-func check_unlocks() -> void:
-	var to_unlock: Array[Upgrade] = []
+func check_and_process(items: Array, callback: Callable) -> void:
+	var passed: Array = items.filter(func(item) -> bool:
+		var conditions = item.conditions
+		return conditions == null or conditions.all(func(cond) -> bool:
+			return cond.is_condition_cleared(self)
+		)
+	)
 	
-	for upgrade in locked_upgrades:
-		if upgrade.unlock_conditions == null:
-			to_unlock.append(upgrade)
-			continue
-		var passing: bool = true
-		for cond in upgrade.unlock_conditions:
-			if not cond.is_condition_cleared(self):
-				passing = false
-				break
-		if passing:
-			to_unlock.append(upgrade)
-	for u in to_unlock:
-		locked_upgrades.erase(u)
-		upgrade_unlocked.emit(u)
+	for item in passed:
+		items.erase(item)
+		callback.call(item)
+
+func check_conditions() -> void:
+	check_and_process(locked_upgrades, func (u: Upgrade): upgrade_unlocked.emit(u))
+	check_and_process(unqueued_dialog, func(d: Dialog): dialog_reached.emit(d))
+
 
 			
 			
