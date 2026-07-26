@@ -55,7 +55,7 @@ func play_next_line() -> void:
 	if num_dialogue == current_dialogue.size():
 		play_next_dialog()
 		return
-	cur_line = current_dialogue.get(num_dialogue) + "↵"
+	cur_line = current_dialogue.get(num_dialogue)
 	display_text(cur_line)
 	num_dialogue += 1
 
