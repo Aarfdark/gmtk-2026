@@ -40,7 +40,6 @@ func _ready() -> void:
 func init_game_state(gs: GameState):
 	game_state = gs
 	game_state.upgrade_unlocked.connect(instantiate_button)
-	game_state.check_unlocks()
 
 
 func queue_upgrade(upgrade: Upgrade) -> void:

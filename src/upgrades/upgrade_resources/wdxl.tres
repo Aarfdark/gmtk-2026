@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("2_ekng3")
-cost = 10
+cost = 1
 texture = ExtResource("3_ekng3")
 name = "WD-40"
 description = "Ol' reliable! Make that hand a bit easier to turn!"

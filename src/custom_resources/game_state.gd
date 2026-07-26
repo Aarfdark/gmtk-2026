@@ -31,8 +31,7 @@ const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 			sands = 0
 			return
 		sands = value
-		check_unlocks()
-		check_dialog()
+		check_conditions()
 		emit_changed()
 
 @export var locked_upgrades: Array[Upgrade] = []
@@ -82,12 +81,15 @@ func add_upgrade(upgrade: Upgrade) -> void:
 	purchased_upgrades.append(upgrade)
 	for upgrade_effect: UpgradeEffect in upgrade.effects:
 		active_effects.append(upgrade_effect)
+
+	check_conditions()
 	changed.emit()
 	update_attributes()
 
 
 func get_datetime() -> String:
 	return Time.get_datetime_string_from_unix_time(seconds_remaining, true)
+
 func check_and_process(items: Array, callback: Callable) -> void:
 	var passed: Array = items.filter(func(item) -> bool:
 		var conditions = item.conditions
@@ -99,10 +101,11 @@ func check_and_process(items: Array, callback: Callable) -> void:
 	for item in passed:
 		items.erase(item)
 		callback.call(item)
-func check_unlocks() -> void:
+
+func check_conditions() -> void:
 	check_and_process(locked_upgrades, func (u: Upgrade): upgrade_unlocked.emit(u))
-func check_dialog() -> void:
 	check_and_process(unqueued_dialog, func(d: Dialog): dialog_reached.emit(d))
+
 
 			
 			

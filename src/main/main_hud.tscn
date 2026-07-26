@@ -113,6 +113,9 @@ text = "DoofOS"
 [node name="DialogueBox" parent="HUDSections/TopSection/MessagePanel/HBoxContainer" unique_id=937354533 instance=ExtResource("7_pusfw")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+text = "
+"
 
 [node name="BottomSection" type="HBoxContainer" parent="HUDSections" unique_id=1357091963]
 layout_mode = 2

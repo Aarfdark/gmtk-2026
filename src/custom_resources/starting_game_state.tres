@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="12_nic8e"]
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="13_1j8mj"]
 [ext_resource type="Script" uid="uid://5jeeoc7v63kn" path="res://upgrades/unlock_types/SandsCondition.gd" id="14_xanpn"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="15_1j8mj"]
 
 [sub_resource type="Resource" id="Resource_bn37k"]
 script = ExtResource("12_nic8e")
@@ -32,8 +33,22 @@ lines = "second dialog, sands condition"
 conditions = Array[ExtResource("13_1j8mj")]([SubResource("Resource_hd2g3")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"
 
+[sub_resource type="Resource" id="Resource_jonwl"]
+script = ExtResource("15_1j8mj")
+priorUpgrade = ExtResource("11_xro8q")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
+
+[sub_resource type="Resource" id="Resource_kn8ns"]
+script = ExtResource("12_nic8e")
+lines = "i bought a wd40
+i will proceed to drink it
+i will drink the wd40
+you are unable to stop it"
+conditions = Array[ExtResource("13_1j8mj")]([SubResource("Resource_jonwl")])
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"
+
 [resource]
 script = ExtResource("1_7rfia")
-locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("11_xro8q"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq"), ExtResource("11_xro8q")])
-unqueued_dialog = Array[ExtResource("12_nic8e")]([SubResource("Resource_bn37k"), SubResource("Resource_crv2k")])
+locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("11_xro8q"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq")])
+unqueued_dialog = Array[ExtResource("12_nic8e")]([SubResource("Resource_bn37k"), SubResource("Resource_crv2k"), SubResource("Resource_kn8ns")])
 metadata/_custom_type_script = "uid://dfqohajdnq1pm"
