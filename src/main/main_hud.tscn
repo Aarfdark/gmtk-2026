@@ -20,12 +20,33 @@
 [ext_resource type="StyleBox" uid="uid://06aanstrj00d" path="res://theming/wood_texture.tres" id="14_pusfw"]
 [ext_resource type="AudioStream" uid="uid://b0tckeb71jfma" path="res://audio/bassline.ogg" id="16_pusfw"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbkw5"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.67273825, 0.6613568, 0.6564642, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
 [sub_resource type="LabelSettings" id="LabelSettings_rqo1v"]
 font = ExtResource("4_7shfy")
 font_size = 128
-font_color = Color(0, 0, 0, 1)
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
+font_color = Color(0.84263474, 3.5616756e-06, 4.813075e-07, 1)
+shadow_size = 16
+shadow_color = Color(1, 0, 0, 0.29411766)
+shadow_offset = Vector2(4, -4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kn8ns"]
+font_size = 60
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_dbkw5"]
 stream_count = 1
@@ -76,13 +97,34 @@ horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
 convert_to_iso = true
 
-[node name="TimeLabelUnix" type="Label" parent="HUDSections/TopSection/TimePanel/TimeLabels" unique_id=1916945416]
+[node name="UnixBacking" type="PanelContainer" parent="HUDSections/TopSection/TimePanel/TimeLabels" unique_id=1848809437]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbkw5")
+
+[node name="TimeLabelUnix" type="Label" parent="HUDSections/TopSection/TimePanel/TimeLabels/UnixBacking" unique_id=1916945416]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1234567890"
 label_settings = SubResource("LabelSettings_rqo1v")
 horizontal_alignment = 1
 script = ExtResource("1_wdoo0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDSections/TopSection/TimePanel/TimeLabels" unique_id=1793491410]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="HUDSections/TopSection/TimePanel/TimeLabels/HBoxContainer" unique_id=533983645]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("8_sqrt5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HUDSections/TopSection/TimePanel/TimeLabels/HBoxContainer" unique_id=1773692308]
+layout_mode = 2
+text = "x 4 (-4123517827.0 s/s)"
+label_settings = SubResource("LabelSettings_kn8ns")
+horizontal_alignment = 1
 
 [node name="MessagePanel" type="PanelContainer" parent="HUDSections/TopSection" unique_id=1103605872]
 layout_mode = 2
@@ -133,7 +175,7 @@ fit_content = true
 [node name="BottomSection" type="HBoxContainer" parent="HUDSections" unique_id=1357091963]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
+size_flags_stretch_ratio = 3.0
 
 [node name="InventoryPanel" type="PanelContainer" parent="HUDSections/BottomSection" unique_id=2062672994]
 layout_mode = 2

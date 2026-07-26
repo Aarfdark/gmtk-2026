@@ -5,7 +5,6 @@
 [ext_resource type="StyleBox" uid="uid://bidvhwetm6syx" path="res://theming/display_texture.tres" id="3_xwxkt"]
 
 [node name="ShopPanel" type="PanelContainer" unique_id=1215246801]
-custom_minimum_size = Vector2(706, 766)
 size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_afnbi")
