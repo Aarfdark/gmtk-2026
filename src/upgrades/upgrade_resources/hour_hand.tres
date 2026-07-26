@@ -18,11 +18,17 @@ type = 1
 upgrade_value = 24.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
+[sub_resource type="Resource" id="Resource_i4qol"]
+script = ExtResource("1_8btit")
+upgrade_value = -4.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
 [resource]
 script = ExtResource("2_fxnho")
+cost = 69420
 texture = ExtResource("4_1reoo")
-name = "Antique Hour Hand"
-description = "The hour hand from a grandfather clock. Really takes you back."
-effects = Array[ExtResource("1_8btit")]([SubResource("Resource_grbgr")])
+name = "Our Hour Hand"
+description = "Leap days with this helping hand! Comes at a hefty cost and an even heftier weight."
+effects = Array[ExtResource("1_8btit")]([SubResource("Resource_grbgr"), SubResource("Resource_i4qol")])
 conditions = Array[ExtResource("4_bprp5")]([SubResource("Resource_g2w5t")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

@@ -18,11 +18,17 @@ type = 1
 upgrade_value = 30.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
+[sub_resource type="Resource" id="Resource_djtnb"]
+script = ExtResource("2_1cyly")
+upgrade_value = -4.0
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
 [resource]
 script = ExtResource("3_h0fpc")
+cost = 20260722
 texture = ExtResource("4_3h71r")
 name = "Day Hand"
 description = "A day hand. I mean it's the logical step after an hour hand, right?"
-effects = Array[ExtResource("2_1cyly")]([SubResource("Resource_grbgr")])
+effects = Array[ExtResource("2_1cyly")]([SubResource("Resource_grbgr"), SubResource("Resource_djtnb")])
 conditions = Array[ExtResource("1_3h71r")]([SubResource("Resource_xa5en")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

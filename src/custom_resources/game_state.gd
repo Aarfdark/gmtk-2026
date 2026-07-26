@@ -39,7 +39,7 @@ const STARTING_SECONDS = 1785085200 # 2026-07-26 17:00:00
 var active_effects: Array[UpgradeEffect] = []
 
 @export var dial_mag_base: int = 1
-@export var hamster_speed_base: float = 2.1
+@export var hamster_speed_base: float = 0.5
 
 var hamster_count: float = 0.0
 var hamster_speed: float = hamster_speed_base
@@ -57,25 +57,25 @@ func update_attributes() -> void:
 		func(a: UpgradeEffect, b: UpgradeEffect) -> bool:
 			return a.apply_order < b.apply_order,
 	)
-	dial_mag = dial_mag_base
+	var new_dial_mag: float = dial_mag_base
 	hamster_count = 0
 	hamster_speed = hamster_speed_base
 	dial_rate_mod = 0
 	for effect: UpgradeEffect in active_effects:
 		match effect.type:
 			UpgradeEffect.Type.DIAL_MAG:
-				dial_mag *= int(effect.upgrade_value)
+				new_dial_mag *= effect.upgrade_value
 			UpgradeEffect.Type.DIAL_RATE:
 				dial_rate_mod += effect.upgrade_value
 			UpgradeEffect.Type.HAMSTER_QUANTITY:
 				hamster_count += effect.upgrade_value
 			UpgradeEffect.Type.HAMSTER_RATE:
 				hamster_speed *= effect.upgrade_value
+	dial_mag = roundi(new_dial_mag)
 	ticks_per_second = -1 * hamster_count * hamster_speed
 
 
 func add_upgrade(upgrade: Upgrade) -> void:
-	# WARN: might need special case for more hamster
 	if upgrade in purchased_upgrades and not upgrade.repeatable:
 		push_error("Took the same upgrade twice")
 		return

@@ -18,12 +18,18 @@ type = 2
 upgrade_value = 1.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
+[sub_resource type="Resource" id="Resource_t7jla"]
+script = ExtResource("1_5ng5s")
+type = 3
+upgrade_value = 1.25
+metadata/_custom_type_script = "uid://h0vhvgb8pted"
+
 [resource]
 script = ExtResource("2_b5xvn")
 cost = 100
 name = "The Same Hamster"
 description = "A past version of your favorite hamster! This will have no consequences on spacetime whatsoever!"
-effects = Array[ExtResource("1_5ng5s")]([SubResource("Resource_ljurs")])
+effects = Array[ExtResource("1_5ng5s")]([SubResource("Resource_ljurs"), SubResource("Resource_t7jla")])
 conditions = Array[ExtResource("4_5ib2e")]([SubResource("Resource_1mqmc")])
 repeatable = true
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_8ya51"]
 [ext_resource type="Resource" uid="uid://b5jo66hd4pine" path="res://upgrades/upgrade_resources/hamster.tres" id="3_ywnfr"]
 [ext_resource type="Resource" uid="uid://c1jysxhbeer6" path="res://upgrades/upgrade_resources/hour_hand.tres" id="4_m16b7"]
+[ext_resource type="Resource" uid="uid://bsjg0bfxyndr4" path="res://upgrades/upgrade_resources/wdmmmm.tres" id="5_2dxpl"]
 [ext_resource type="Resource" uid="uid://coxfhuvnrpdcb" path="res://upgrades/upgrade_resources/minute_hand.tres" id="5_nic8e"]
 [ext_resource type="Resource" uid="uid://dxrmpggo4s57a" path="res://upgrades/upgrade_resources/same_hamster.tres" id="6_1j8mj"]
 [ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/upgrade_resources/second_hand.tres" id="7_xanpn"]
@@ -28,6 +29,6 @@
 
 [resource]
 script = ExtResource("1_7rfia")
-locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("11_xro8q"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq"), ExtResource("11_xanpn"), ExtResource("12_r8iy6")])
+locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("11_xro8q"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq"), ExtResource("5_2dxpl"), ExtResource("7_xanpn"), ExtResource("5_nic8e"), ExtResource("4_m16b7"), ExtResource("11_xanpn"), ExtResource("12_r8iy6"), ExtResource("3_ywnfr"), ExtResource("6_1j8mj")])
 unqueued_dialog = Array[ExtResource("12_nic8e")]([ExtResource("13_i83c3"), ExtResource("14_gpxio"), ExtResource("15_2dxpl"), ExtResource("16_1mst8"), ExtResource("17_1rhgi"), ExtResource("18_us86i"), ExtResource("19_1oswg"), ExtResource("20_rfvpm"), ExtResource("21_vt81t"), ExtResource("22_sakro"), ExtResource("23_2hwdf"), ExtResource("24_x51h5")])
 metadata/_custom_type_script = "uid://dfqohajdnq1pm"

@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("2_60ypw")
-cost = 20000
+cost = 400
 texture = ExtResource("3_7vome")
 name = "WD-CD"
 description = "The stuff the Romans used to grease up their carriages."
