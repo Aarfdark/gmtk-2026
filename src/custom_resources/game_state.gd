@@ -51,6 +51,7 @@ var _end_fired: bool = false
 
 @export var unqueued_dialog: Array[Dialog] = []
 
+
 func update_attributes() -> void:
 	active_effects.sort_custom(
 		func(a: UpgradeEffect, b: UpgradeEffect) -> bool:
@@ -81,7 +82,7 @@ func add_upgrade(upgrade: Upgrade) -> void:
 	purchased_upgrades.append(upgrade)
 	if upgrade.repeatable:
 		upgrade_unlocked.emit(upgrade)
-		upgrade.cost += 100 
+		upgrade.cost += 100
 	for upgrade_effect: UpgradeEffect in upgrade.effects:
 		active_effects.append(upgrade_effect)
 
@@ -93,23 +94,33 @@ func add_upgrade(upgrade: Upgrade) -> void:
 func get_datetime() -> String:
 	return Time.get_datetime_string_from_unix_time(seconds_remaining, true)
 
+
 func check_and_process(items: Array, callback: Callable) -> void:
-	var passed: Array = items.filter(func(item) -> bool:
-		var conditions = item.conditions
-		return conditions == null or conditions.all(func(cond) -> bool:
-			return cond.is_condition_cleared(self)
-		)
+	var passed: Array = items.filter(
+		func(item) -> bool:
+			var conditions = item.conditions
+			return (
+				conditions == null
+				or conditions.all(
+					func(cond) -> bool:
+						return cond.is_condition_cleared(self),
+				)
+			),
 	)
-	
+
 	for item in passed:
 		items.erase(item)
 		callback.call(item)
 
+
 func check_conditions() -> void:
-	check_and_process(locked_upgrades, func (u: Upgrade): upgrade_unlocked.emit(u))
-	check_and_process(unqueued_dialog, func(d: Dialog): dialog_reached.emit(d))
-
-
-			
-			
-			
+	check_and_process(
+		locked_upgrades,
+		func(u: Upgrade):
+			upgrade_unlocked.emit(u),
+	)
+	check_and_process(
+		unqueued_dialog,
+		func(d: Dialog):
+			dialog_reached.emit(d),
+	)

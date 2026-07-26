@@ -22,6 +22,15 @@ var _selected_button: UpgradeButton
 @onready var upgrade_description: RichTextLabel = %UpgradeDescription
 @onready var buy_button: Button = %BuyButton
 @onready var cancel_button: Button = %CancelButton
+@onready var clock_hand: Sprite2D = %Clock/Hand
+
+@onready var second_hand := preload("res://clock/second_hand.png")
+@onready var minute_hand := preload("res://clock/minute_hand.png")
+@onready var hour_hand := preload("res://clock/hour_hand.png")
+@onready var day_hand := preload("res://clock/day_hand.png")
+@onready var month_hand := preload("res://clock/month_hand.png")
+@onready var hands_list := [second_hand, minute_hand, hour_hand, day_hand, month_hand]
+@onready var hand_count = 0
 
 var upgradeQueue: Array[Upgrade] = []
 
@@ -136,6 +145,12 @@ func _on_buy_button_pressed() -> void:
 		return
 	game_state.sands -= bought_upgrade.cost
 	game_state.add_upgrade(bought_upgrade)
+
+	# change hand png
+	if bought_upgrade.name.contains("Hand"):
+		clock_hand.texture = hands_list[hand_count]
+		hand_count += 1
+
 	# TODO: fancy confirm animation
 	_selected_button.reparent(displayed_slot)
 	restore_grid(false)
