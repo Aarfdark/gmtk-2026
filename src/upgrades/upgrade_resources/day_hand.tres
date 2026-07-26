@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("3_h0fpc")
-cost = 20260722
+cost = 12345679
 texture = ExtResource("4_3h71r")
 name = "Day Hand"
 description = "A day hand. I mean it's the logical step after an hour hand, right?"

@@ -18,7 +18,7 @@
 [ext_resource type="Resource" uid="uid://b7p1saxfvedlt" path="res://dialogue_box/dialog_resources/Ending.tres" id="14_gpxio"]
 [ext_resource type="Resource" uid="uid://i6v0kuscmdrd" path="res://dialogue_box/dialog_resources/FirstHamster.tres" id="15_2dxpl"]
 [ext_resource type="Resource" uid="uid://diuey1600kou6" path="res://dialogue_box/dialog_resources/FirstWDProduct.tres" id="16_1mst8"]
-[ext_resource type="Resource" uid="uid://bqukoh0egu0sh" path="res://dialogue_box/dialog_resources/FiveSand.tres" id="17_1rhgi"]
+[ext_resource type="Resource" uid="uid://bqukoh0egu0sh" path="res://dialogue_box/dialog_resources/taking_a_while.tres" id="17_1rhgi"]
 [ext_resource type="Resource" uid="uid://c7g6o5jdufd0b" path="res://dialogue_box/dialog_resources/HourHandDialog.tres" id="18_us86i"]
 [ext_resource type="Resource" uid="uid://dfn7wcdp83kn0" path="res://dialogue_box/dialog_resources/HundredSands.tres" id="19_1oswg"]
 [ext_resource type="Resource" uid="uid://dcmqfivmw62xf" path="res://dialogue_box/dialog_resources/Intro.tres" id="20_rfvpm"]
