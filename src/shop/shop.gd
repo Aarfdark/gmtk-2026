@@ -32,6 +32,7 @@ var _selected_button: UpgradeButton
 func init_game_state(gs: GameState):
 	game_state = gs
 	game_state.upgrade_unlocked.connect(instantiate_button)
+	game_state.changed.connect(_on_game_state_changed)
 
 
 func queue_upgrade(upgrade: Upgrade) -> void:
@@ -42,6 +43,7 @@ func instantiate_button(upgrade: Upgrade) -> void:
 	var new_upgrade_button: UpgradeButton = UpgradeButtonScene.instantiate() as UpgradeButton
 	new_upgrade_button.upgrade = upgrade
 	new_upgrade_button.pressed.connect(_on_upgrade_button_pressed.bind(new_upgrade_button))
+	new_upgrade_button.game_state = game_state
 	upgrade_button_grid.add_child(new_upgrade_button)
 
 
@@ -112,6 +114,7 @@ func _on_upgrade_button_pressed(upgrade_button: UpgradeButton) -> void:
 	_tween.tween_property(buy_prompt, "modulate:a", 1.0, tween_duration).from(0.0)
 	await _tween.finished
 	toggle_prompt_inputs(true)
+	_on_game_state_changed()
 
 
 # undo previous tweens
@@ -137,3 +140,9 @@ func _on_buy_button_pressed() -> void:
 	# TODO: fancy confirm animation
 	_selected_button.reparent(displayed_slot)
 	restore_grid(false)
+
+
+func _on_game_state_changed() -> void:
+	if _selected_button == null:
+		return
+	buy_button.disabled = game_state.sands < _selected_button.upgrade.cost
