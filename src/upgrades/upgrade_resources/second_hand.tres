@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
 [resource]
 script = ExtResource("2_uig34")
-cost = 10
+cost = 400
 texture = ExtResource("4_uig34")
 name = " Secondhand Second Hand"
 description = "Replace that pitiful Third Hand with this old trinket! Goes back 60 seconds per rotation, but is [b]MUCH[/b] heavier."
