@@ -2,7 +2,7 @@
 class_name HamsterLabel
 extends Label
 
-@export var format_string: String = "%.f\n(%.02f s/s)":
+@export var format_string: String = "x %.f (%.02f s/s)":
 	set(value):
 		format_string = value
 		if not game_state:
