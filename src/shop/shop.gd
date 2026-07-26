@@ -6,9 +6,13 @@ const UpgradeButtonScene = preload("uid://dl2qapeg023np")
 @export var tween_duration := 0.5
 @export var tween_scale := 1.5
 @export var return_scale := 1.0
+@export var hand_sprites: Array[Texture2D]
 
 var game_state: GameState
 
+var hand_count = 0
+
+var upgradeQueue: Array[Upgrade] = []
 var _return_pos: Vector2
 var _tween: Tween
 var _selected_button: UpgradeButton
@@ -23,16 +27,6 @@ var _selected_button: UpgradeButton
 @onready var buy_button: Button = %BuyButton
 @onready var cancel_button: Button = %CancelButton
 @onready var clock_hand: Sprite2D = %Clock/Hand
-
-@onready var second_hand := preload("res://clock/second_hand.png")
-@onready var minute_hand := preload("res://clock/minute_hand.png")
-@onready var hour_hand := preload("res://clock/hour_hand.png")
-@onready var day_hand := preload("res://clock/day_hand.png")
-@onready var month_hand := preload("res://clock/month_hand.png")
-@onready var hands_list := [second_hand, minute_hand, hour_hand, day_hand, month_hand]
-@onready var hand_count = 0
-
-var upgradeQueue: Array[Upgrade] = []
 
 
 func _ready() -> void:
@@ -148,8 +142,8 @@ func _on_buy_button_pressed() -> void:
 
 	# change hand png
 	if bought_upgrade.name.contains("Hand"):
-		clock_hand.texture = hands_list[hand_count]
 		hand_count += 1
+		clock_hand.texture = hand_sprites[hand_count]
 
 	# TODO: fancy confirm animation
 	_selected_button.reparent(displayed_slot)

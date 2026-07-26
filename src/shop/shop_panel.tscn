@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://b13lgsuwo8cvw"]
 
 [ext_resource type="Script" uid="uid://bilr6qwjpf8qx" path="res://shop/shop.gd" id="1_afnbi"]
+[ext_resource type="Texture2D" uid="uid://bomi4ing376mx" path="res://clock/third_hand.png" id="2_2vqk6"]
+[ext_resource type="Texture2D" uid="uid://d4lrqp55kmqtq" path="res://clock/second_hand.png" id="3_aws7i"]
 [ext_resource type="Texture2D" uid="uid://cuveou00uetv" path="res://main/sand_of_time.png" id="3_de1po"]
 [ext_resource type="StyleBox" uid="uid://bidvhwetm6syx" path="res://theming/display_texture.tres" id="3_xwxkt"]
+[ext_resource type="Texture2D" uid="uid://wchg35syyeue" path="res://clock/minute_hand.png" id="4_41vk4"]
+[ext_resource type="Texture2D" uid="uid://iou17mn3ewem" path="res://clock/hour_hand.png" id="5_4cixf"]
+[ext_resource type="Texture2D" uid="uid://d273047csfbg3" path="res://clock/day_hand.png" id="6_tpk8x"]
+[ext_resource type="Texture2D" uid="uid://cn3mog6u5tu00" path="res://clock/month_hand.png" id="7_uvbc3"]
 
 [node name="ShopPanel" type="PanelContainer" unique_id=1215246801]
 size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_afnbi")
+hand_sprites = Array[Texture2D]([ExtResource("2_2vqk6"), ExtResource("3_aws7i"), ExtResource("4_41vk4"), ExtResource("5_4cixf"), ExtResource("6_tpk8x"), ExtResource("7_uvbc3")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1107994217]
 layout_mode = 2
