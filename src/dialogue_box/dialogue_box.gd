@@ -1,15 +1,13 @@
 class_name DialogBox
 extends RichTextLabel
 
-signal dialog_line_finished
-
-@export var current_dialogue: PackedStringArray
+var current_dialogue: PackedStringArray
 
 var typing_timer: Timer = Timer.new()
-var typing_speed: float = 0.03
+@export var typing_speed: float = 0.03
 
 var dialog_pause: Timer = Timer.new()
-var dialog_pause_time: float = 1.0
+@export var dialog_pause_time: float = 1.0
 var num_dialogue: int = 0
 var cur_line: String
 
@@ -25,14 +23,11 @@ func _ready() -> void:
 
 func init_game_state(gs: GameState) -> void:
 	gs.dialog_reached.connect(queue_dialog)
-	gs.check_dialog()
 
 func queue_dialog(to_queue: Dialog) -> void:
-	print(to_queue)
 	dialogue_queue.append(to_queue)
 	if typing_timer.is_stopped() and dialog_pause.is_stopped():
 		play_next_dialog()
-		print("play")
 
 func display_text(line: String) -> void:
 	text = line
@@ -62,6 +57,7 @@ func play_next_dialog() -> void:
 	var d: Dialog = dialogue_queue.pop_front()
 	current_dialogue = d.lines.split("\n")
 	num_dialogue = 0
+	play_next_line()
 	
 
 
