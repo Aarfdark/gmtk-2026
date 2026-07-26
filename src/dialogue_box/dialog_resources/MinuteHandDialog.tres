@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Dialog" format=3 uid="uid://dangqo2blbu8c"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_pmsr8"]
+[ext_resource type="Resource" uid="uid://coxfhuvnrpdcb" path="res://upgrades/upgrade_resources/minute_hand.tres" id="2_e33s1"]
+[ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="2_mt0h1"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_unnth"]
+
+[sub_resource type="Resource" id="Resource_pmsr8"]
+script = ExtResource("3_unnth")
+priorUpgrade = ExtResource("2_e33s1")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
+
+[resource]
+script = ExtResource("2_mt0h1")
+lines = "It’s so small... tiny... puny... little... I’ll come up with a better adjective for it some other time."
+conditions = Array[ExtResource("1_pmsr8")]([SubResource("Resource_pmsr8")])
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"

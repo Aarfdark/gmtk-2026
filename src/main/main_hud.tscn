@@ -121,6 +121,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "
 "
+scroll_following_visible_characters = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUDSections/TopSection/MessagePanel/HBoxContainer/VBoxContainer" unique_id=1443608999]
 layout_mode = 2
