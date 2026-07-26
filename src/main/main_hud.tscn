@@ -96,22 +96,34 @@ stretch_mode = 5
 [node name="DoofOSLabel" type="Label" parent="HUDSections/MessagePanel/VBoxContainer/DoofOSGraphic" unique_id=1890494749]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sqrt5")
-text = "DoofOS vIV.ii
-[Space] to advance"
+text = "DoofOS vIV.ii"
+
+[node name="SettingsButton" type="Button" parent="HUDSections/MessagePanel/VBoxContainer/DoofOSGraphic" unique_id=1181339455]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("5_3p5vu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUDSections/MessagePanel/VBoxContainer" unique_id=9067903]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DialogueBox" parent="HUDSections/MessagePanel/VBoxContainer/VBoxContainer" unique_id=937354533 instance=ExtResource("7_pusfw")]
+[node name="DialogueBox" parent="HUDSections/MessagePanel/VBoxContainer/VBoxContainer" unique_id=937354533 node_paths=PackedStringArray("advance_button") instance=ExtResource("7_pusfw")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "
 "
 scroll_following_visible_characters = true
+advance_button = NodePath("../../AdvanceButton")
+
+[node name="AdvanceButton" type="Button" parent="HUDSections/MessagePanel/VBoxContainer" unique_id=13938221]
+layout_mode = 2
+text = "[Space] Advance"
 
 [node name="RightSection" type="VBoxContainer" parent="HUDSections" unique_id=1324799784]
 layout_mode = 2
@@ -227,20 +239,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="SettingsButton" type="TextureButton" parent="." unique_id=2134215571]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = -159.0
-offset_right = 159.0
-offset_bottom = -31.0
-grow_vertical = 0
-size_flags_horizontal = 0
-texture_normal = ExtResource("5_3p5vu")
-
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=827686249]
 stream = SubResource("AudioStreamSynchronized_dbkw5")
 autoplay = true
@@ -249,6 +247,6 @@ bus = &"Music"
 [node name="ActualSeconds" type="Timer" parent="." unique_id=296975852]
 autostart = true
 
+[connection signal="pressed" from="HUDSections/MessagePanel/VBoxContainer/DoofOSGraphic/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="revolution_completed" from="HUDSections/RightSection/BottomSection/DialPanel/Center/Clock" to="." method="_on_clock_revolution_completed"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="timeout" from="ActualSeconds" to="." method="_on_actual_seconds_timeout"]
