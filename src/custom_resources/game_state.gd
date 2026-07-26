@@ -75,10 +75,13 @@ func update_attributes() -> void:
 
 func add_upgrade(upgrade: Upgrade) -> void:
 	# WARN: might need special case for more hamster
-	if upgrade in purchased_upgrades:
+	if upgrade in purchased_upgrades and not upgrade.repeatable:
 		push_error("Took the same upgrade twice")
 		return
 	purchased_upgrades.append(upgrade)
+	if upgrade.repeatable:
+		upgrade_unlocked.emit(upgrade)
+		upgrade.cost += 100 
 	for upgrade_effect: UpgradeEffect in upgrade.effects:
 		active_effects.append(upgrade_effect)
 

@@ -12,6 +12,8 @@ var num_dialogue: int = 0
 var cur_line: String
 
 var dialogue_queue: Array[Dialog] = [] # Likely should be updated so dialog is a custome resource
+
+
 func _ready() -> void:
 	typing_timer.timeout.connect(_on_typing_timer_timeout)
 	add_child(typing_timer)
@@ -21,8 +23,10 @@ func _ready() -> void:
 	# dialog_pause.timeout.connect(play_next_line)
 	# add_child(dialog_pause)
 
+
 func init_game_state(gs: GameState) -> void:
 	gs.dialog_reached.connect(queue_dialog)
+
 
 func queue_dialog(to_queue: Dialog) -> void:
 	dialogue_queue.append(to_queue)
@@ -41,7 +45,6 @@ func _on_typing_timer_timeout() -> void:
 		visible_characters += 1
 	else:
 		typing_timer.stop()
-		# dialog_pause.start(dialog_pause_time)
 
 
 
@@ -52,6 +55,8 @@ func play_next_line() -> void:
 	cur_line = current_dialogue.get(num_dialogue) + "↵"
 	display_text(cur_line)
 	num_dialogue += 1
+
+
 func play_next_dialog() -> void:
 	if dialogue_queue.is_empty():
 		current_dialogue = []

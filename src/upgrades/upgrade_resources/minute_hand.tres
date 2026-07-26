@@ -1,8 +1,16 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://coxfhuvnrpdcb"]
 
 [ext_resource type="Script" uid="uid://h0vhvgb8pted" path="res://upgrades/upgrade_effect.gd" id="1_xrtg2"]
+[ext_resource type="Resource" uid="uid://bgkanisipron4" path="res://upgrades/upgrade_resources/second_hand.tres" id="2_71sc3"]
 [ext_resource type="Script" uid="uid://bbgk8wwo3nx6f" path="res://upgrades/upgrade.gd" id="2_wfw8b"]
+[ext_resource type="Script" uid="uid://cuet122xpcmt6" path="res://upgrades/unlock_types/PriorUpgradeCondition.gd" id="3_fq3nn"]
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="3_n8dct"]
+[ext_resource type="Texture2D" uid="uid://c3nn42f6ftmjg" path="res://upgrades/minute_hand_shop.png" id="4_h0qr4"]
+
+[sub_resource type="Resource" id="Resource_gjf11"]
+script = ExtResource("3_fq3nn")
+priorUpgrade = ExtResource("2_71sc3")
+metadata/_custom_type_script = "uid://cuet122xpcmt6"
 
 [sub_resource type="Resource" id="Resource_evmrh"]
 script = ExtResource("1_xrtg2")
@@ -10,16 +18,12 @@ type = 1
 upgrade_value = 60.0
 metadata/_custom_type_script = "uid://h0vhvgb8pted"
 
-[sub_resource type="Gradient" id="Gradient_yyxb3"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fc8ok"]
-gradient = SubResource("Gradient_yyxb3")
-
 [resource]
 script = ExtResource("2_wfw8b")
 cost = 10
-texture = SubResource("GradientTexture2D_fc8ok")
+texture = ExtResource("4_h0qr4")
 name = "Minute Minute Hand"
 description = "It's a bit small, but it gets the job done. Somehow heavier than the second hand though."
 effects = Array[ExtResource("1_xrtg2")]([SubResource("Resource_evmrh")])
+conditions = Array[ExtResource("3_n8dct")]([SubResource("Resource_gjf11")])
 metadata/_custom_type_script = "uid://bbgk8wwo3nx6f"
