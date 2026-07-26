@@ -62,9 +62,6 @@ func play_next_line() -> void:
 
 func play_next_dialog() -> void:
 	if dialogue_queue.is_empty():
-		current_dialogue = []
-		num_dialogue = 0
-		text = ""
 		return
 	var d: Dialog = dialogue_queue.pop_front()
 	current_dialogue = d.lines.split("\n")
