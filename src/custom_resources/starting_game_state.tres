@@ -13,6 +13,18 @@
 [ext_resource type="Resource" uid="uid://bpwvofrvjx6ul" path="res://upgrades/upgrade_resources/day_hand.tres" id="11_xanpn"]
 [ext_resource type="Resource" uid="uid://desfbi2j25w2o" path="res://upgrades/upgrade_resources/wdxl.tres" id="11_xro8q"]
 [ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="12_nic8e"]
+[ext_resource type="Resource" uid="uid://bgo4gnb3e4pmv" path="res://dialogue_box/dialog_resources/DayHandDialog.tres" id="13_i83c3"]
+[ext_resource type="Resource" uid="uid://b7p1saxfvedlt" path="res://dialogue_box/dialog_resources/Ending.tres" id="14_gpxio"]
+[ext_resource type="Resource" uid="uid://i6v0kuscmdrd" path="res://dialogue_box/dialog_resources/FirstHamster.tres" id="15_2dxpl"]
+[ext_resource type="Resource" uid="uid://diuey1600kou6" path="res://dialogue_box/dialog_resources/FirstWDProduct.tres" id="16_1mst8"]
+[ext_resource type="Resource" uid="uid://bqukoh0egu0sh" path="res://dialogue_box/dialog_resources/FiveSand.tres" id="17_1rhgi"]
+[ext_resource type="Resource" uid="uid://c7g6o5jdufd0b" path="res://dialogue_box/dialog_resources/HourHandDialog.tres" id="18_us86i"]
+[ext_resource type="Resource" uid="uid://dfn7wcdp83kn0" path="res://dialogue_box/dialog_resources/HundredSands.tres" id="19_1oswg"]
+[ext_resource type="Resource" uid="uid://dcmqfivmw62xf" path="res://dialogue_box/dialog_resources/Intro.tres" id="20_rfvpm"]
+[ext_resource type="Resource" uid="uid://dangqo2blbu8c" path="res://dialogue_box/dialog_resources/MinuteHandDialog.tres" id="21_vt81t"]
+[ext_resource type="Resource" uid="uid://b015d67wq77ph" path="res://dialogue_box/dialog_resources/MonthHandDialog.tres" id="22_sakro"]
+[ext_resource type="Resource" uid="uid://dko60k17uawuj" path="res://dialogue_box/dialog_resources/SameHamster.tres" id="23_2hwdf"]
+[ext_resource type="Resource" uid="uid://dwlq8n7oy7ddk" path="res://dialogue_box/dialog_resources/SecondHandDialog.tres" id="24_x51h5"]
 [ext_resource type="Resource" uid="uid://bpr6j55w670c3" path="res://upgrades/upgrade_resources/month_hand.tres" id="12_r8iy6"]
 [ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="13_1j8mj"]
 [ext_resource type="Script" uid="uid://5jeeoc7v63kn" path="res://upgrades/unlock_types/SandsCondition.gd" id="14_xanpn"]
@@ -39,4 +51,6 @@ script = ExtResource("1_7rfia")
 sands = 1000
 locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("11_xro8q"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq"), ExtResource("11_xanpn"), ExtResource("12_r8iy6")])
 unqueued_dialog = Array[ExtResource("12_nic8e")]([SubResource("Resource_bn37k"), SubResource("Resource_crv2k")])
+locked_upgrades = Array[ExtResource("2_8ya51")]([ExtResource("3_ywnfr"), ExtResource("4_m16b7"), ExtResource("5_nic8e"), ExtResource("6_1j8mj"), ExtResource("7_xanpn"), ExtResource("11_xro8q"), ExtResource("9_rcs5v"), ExtResource("10_dv8dq")])
+unqueued_dialog = Array[ExtResource("12_nic8e")]([ExtResource("13_i83c3"), ExtResource("14_gpxio"), ExtResource("15_2dxpl"), ExtResource("16_1mst8"), ExtResource("17_1rhgi"), ExtResource("18_us86i"), ExtResource("19_1oswg"), ExtResource("20_rfvpm"), ExtResource("21_vt81t"), ExtResource("22_sakro"), ExtResource("23_2hwdf"), ExtResource("24_x51h5")])
 metadata/_custom_type_script = "uid://dfqohajdnq1pm"

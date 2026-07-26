@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Dialog" format=3 uid="uid://dfn7wcdp83kn0"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_tpuro"]
+[ext_resource type="Script" uid="uid://5jeeoc7v63kn" path="res://upgrades/unlock_types/SandsCondition.gd" id="2_t62y7"]
+[ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="2_x1eg1"]
+
+[sub_resource type="Resource" id="Resource_s4cq8"]
+script = ExtResource("2_t62y7")
+sand_threshold = 100
+metadata/_custom_type_script = "uid://5jeeoc7v63kn"
+
+[resource]
+script = ExtResource("2_x1eg1")
+lines = "You’ve got so much sand! Good thing the suckers in this year don’t know what gold looks like."
+conditions = Array[ExtResource("1_tpuro")]([SubResource("Resource_s4cq8")])
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"

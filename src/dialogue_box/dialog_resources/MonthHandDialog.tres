@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialog" format=3 uid="uid://b015d67wq77ph"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_51l2l"]
+[ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="2_ayc6m"]
+
+[resource]
+script = ExtResource("2_ayc6m")
+lines = "As we all know, one rotation of the month hand will get you back a year! That’s why there are 12 numbers on a clock."
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"

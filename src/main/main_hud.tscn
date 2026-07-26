@@ -110,12 +110,25 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sqrt5")
 text = "DoofOS"
 
-[node name="DialogueBox" parent="HUDSections/TopSection/MessagePanel/HBoxContainer" unique_id=937354533 instance=ExtResource("7_pusfw")]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDSections/TopSection/MessagePanel/HBoxContainer" unique_id=9067903]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DialogueBox" parent="HUDSections/TopSection/MessagePanel/HBoxContainer/VBoxContainer" unique_id=937354533 instance=ExtResource("7_pusfw")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "
 "
+scroll_following_visible_characters = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUDSections/TopSection/MessagePanel/HBoxContainer/VBoxContainer" unique_id=1443608999]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.24
+text = "Press Enter to continue"
+fit_content = true
 
 [node name="BottomSection" type="HBoxContainer" parent="HUDSections" unique_id=1357091963]
 layout_mode = 2

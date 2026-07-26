@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialog" format=3 uid="uid://dcmqfivmw62xf"]
+
+[ext_resource type="Script" uid="uid://ce3xurwrj171a" path="res://upgrades/upgrade_condition.gd" id="1_vabyk"]
+[ext_resource type="Script" uid="uid://mb1ynyyowxg7" path="res://dialogue_box/dialog.gd" id="2_6pos3"]
+
+[resource]
+script = ExtResource("2_6pos3")
+lines = "Hey. Looks like you’re stuck in TwennyTwennySicks. And. You forgot to make your time machine go forward. Rookie mistake, but hey, it happens to everyone.
+To return to your original year of 2038, you’re gonna have to go back. Go backward to go forward, y’know? Back to the very beginning of time: January 1st, 1970.
+And the good news is that you’ve got that handy clock in the middle of your machine. Why don’t you try giving it a spin by clicking on it? If that’s not to your liking, you can always change the way you spin it in settings with Escape or that button down there at your left.
+Luckily for you, fortune favors the unprepared. Turning back time will reward you with some sand, which you may barter for goods (or services).
+"
+metadata/_custom_type_script = "uid://mb1ynyyowxg7"
