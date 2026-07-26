@@ -10,3 +10,4 @@ const HAMSTER_ICON = preload("uid://dags5e7uwwpq1")
 @export var effects: Array[UpgradeEffect]
 
 @export var conditions: Array[UnlockCondition]
+@export var repeatable: bool = false
