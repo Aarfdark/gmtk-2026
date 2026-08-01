@@ -11,6 +11,6 @@ metadata/_custom_type_script = "uid://dbydx4s4tbvpe"
 
 [resource]
 script = ExtResource("2_bano0")
-lines = "This is literally... I don’t know...."
+lines = "I forgot what happened this year..."
 conditions = Array[ExtResource("1_ohhq7")]([SubResource("Resource_ohhq7")])
 metadata/_custom_type_script = "uid://mb1ynyyowxg7"
