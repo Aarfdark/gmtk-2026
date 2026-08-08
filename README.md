@@ -7,13 +7,18 @@ In your time traveling adventures, you've somehow ended up stranded in the treac
 
 # Team
 Aarfdark - Programming (clock, shop), art, writing
+
 VernalUmbrella - Programming (upgrades, sfx, vfx, scene organization, UI/UX, most of it tbh)
+
 MistOfJudgement - Programming (debugging, upgrades, dialogue)
+
 AstroBowie - Music
+
 Zombinator - Programming (upgrades, QA)
 
 # Tools
 Godot - Game Engine
+
 Pixelorama - Pixel Art
 
 # Assets
